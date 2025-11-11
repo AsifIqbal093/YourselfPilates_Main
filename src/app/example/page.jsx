@@ -2,6 +2,8 @@
 
 import React, { useState, useMemo } from "react";
 import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+import WhatsappButton from "@/components/shared/WhatsappButton";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -61,11 +63,16 @@ const ExamplePage = () => {
       {/* Header Component */}
       <Header />
 
+      {/* WhatsApp Floating Button */}
+      <WhatsappButton />
+
       {/* Main Content - Add padding-top to account for fixed header */}
       <div className="pt-20 md:pt-24">
         <div className="p-8 space-y-8">
           <section className="space-y-4">
             <h1 className="text-3xl font-bold">Shadcn UI Component Examples</h1>
+
+            {/* Header Component Info */}
             <div className="p-4 bg-primary/10 border border-primary/20 rounded-lg">
               <h2 className="text-xl font-semibold mb-2">Header Component</h2>
               <p className="text-sm text-muted-foreground">
@@ -78,6 +85,44 @@ const ExamplePage = () => {
                 <li>Navigation with active state indicators</li>
                 <li>Phone number with call-to-action</li>
                 <li>Mobile menu with full contact information</li>
+              </ul>
+            </div>
+
+            {/* Footer Component Info */}
+            <div className="p-4 bg-secondary/10 border border-secondary/20 rounded-lg">
+              <h2 className="text-xl font-semibold mb-2">Footer Component</h2>
+              <p className="text-sm text-muted-foreground">
+                The footer is visible at the bottom of this page. It includes:
+              </p>
+              <ul className="text-sm text-muted-foreground mt-2 space-y-1 list-disc list-inside">
+                <li>
+                  4-column responsive layout (logo, service info,
+                  schedule/location, social media)
+                </li>
+                <li>Navigation links with hover effects</li>
+                <li>Phone contact with icon</li>
+                <li>Business hours and address</li>
+                <li>Instagram social link</li>
+                <li>Legal links (horizontal on desktop, vertical on mobile)</li>
+                <li>Copyright notice with OONIFY branding</li>
+              </ul>
+            </div>
+
+            {/* WhatsApp Button Info */}
+            <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+              <h2 className="text-xl font-semibold mb-2">
+                WhatsApp Floating Button
+              </h2>
+              <p className="text-sm text-muted-foreground">
+                Look at the bottom-right corner! The WhatsApp button features:
+              </p>
+              <ul className="text-sm text-muted-foreground mt-2 space-y-1 list-disc list-inside">
+                <li>Fixed position floating button</li>
+                <li>Pulse animation effect</li>
+                <li>Hover tooltip with message</li>
+                <li>Opens WhatsApp with pre-filled message</li>
+                <li>Smooth entrance animation</li>
+                <li>Official WhatsApp green color (#25D366)</li>
               </ul>
             </div>
           </section>
@@ -1659,6 +1704,9 @@ const ExamplePage = () => {
           </section>
         </div>
       </div>
+
+      {/* Footer Component */}
+      <Footer />
     </>
   );
 };
