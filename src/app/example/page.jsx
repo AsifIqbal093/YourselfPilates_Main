@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -32,6 +32,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Calendar } from "@/components/ui/calendar";
 
 const ExamplePage = () => {
   const [inputValue, setInputValue] = useState("");
@@ -41,6 +42,18 @@ const ExamplePage = () => {
   const [classType, setClassType] = useState("");
   const [instructor, setInstructor] = useState("");
   const [timeSlot, setTimeSlot] = useState("");
+
+  // Calendar states
+  const [selectedDate, setSelectedDate] = useState();
+  const [dateRange, setDateRange] = useState();
+  const [multipleDate, setMultipleDate] = useState([]);
+
+  // Calculate date 30 days from now
+  const thirtyDaysFromNow = useMemo(() => {
+    const date = new Date();
+    date.setDate(date.getDate() + 30);
+    return date;
+  }, []);
 
   return (
     <div className="p-8 space-y-8">
@@ -1213,6 +1226,340 @@ const ExamplePage = () => {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Calendar Examples */}
+      <section className="space-y-4">
+        <h2 className="text-2xl font-semibold">Calendar Examples</h2>
+
+        {/* Basic Calendars */}
+        <div className="space-y-4">
+          <h3 className="text-xl font-semibold">Basic Calendar</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Single Date Selection */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Single Date Selection</CardTitle>
+                <CardDescription>Select a single date</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Calendar
+                  mode="single"
+                  selected={selectedDate}
+                  onSelect={setSelectedDate}
+                  className="rounded-md border"
+                />
+                {selectedDate && (
+                  <p className="mt-4 text-sm text-center">
+                    Selected: {selectedDate.toLocaleDateString()}
+                  </p>
+                )}
+              </CardContent>
+            </Card>
+
+            {/* Date Range Selection */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Date Range Selection</CardTitle>
+                <CardDescription>Select a date range</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Calendar
+                  mode="range"
+                  selected={dateRange}
+                  onSelect={setDateRange}
+                  className="rounded-md border"
+                />
+                {dateRange?.from && (
+                  <div className="mt-4 text-sm text-center space-y-1">
+                    <p>From: {dateRange.from.toLocaleDateString()}</p>
+                    {dateRange.to && (
+                      <p>To: {dateRange.to.toLocaleDateString()}</p>
+                    )}
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+
+            {/* Multiple Date Selection */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Multiple Dates</CardTitle>
+                <CardDescription>Select multiple dates</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Calendar
+                  mode="multiple"
+                  selected={multipleDate}
+                  onSelect={setMultipleDate}
+                  className="rounded-md border"
+                />
+                {multipleDate.length > 0 && (
+                  <p className="mt-4 text-sm text-center">
+                    {multipleDate.length} date(s) selected
+                  </p>
+                )}
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+
+        {/* Calendar with Constraints */}
+        <div className="space-y-4">
+          <h3 className="text-xl font-semibold">Calendar with Constraints</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Disabled Past Dates */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Future Dates Only</CardTitle>
+                <CardDescription>Past dates are disabled</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Calendar
+                  mode="single"
+                  disabled={{ before: new Date() }}
+                  className="rounded-md border"
+                />
+              </CardContent>
+            </Card>
+
+            {/* Specific Date Range */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Limited Date Range</CardTitle>
+                <CardDescription>Only next 30 days available</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Calendar
+                  mode="single"
+                  disabled={{
+                    before: new Date(),
+                    after: thirtyDaysFromNow,
+                  }}
+                  className="rounded-md border"
+                />
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+
+        {/* Calendar in Booking Form */}
+        <div className="space-y-4">
+          <h3 className="text-xl font-semibold">Calendar in Booking Context</h3>
+          <Card className="max-w-3xl">
+            <CardHeader>
+              <CardTitle>Book Your Pilates Class</CardTitle>
+              <CardDescription>
+                Choose your preferred date and time
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-4">
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium">Select Date</label>
+                    <Calendar
+                      mode="single"
+                      selected={selectedDate}
+                      onSelect={setSelectedDate}
+                      disabled={{ before: new Date() }}
+                      className="rounded-md border"
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium">Class Details</label>
+                    <div className="space-y-4">
+                      <div className="space-y-2">
+                        <label className="text-sm font-medium">
+                          Class Type
+                        </label>
+                        <Select>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select class" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="beginner">
+                              Beginner Mat
+                            </SelectItem>
+                            <SelectItem value="intermediate">
+                              Intermediate
+                            </SelectItem>
+                            <SelectItem value="reformer">Reformer</SelectItem>
+                            <SelectItem value="private">
+                              Private Session
+                            </SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+
+                      <div className="space-y-2">
+                        <label className="text-sm font-medium">Time Slot</label>
+                        <Select>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select time" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="9am">9:00 AM</SelectItem>
+                            <SelectItem value="10am">10:00 AM</SelectItem>
+                            <SelectItem value="5pm">5:00 PM</SelectItem>
+                            <SelectItem value="6pm">6:00 PM</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+
+                      <div className="space-y-2">
+                        <label className="text-sm font-medium">Name</label>
+                        <Input type="text" placeholder="Your name" />
+                      </div>
+
+                      <div className="space-y-2">
+                        <label className="text-sm font-medium">Email</label>
+                        <Input type="email" placeholder="your@email.com" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {selectedDate && (
+                <div className="p-4 bg-primary/10 rounded-lg">
+                  <p className="text-sm font-medium">Booking Summary</p>
+                  <p className="text-sm text-muted-foreground">
+                    Date:{" "}
+                    {selectedDate.toLocaleDateString("en-US", {
+                      weekday: "long",
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
+                  </p>
+                </div>
+              )}
+            </CardContent>
+            <CardFooter className="gap-2">
+              <Button
+                variant="outline"
+                className="flex-1"
+                onClick={() => setSelectedDate(undefined)}
+              >
+                Clear
+              </Button>
+              <Button className="flex-1">Book Now</Button>
+            </CardFooter>
+          </Card>
+        </div>
+
+        {/* Calendar Variants */}
+        <div className="space-y-4">
+          <h3 className="text-xl font-semibold">Calendar Variants</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Multiple Months */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Multiple Months</CardTitle>
+                <CardDescription>View multiple months at once</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Calendar
+                  mode="single"
+                  numberOfMonths={2}
+                  className="rounded-md border"
+                />
+              </CardContent>
+            </Card>
+
+            {/* Week Numbers */}
+            <Card>
+              <CardHeader>
+                <CardTitle>With Week Numbers</CardTitle>
+                <CardDescription>Display week numbers</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Calendar
+                  mode="single"
+                  showWeekNumber
+                  className="rounded-md border"
+                />
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+
+        {/* Calendar with Dialog */}
+        <div className="space-y-4">
+          <h3 className="text-xl font-semibold">Calendar in Dialog</h3>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button variant="outline">
+                {selectedDate
+                  ? selectedDate.toLocaleDateString()
+                  : "Pick a date"}
+              </Button>
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Select a Date</DialogTitle>
+                <DialogDescription>
+                  Choose your preferred class date
+                </DialogDescription>
+              </DialogHeader>
+              <div className="flex justify-center">
+                <Calendar
+                  mode="single"
+                  selected={selectedDate}
+                  onSelect={setSelectedDate}
+                  disabled={{ before: new Date() }}
+                  className="rounded-md border"
+                />
+              </div>
+              <DialogFooter>
+                <DialogClose asChild>
+                  <Button variant="outline">Cancel</Button>
+                </DialogClose>
+                <DialogClose asChild>
+                  <Button>Confirm</Button>
+                </DialogClose>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
+          {selectedDate && (
+            <p className="text-sm text-muted-foreground">
+              Selected:{" "}
+              {selectedDate.toLocaleDateString("en-US", {
+                weekday: "long",
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+            </p>
+          )}
+        </div>
+
+        {/* Disabled Specific Days */}
+        <div className="space-y-4">
+          <h3 className="text-xl font-semibold">Custom Disabled Days</h3>
+          <Card className="max-w-md">
+            <CardHeader>
+              <CardTitle>Studio Closed Days</CardTitle>
+              <CardDescription>
+                Sundays and holidays are disabled
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Calendar
+                mode="single"
+                disabled={[
+                  { dayOfWeek: [0] }, // Disable Sundays
+                  { before: new Date() }, // Disable past dates
+                ]}
+                className="rounded-md border"
+              />
+            </CardContent>
+          </Card>
         </div>
       </section>
     </div>
