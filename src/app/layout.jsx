@@ -1,14 +1,32 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Roboto, PT_Sans, Kodchasan, Montserrat } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// Primary Font: Roboto - Weights: 300, 400, 500, 900
+const roboto = Roboto({
+  variable: "--font-roboto",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "900"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+// Secondary Font: PT Sans
+const ptSans = PT_Sans({
+  variable: "--font-pt-sans",
   subsets: ["latin"],
+  weight: ["400", "700"],
+});
+
+// Accent Font: Kodchasan
+const kodchasan = Kodchasan({
+  variable: "--font-kodchasan",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "700"],
+});
+
+// Display Font: Montserrat - Weight: 700
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
+  subsets: ["latin"],
+  weight: ["700"],
 });
 
 export const metadata = {
@@ -23,7 +41,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${roboto.variable} ${ptSans.variable} ${kodchasan.variable} ${montserrat.variable} antialiased`}
         suppressHydrationWarning
       >
         {children}

@@ -9,6 +9,7 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  --color-white: var(--white);
   --color-primary: var(--primary);
   --color-primary-hover: var(--primary-hover);
   --color-primary-foreground: var(--primary-foreground);
@@ -24,6 +25,8 @@
   --color-popover-foreground: var(--popover-foreground);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
+  --color-gradient-start: var(--gradient-start);
+  --color-gradient-end: var(--gradient-end);
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
@@ -39,9 +42,10 @@
   --color-sidebar-ring: var(--sidebar-ring);
 
   /* Font Families */
-  --font-sans: var(--font-roboto, var(--font-geist-sans)), sans-serif;
-  --font-display: var(--font-kodchasan), sans-serif;
-  --font-heading: var(--font-pt-sans), sans-serif;
+  --font-sans: var(--font-roboto, "Roboto"), sans-serif;
+  --font-display: var(--font-montserrat, "Montserrat"), sans-serif;
+  --font-accent: var(--font-kodchasan, "Kodchasan"), sans-serif;
+  --font-heading: var(--font-pt-sans, "PT Sans"), sans-serif;
   --font-mono: var(--font-geist-mono), monospace;
 
   /* Font Sizes */
@@ -88,43 +92,51 @@
   /* Base radius */
   --radius: 0.625rem;
 
-  /* Theme Colors - Custom */
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-
-  /* Primary - Custom Blue */
+  /* ===== BRANDING COLORS ===== */
+  /* Primary - Blue (Main brand color) */
   --primary: #398ffc;
   --primary-hover: #5fb5ff;
   --primary-foreground: #ffffff;
 
-  /* Secondary - Custom Dark Gray */
+  /* Secondary - Dark Gray (Text & headings) */
   --secondary: #3b3d42;
   --secondary-foreground: #ffffff;
 
-  /* Accent - Custom Purple-ish */
+  /* Tertiary/Accent - Purple-ish (Accent in gradients) */
   --accent: #c4681e4;
   --accent-foreground: #ffffff;
 
-  /* Muted - Custom Gray */
+  /* Light Gray - Muted elements, placeholders */
   --muted: #a1a2a4;
   --muted-foreground: #3b3d42;
 
+  /* White */
+  --white: #ffffff;
+
+  /* Background & Foreground */
+  --background: #ffffff;
+  --foreground: #3b3d42;
+
+  /* ===== GRADIENT COLORS ===== */
+  --gradient-start: #88a9c300;
+  --gradient-end: #88a9c330;
+
   /* Card */
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
+  --card: #ffffff;
+  --card-foreground: #3b3d42;
 
   /* Popover */
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
+  --popover: #ffffff;
+  --popover-foreground: #3b3d42;
 
   /* Destructive */
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
 
   /* Border & Input */
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
+  --border: #e5e7eb;
+  --input: #e5e7eb;
+  --ring: #398ffc;
 
   /* Charts */
   --chart-1: oklch(0.646 0.222 41.116);
@@ -134,14 +146,14 @@
   --chart-5: oklch(0.769 0.188 70.08);
 
   /* Sidebar */
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
+  --sidebar: #ffffff;
+  --sidebar-foreground: #3b3d42;
+  --sidebar-primary: #398ffc;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f3f4f6;
+  --sidebar-accent-foreground: #3b3d42;
+  --sidebar-border: #e5e7eb;
+  --sidebar-ring: #398ffc;
 }
 
 .dark {
@@ -182,8 +194,76 @@
   * {
     @apply border-border outline-ring/50;
   }
+
+  /* Body Typography */
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  /* Headings Typography */
+  h1 {
+    font-size: 34px;
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  h2 {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  h3 {
+    font-size: 21px;
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  h4 {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  h5 {
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  h6 {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  /* Responsive Headings */
+  @media (min-width: 1200px) {
+    h1 {
+      font-size: 56px;
+    }
+
+    h2 {
+      font-size: 40px;
+    }
+
+    h3 {
+      font-size: 28px;
+    }
+  }
+
+  /* Button Typography */
+  button,
+  [role="button"],
+  [data-slot="button"] {
+    font-size: 11px;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: 1px;
+    text-transform: uppercase;
   }
 }
 
@@ -224,4 +304,33 @@
     transform: translateY(0);
     opacity: 1;
   }
+}
+
+/* ===== CUSTOM GRADIENTS ===== */
+
+/* Primary Background Gradient */
+.bg-gradient-primary {
+  background: linear-gradient(
+    180deg,
+    var(--gradient-start) 0%,
+    var(--gradient-end) 100%
+  );
+}
+
+/* Button Gradient */
+.bg-gradient-button {
+  background: linear-gradient(200deg, var(--primary) 0%, var(--accent) 100%);
+}
+
+/* Utility classes for gradients */
+@utility bg-gradient-primary {
+  background: linear-gradient(
+    180deg,
+    var(--gradient-start) 0%,
+    var(--gradient-end) 100%
+  );
+}
+
+@utility bg-gradient-button {
+  background: linear-gradient(200deg, var(--primary) 0%, var(--accent) 100%);
 }
