@@ -22,12 +22,25 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectSeparator,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const ExamplePage = () => {
   const [inputValue, setInputValue] = useState("");
   const [emailValue, setEmailValue] = useState("");
   const [isFormDialogOpen, setIsFormDialogOpen] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "" });
+  const [classType, setClassType] = useState("");
+  const [instructor, setInstructor] = useState("");
+  const [timeSlot, setTimeSlot] = useState("");
 
   return (
     <div className="p-8 space-y-8">
@@ -824,6 +837,381 @@ const ExamplePage = () => {
                 </DialogFooter>
               </DialogContent>
             </Dialog>
+          </div>
+        </div>
+      </section>
+
+      {/* Select Examples */}
+      <section className="space-y-4">
+        <h2 className="text-2xl font-semibold">Select Examples</h2>
+
+        {/* Basic Selects */}
+        <div className="space-y-4">
+          <h3 className="text-xl font-semibold">Basic Selects</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl">
+            {/* Simple Select */}
+            <div className="space-y-2">
+              <label className="text-sm font-medium">Class Type</label>
+              <Select value={classType} onValueChange={setClassType}>
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Select a class" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="mat-beginner">Mat - Beginner</SelectItem>
+                  <SelectItem value="mat-intermediate">
+                    Mat - Intermediate
+                  </SelectItem>
+                  <SelectItem value="mat-advanced">Mat - Advanced</SelectItem>
+                  <SelectItem value="reformer">Reformer</SelectItem>
+                  <SelectItem value="prenatal">Prenatal Pilates</SelectItem>
+                  <SelectItem value="private">Private Session</SelectItem>
+                </SelectContent>
+              </Select>
+              {classType && (
+                <p className="text-xs text-muted">Selected: {classType}</p>
+              )}
+            </div>
+
+            {/* Select with Groups */}
+            <div className="space-y-2">
+              <label className="text-sm font-medium">Time Slot</label>
+              <Select value={timeSlot} onValueChange={setTimeSlot}>
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Choose a time" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectLabel>Morning</SelectLabel>
+                    <SelectItem value="8am">8:00 AM</SelectItem>
+                    <SelectItem value="9am">9:00 AM</SelectItem>
+                    <SelectItem value="10am">10:00 AM</SelectItem>
+                    <SelectItem value="11am">11:00 AM</SelectItem>
+                  </SelectGroup>
+                  <SelectSeparator />
+                  <SelectGroup>
+                    <SelectLabel>Afternoon</SelectLabel>
+                    <SelectItem value="2pm">2:00 PM</SelectItem>
+                    <SelectItem value="3pm">3:00 PM</SelectItem>
+                    <SelectItem value="4pm">4:00 PM</SelectItem>
+                  </SelectGroup>
+                  <SelectSeparator />
+                  <SelectGroup>
+                    <SelectLabel>Evening</SelectLabel>
+                    <SelectItem value="5pm">5:00 PM</SelectItem>
+                    <SelectItem value="6pm">6:00 PM</SelectItem>
+                    <SelectItem value="7pm">7:00 PM</SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+            </div>
+
+            {/* Select with Size */}
+            <div className="space-y-2">
+              <label className="text-sm font-medium">Small Select</label>
+              <Select>
+                <SelectTrigger className="w-full" size="sm">
+                  <SelectValue placeholder="Small size" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="xs">Extra Small</SelectItem>
+                  <SelectItem value="s">Small</SelectItem>
+                  <SelectItem value="m">Medium</SelectItem>
+                  <SelectItem value="l">Large</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
+        </div>
+
+        {/* Select States */}
+        <div className="space-y-4">
+          <h3 className="text-xl font-semibold">Select States</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl">
+            {/* Disabled Select */}
+            <div className="space-y-2">
+              <label className="text-sm font-medium">Disabled Select</label>
+              <Select disabled>
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="This is disabled" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="option1">Option 1</SelectItem>
+                  <SelectItem value="option2">Option 2</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            {/* Required Select */}
+            <div className="space-y-2">
+              <label className="text-sm font-medium">Required Select *</label>
+              <Select required>
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Required field" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="yes">Yes</SelectItem>
+                  <SelectItem value="no">No</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
+        </div>
+
+        {/* Select in Forms */}
+        <div className="space-y-4">
+          <h3 className="text-xl font-semibold">Select in Form Context</h3>
+          <Card className="max-w-2xl">
+            <CardHeader>
+              <CardTitle>Book a Pilates Class</CardTitle>
+              <CardDescription>
+                Select your preferences for booking
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <label className="text-sm font-medium">Class Type</label>
+                  <Select value={classType} onValueChange={setClassType}>
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="Select class type" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="mat-beginner">
+                        Mat - Beginner
+                      </SelectItem>
+                      <SelectItem value="mat-intermediate">
+                        Mat - Intermediate
+                      </SelectItem>
+                      <SelectItem value="reformer">Reformer</SelectItem>
+                      <SelectItem value="prenatal">Prenatal</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-sm font-medium">Instructor</label>
+                  <Select value={instructor} onValueChange={setInstructor}>
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="Choose instructor" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="maria">Maria Silva</SelectItem>
+                      <SelectItem value="joao">João Santos</SelectItem>
+                      <SelectItem value="ana">Ana Costa</SelectItem>
+                      <SelectItem value="any">Any Available</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Preferred Time</label>
+                <Select value={timeSlot} onValueChange={setTimeSlot}>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Select time slot" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectGroup>
+                      <SelectLabel>Morning Classes</SelectLabel>
+                      <SelectItem value="morning-8">
+                        8:00 AM - Morning Flow
+                      </SelectItem>
+                      <SelectItem value="morning-9">
+                        9:00 AM - Beginner Mat
+                      </SelectItem>
+                      <SelectItem value="morning-10">
+                        10:00 AM - Prenatal
+                      </SelectItem>
+                    </SelectGroup>
+                    <SelectSeparator />
+                    <SelectGroup>
+                      <SelectLabel>Evening Classes</SelectLabel>
+                      <SelectItem value="evening-5">
+                        5:00 PM - Intermediate
+                      </SelectItem>
+                      <SelectItem value="evening-6">
+                        6:00 PM - Advanced
+                      </SelectItem>
+                      <SelectItem value="evening-7">
+                        7:00 PM - Stretch & Relax
+                      </SelectItem>
+                    </SelectGroup>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Full Name</label>
+                <Input type="text" placeholder="Enter your name" />
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Email</label>
+                <Input type="email" placeholder="your@email.com" />
+              </div>
+            </CardContent>
+            <CardFooter className="gap-2">
+              <Button
+                variant="outline"
+                className="flex-1"
+                onClick={() => {
+                  setClassType("");
+                  setInstructor("");
+                  setTimeSlot("");
+                }}
+              >
+                Clear
+              </Button>
+              <Button
+                className="flex-1"
+                onClick={() => {
+                  if (classType && instructor && timeSlot) {
+                    alert(
+                      `Booking: ${classType} with ${instructor} at ${timeSlot}`
+                    );
+                  } else {
+                    alert("Please fill all fields");
+                  }
+                }}
+              >
+                Book Now
+              </Button>
+            </CardFooter>
+          </Card>
+        </div>
+
+        {/* Complex Selects */}
+        <div className="space-y-4">
+          <h3 className="text-xl font-semibold">Complex Select Examples</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
+            {/* Membership Plans */}
+            <div className="space-y-2">
+              <label className="text-sm font-medium">Membership Plan</label>
+              <Select>
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Choose your plan" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectLabel>Monthly Plans</SelectLabel>
+                    <SelectItem value="basic-monthly">
+                      Basic - 4 classes/month (€39)
+                    </SelectItem>
+                    <SelectItem value="standard-monthly">
+                      Standard - 8 classes/month (€69)
+                    </SelectItem>
+                    <SelectItem value="premium-monthly">
+                      Premium - 12 classes/month (€89)
+                    </SelectItem>
+                    <SelectItem value="unlimited-monthly">
+                      Unlimited - All classes (€119)
+                    </SelectItem>
+                  </SelectGroup>
+                  <SelectSeparator />
+                  <SelectGroup>
+                    <SelectLabel>Annual Plans (Save 20%)</SelectLabel>
+                    <SelectItem value="basic-annual">
+                      Basic Annual (€374/year)
+                    </SelectItem>
+                    <SelectItem value="standard-annual">
+                      Standard Annual (€662/year)
+                    </SelectItem>
+                    <SelectItem value="premium-annual">
+                      Premium Annual (€854/year)
+                    </SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+            </div>
+
+            {/* Location/Studio */}
+            <div className="space-y-2">
+              <label className="text-sm font-medium">Studio Location</label>
+              <Select>
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Select studio" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="main">
+                    Main Studio - Caldas da Rainha Centro
+                  </SelectItem>
+                  <SelectItem value="north">North Studio - São Gião</SelectItem>
+                  <SelectItem value="online">Online Classes</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            {/* Equipment Preference */}
+            <div className="space-y-2">
+              <label className="text-sm font-medium">Equipment Level</label>
+              <Select>
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Select equipment" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectLabel>Mat Classes</SelectLabel>
+                    <SelectItem value="mat-only">Mat Only</SelectItem>
+                    <SelectItem value="mat-props">
+                      Mat with Small Props
+                    </SelectItem>
+                  </SelectGroup>
+                  <SelectSeparator />
+                  <SelectGroup>
+                    <SelectLabel>Equipment Classes</SelectLabel>
+                    <SelectItem value="reformer">Reformer</SelectItem>
+                    <SelectItem value="cadillac">Cadillac</SelectItem>
+                    <SelectItem value="chair">Wunda Chair</SelectItem>
+                    <SelectItem value="barrel">Barrel</SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+            </div>
+
+            {/* Language Preference */}
+            <div className="space-y-2">
+              <label className="text-sm font-medium">
+                Instruction Language
+              </label>
+              <Select>
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Select language" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="pt">Português</SelectItem>
+                  <SelectItem value="en">English</SelectItem>
+                  <SelectItem value="es">Español</SelectItem>
+                  <SelectItem value="fr">Français</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
+        </div>
+
+        {/* Select with Actions */}
+        <div className="space-y-4">
+          <h3 className="text-xl font-semibold">Select with Inline Actions</h3>
+          <div className="max-w-md space-y-4">
+            <div className="flex gap-2">
+              <div className="flex-1 space-y-2">
+                <label className="text-sm font-medium">Quick Filter</label>
+                <Select>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Filter classes" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All Classes</SelectItem>
+                    <SelectItem value="today">Today</SelectItem>
+                    <SelectItem value="tomorrow">Tomorrow</SelectItem>
+                    <SelectItem value="week">This Week</SelectItem>
+                    <SelectItem value="available">Available Spots</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="flex items-end">
+                <Button>Apply</Button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
