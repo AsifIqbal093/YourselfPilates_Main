@@ -6,6 +6,7 @@ import Image from "next/image";
 import { PhoneCall } from "lucide-react";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
 import Navigation from "./Navigation";
 import MobileMenu from "./MobileMenu";
 
@@ -28,20 +29,25 @@ const Header = () => {
 		>
 			<div className="w-full px-6 lg:px-12">
 				<div className="flex items-center justify-between py-4">
-					<Link
-						href="/"
-						className="flex items-center space-x-2 transition-transform duration-4000 ease-in-out hover:-rotate-[-3deg]"
-						style={{ transformOrigin: "bottom center" }}
+					<motion.div
+						style={{
+							display: "inline-block",
+							transformOrigin: "bottom left", 
+						}}
+						whileHover={{
+							transform: "skewX(-12deg)", 
+						}}
+						transition={{ duration: 1.0, ease: "easeOut" }}
 					>
 						<Image
 							src="/images/Logo.png"
 							alt="YourSelf Pilates"
-							width={177}
-							height={48}
+							width={200}
+							height={60}
 							className="h-12 md:h-12 w-auto"
 							priority
 						/>
-					</Link>
+					</motion.div>
 
 					{!isMobile && (
 						<div className="flex items-center space-x-8">
