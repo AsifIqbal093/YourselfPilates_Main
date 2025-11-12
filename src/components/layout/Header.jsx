@@ -5,12 +5,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { PhoneCall } from "lucide-react";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
+import { usePathname } from "next/navigation";
 import Navigation from "./Navigation";
 import MobileMenu from "./MobileMenu";
 
 const Header = () => {
 	const [isScrolled, setIsScrolled] = useState(false);
 	const isMobile = useMediaQuery("(max-width: 1024px)");
+	const pathname = usePathname();
 
 	useEffect(() => {
 		const handleScroll = () => setIsScrolled(window.scrollY > 10);
@@ -28,7 +30,8 @@ const Header = () => {
 				<div className="flex items-center justify-between py-4">
 					<Link
 						href="/"
-						className="flex items-center space-x-2 transition-transform duration-200 hover:scale-[1.02]"
+						className="flex items-center space-x-2 transition-transform duration-4000 ease-in-out hover:-rotate-[-3deg]"
+						style={{ transformOrigin: "bottom center" }}
 					>
 						<Image
 							src="/images/Logo.png"
@@ -43,20 +46,28 @@ const Header = () => {
 					{!isMobile && (
 						<div className="flex items-center space-x-8">
 							<nav className="flex items-center space-x-9 text-[19px] text-[#15467d] font-normal">
-								<Link href="/agendar" className="hover:text-[#5380A6]">
-									Agendar Espaço
-								</Link>
-								<Link href="/sobre" className="hover:text-[#5380A6]">
-									Sobre
-								</Link>
-								<Link href="/contactos" className="hover:text-[#5380A6]">
-									Contactos
-								</Link>
+								{[
+									{ href: "/agendar", label: "Agendar Espaço" },
+									{ href: "/sobre", label: "Sobre" },
+									{ href: "/contactos", label: "Contactos" },
+								].map((link) => (
+									<Link
+										key={link.href}
+										href={link.href}
+										className={`hover:text-[#5380A6] ${
+											pathname === link.href
+												? "text-[#5380A6] font-semibold underline"
+												: "text-[#15467d]"
+										}`}
+									>
+										{link.label}
+									</Link>
+								))}
 							</nav>
 
 							<a
 								href="tel:927078842"
-								className="flex items-center justify-center space-x-2 bg-[#f3f6f9] rounded-2xl py-4.5 px-4 hover:scale-[1.02] transition-all duration-200"
+								className="flex items-center justify-center space-x-2 bg-[#f3f6f9] rounded-2xl py-4.5 px-4 hover:scale-[1.10] transition-all duration-2000"
 							>
 								<PhoneCall className="w-5 h-5 text-[#88a9c3]" />
 								<div className="flex flex-col items-center leading-none text-center">
