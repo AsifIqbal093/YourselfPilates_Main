@@ -1,12 +1,9 @@
-import React from "react";
-import ExamplePage from "./example/page";
+import { redirect } from "next/navigation";
 
-const page = () => {
-  return (
-    <div>
-      <ExamplePage />
-    </div>
-  );
-};
-
-export default page;
+/**
+ * Root Page - Redirects to /home
+ * The main landing page is at /home
+ */
+export default function RootPage() {
+  redirect("/home");
+}
