@@ -1,8 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Phone, Instagram } from "lucide-react";
-import { Separator } from "@/components/ui/separator";
+import { PhoneCall, Instagram } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -29,31 +28,26 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-gradient-to-b from-[#88A9C310] to-[#88A9C350] pt-12 pb-6">
-      <div className="container mx-auto px-4 md:px-6 lg:px-8">
-        {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-8">
-          {/* Logo and Navigation */}
-          <div className="space-y-6">
-            <Link
-              href="/"
-              className="inline-block transition-transform duration-200 hover:scale-[1.02]"
-            >
+    <footer className="bg-gradient-to-r from-[#d9e4ee] to-[#c9d7e4] pt-12 pb-6 relative">
+      <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-[1200px]">
+        {/* Top Section */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-16">
+          <div className="space-y-4 md:space-y-6">
+            <Link href="/" className="inline-block">
               <Image
                 src="/images/Logo.png"
                 alt="YourSelf Pilates"
                 width={278}
                 height={75}
-                className="h-auto w-48 md:w-56"
+                className="h-auto w-full max-w-[278px]"
               />
             </Link>
-
-            <nav className="flex flex-col space-y-3">
+            <nav className="flex flex-col space-y-2 md:space-y-3">
               {navigationLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-secondary text-sm font-normal hover:text-primary transition-colors duration-200 w-fit"
+                  className="text-[#15467d] text-base font-normal hover:text-primary transition-colors duration-200 w-fit"
                 >
                   {link.name}
                 </Link>
@@ -61,131 +55,103 @@ const Footer = () => {
             </nav>
           </div>
 
-          {/* Service/Phone */}
-          <div className="space-y-4">
-            <h3 className="text-secondary font-normal text-xl">Atendimento</h3>
-            <a
-              href="tel:927078842"
-              className="group inline-flex items-start space-x-3 transition-all duration-200 hover:scale-[1.02]"
-            >
-              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#15467d]/10 text-[#15467d] group-hover:bg-[#15467d] group-hover:text-white transition-all duration-200 mt-1">
-                <Phone className="w-5 h-5" />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-secondary font-medium text-base leading-tight">
-                  927 078 842
-                </span>
-                <span className="text-muted text-xs mt-1">
-                  (Chamada para a rede móvel nacional)
-                </span>
-              </div>
-            </a>
-          </div>
+          <div className="flex flex-col sm:flex-row justify-center sm:justify-end sm:space-x-16 space-y-6 sm:space-y-0 text-[#15467d] pr-0 sm:pr-8">
+            <div className="flex flex-col space-y-4 sm:space-y-8 min-w-[160px] text-center sm:text-right">
+              <h3 className="font-semibold text-base">Atendimento</h3>
+              <h3 className="font-semibold text-base leading-snug">
+                Horário e <br /> Localização
+              </h3>
+            </div>
 
-          {/* Schedule and Location */}
-          <div className="space-y-4">
-            <h3 className="text-secondary font-normal text-xl">
-              Horário e Localização
-            </h3>
-            <div className="space-y-3 text-sm text-secondary">
-              <p className="leading-relaxed">
-                Segunda a Sábado
-                <br />
-                das 8h às 20h
-              </p>
-              <p className="leading-relaxed">
-                Rua Diário de Notícias nº 09,
-                <br />
-                2500-107 Caldas da Rainha
-              </p>
+            {/* Right Content */}
+            <div className="flex flex-col space-y-6 text-center sm:text-left">
+              <div className="flex flex-col sm:flex-row items-center sm:items-start justify-center sm:justify-start space-y-2 sm:space-y-0 sm:space-x-3">
+                <PhoneCall className="w-4 h-4 shrink-0 text-[#15467d]" />
+                <div className="flex flex-col leading-tight">
+                  <span className="font-semibold text-base tracking-wide">
+                    927&nbsp;078&nbsp;842
+                  </span>
+                  <span className="text-xs">
+                    (Chamada para a rede móvel nacional)
+                  </span>
+                </div>
+              </div>
+
+              {/* Horário + Endereço */}
+              <div className="text-sm space-y-2">
+                <p>
+                  Segunda a Sábado <br />
+                  das 8h às 20h
+                </p>
+                <p>
+                  Rua Diário de Notícias nº 09, 2500-107 <br />Caldas da Rainha
+                </p>
+              </div>
             </div>
           </div>
+        </div>
 
-          {/* Social Media */}
-          <div className="space-y-4">
-            <h3 className="text-secondary font-normal text-xl">
-              Redes Sociais
-            </h3>
+        {/* Bottom Section */}
+        <div className="flex flex-col md:flex-row items-center md:items-end justify-between gap-6 mt-8">
+          {/* Redes Sociais */}
+          <div className="flex items-center justify-center md:justify-start space-x-2">
+            <span className="text-[#15467d] text-sm font-normal">Redes Sociais</span>
             <a
               href="https://www.instagram.com/yourselfpilates/?hl=en"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all duration-200"
+              className="flex items-center justify-center w-7 h-7 rounded-full bg-[#15467d] text-white hover:opacity-80 transition"
               aria-label="Instagram"
             >
-              <Instagram className="w-6 h-6" />
+              <Instagram className="w-4 h-4" />
             </a>
           </div>
-        </div>
 
-        <Separator className="my-8" />
 
-        {/* Legal Links - Desktop (Horizontal) */}
-        <div className="hidden md:flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mb-6">
-          {legalLinks.map((link, index) => (
-            <React.Fragment key={link.href}>
-              {link.external ? (
+          <div className="flex flex-col md:items-end items-center gap-2 md:gap-0 mt-4 md:mt-0">
+            {/* Legal Links */}
+            <div className="flex flex-col md:flex-row items-center md:items-end justify-center md:justify-end gap-y-1 md:gap-y-0 gap-x-2 text-center md:text-right">
+              {legalLinks.map((link, index) => (
+                <React.Fragment key={link.href}>
+                  {link.external ? (
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[#15467d] text-xs hover:opacity-80 transition"
+                    >
+                      {link.name}
+                    </a>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      className="text-[#15467d] text-xs hover:opacity-80 transition"
+                    >
+                      {link.name}
+                    </Link>
+                  )}
+                  {index < legalLinks.length - 1 && (
+                    <span className="hidden md:inline text-[#15467d]/50 mx-1">|</span>
+                  )}
+                </React.Fragment>
+              ))}
+            </div>
+
+
+            <div className="text-right mt-2">
+              <p className="text-[#15467d] text-xs md:text-sm">
+                © {currentYear} – All rights Reserved. Powered by:{" "}
                 <a
-                  href={link.href}
+                  href="https://oonify.pt/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-secondary text-xs hover:text-primary transition-colors duration-200"
+                  className="inline-flex items-center font-medium text-[#15467d] hover:opacity-80 transition"
                 >
-                  {link.name}
+                  OONIFY
                 </a>
-              ) : (
-                <Link
-                  href={link.href}
-                  className="text-secondary text-xs hover:text-primary transition-colors duration-200"
-                >
-                  {link.name}
-                </Link>
-              )}
-              {index < legalLinks.length - 1 && (
-                <span className="text-muted">|</span>
-              )}
-            </React.Fragment>
-          ))}
-        </div>
-
-        {/* Legal Links - Mobile (Vertical) */}
-        <div className="flex md:hidden flex-col space-y-3 mb-6">
-          {legalLinks.map((link) =>
-            link.external ? (
-              <a
-                key={link.href}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-secondary text-sm hover:text-primary transition-colors duration-200"
-              >
-                {link.name}
-              </a>
-            ) : (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-secondary text-sm hover:text-primary transition-colors duration-200"
-              >
-                {link.name}
-              </Link>
-            )
-          )}
-        </div>
-
-        {/* Copyright */}
-        <div className="text-center">
-          <p className="text-secondary text-xs md:text-sm">
-            © {currentYear} – All rights Reserved. Powered by:{" "}
-            <a
-              href="https://oonify.pt/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center hover:opacity-80 transition-opacity duration-200"
-            >
-              <span className="font-medium text-[#15467d]">OONIFY</span>
-            </a>
-          </p>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
