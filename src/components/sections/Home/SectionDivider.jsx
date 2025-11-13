@@ -15,7 +15,7 @@ import { Kodchasan } from "next/font/google";
 
 const kodchasan = Kodchasan({
 	subsets: ["latin"],
-	weight: ["200", "300", "400"], // use 200 or 300 for thin/light style
+	weight: ["200", "300", "400"], 
 	variable: "--font-accent",
 });
 
@@ -30,7 +30,6 @@ const SectionDivider = ({ title, subtitle }) => {
 					transition={{ duration: 0.6 }}
 					className="flex flex-col items-center text-center space-y-6"
 				>
-					{/* Large Y Logo Icon */}
 					<div className="text-accent" style={{ color: "var(--color-accent)" }}>
 						<Image
 							src="/images/Ylogo.png"
@@ -40,7 +39,6 @@ const SectionDivider = ({ title, subtitle }) => {
 						/>
 					</div>
 
-					{/* Section Title */}
 					<h1
 						className={`${kodchasan.className} text-5xl font-light`}
 						style={{ color: "#88a9c3" }}
@@ -48,7 +46,6 @@ const SectionDivider = ({ title, subtitle }) => {
 						{title}
 					</h1>
 
-					{/* Optional Subtitle */}
 					{subtitle && (
 						<p className="text-muted text-base md:text-lg max-w-xl">
 							{subtitle}
