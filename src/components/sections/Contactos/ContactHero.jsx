@@ -150,7 +150,7 @@ const ContactHero = () => {
               variants={itemVariants}
               className="bg-white rounded-[26px] p-6 md:p-8 shadow-lg"
             >
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Nome Field */}
                 <div>
                   <Input
@@ -161,7 +161,7 @@ const ContactHero = () => {
                     value={formData.nome}
                     onChange={handleChange}
                     required
-                    className="w-full h-12 px-0 pb-2 border-0 border-b-2 border-gray-300 rounded-none focus:border-[#398ffc] focus:ring-0 text-secondary text-base placeholder:text-[#b5b9c3] bg-transparent"
+                    className="w-full h-12 px-0 pb-3 pt-2 border-0 border-b-2 border-[#c8d4e0] rounded-none focus:border-[#398ffc] focus:ring-0 text-[#3b3d42] text-base placeholder:text-[#8b9daf] bg-white transition-colors duration-200"
                   />
                 </div>
 
@@ -175,7 +175,7 @@ const ContactHero = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full h-12 px-0 pb-2 border-0 border-b-2 border-gray-300 rounded-none focus:border-[#398ffc] focus:ring-0 text-secondary text-base placeholder:text-[#b5b9c3] bg-transparent"
+                    className="w-full h-12 px-0 pb-3 pt-2 border-0 border-b-2 border-[#c8d4e0] rounded-none focus:border-[#398ffc] focus:ring-0 text-[#3b3d42] text-base placeholder:text-[#8b9daf] bg-white transition-colors duration-200"
                   />
                 </div>
 
@@ -189,8 +189,8 @@ const ContactHero = () => {
                     }
                     value={formData.mensagem}
                     onChange={handleChange}
-                    rows={3}
-                    className="w-full px-0 pb-2 border-0 border-b-2 border-gray-300 rounded-none focus:border-[#398ffc] focus:ring-0 text-secondary text-base placeholder:text-[#b5b9c3] resize-none bg-transparent"
+                    rows={4}
+                    className="w-full px-0 pb-3 pt-2 border-0 border-b-2 border-[#c8d4e0] rounded-none focus:border-[#398ffc] focus:ring-0 text-[#3b3d42] text-base placeholder:text-[#8b9daf] resize-none bg-white transition-colors duration-200"
                   />
                 </div>
 
