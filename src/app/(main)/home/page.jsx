@@ -32,7 +32,6 @@ const HomePage = () => {
       {/* Section Divider - "O seu studio de Pilates" */}
       <SectionDivider
         title="O seu studio de Pilates"
-        subtitle="Um espaço profissional pensado para si"
       />
 
       {/* Features Grid - 6 feature boxes */}

@@ -1,8 +1,9 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { YLogoIcon } from "@/components/icons/CustomIcons";
+import { Kodchasan } from "next/font/google";
 
 /**
  * Section Divider Component
@@ -11,37 +12,52 @@ import { YLogoIcon } from "@/components/icons/CustomIcons";
  * @param {string} title - Section title
  * @param {string} subtitle - Optional subtitle
  */
+
+const kodchasan = Kodchasan({
+	subsets: ["latin"],
+	weight: ["200", "300", "400"], // use 200 or 300 for thin/light style
+	variable: "--font-accent",
+});
+
 const SectionDivider = ({ title, subtitle }) => {
-  return (
-    <section className="py-20 bg-white">
-      <div className="container mx-auto px-4 md:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          className="flex flex-col items-center text-center space-y-6"
-        >
-          {/* Large Y Logo Icon */}
-          <div className="text-accent">
-            <YLogoIcon className="w-18 h-18" />
-          </div>
+	return (
+		<section className="py-20 bg-white">
+			<div className="container mx-auto px-4 md:px-6 lg:px-8">
+				<motion.div
+					initial={{ opacity: 0, y: 20 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					viewport={{ once: true, margin: "-100px" }}
+					transition={{ duration: 0.6 }}
+					className="flex flex-col items-center text-center space-y-6"
+				>
+					{/* Large Y Logo Icon */}
+					<div className="text-accent" style={{ color: "var(--color-accent)" }}>
+						<Image
+							src="/images/Ylogo.png"
+							alt="Y logo"
+							width={72}
+							height={72}
+						/>
+					</div>
 
-          {/* Section Title */}
-          <h2 className="text-secondary font-normal text-2xl md:text-4xl leading-tight max-w-2xl">
-            {title}
-          </h2>
+					{/* Section Title */}
+					<h1
+						className={`${kodchasan.className} text-5xl font-light`}
+						style={{ color: "#88a9c3" }}
+					>
+						{title}
+					</h1>
 
-          {/* Optional Subtitle */}
-          {subtitle && (
-            <p className="text-muted text-base md:text-lg max-w-xl">
-              {subtitle}
-            </p>
-          )}
-        </motion.div>
-      </div>
-    </section>
-  );
+					{/* Optional Subtitle */}
+					{subtitle && (
+						<p className="text-muted text-base md:text-lg max-w-xl">
+							{subtitle}
+						</p>
+					)}
+				</motion.div>
+			</div>
+		</section>
+	);
 };
 
 export default SectionDivider;
