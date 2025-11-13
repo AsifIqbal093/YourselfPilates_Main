@@ -1,206 +1,96 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-  CardFooter,
-} from "@/components/ui/card";
-import { CheckIcon } from "@/components/icons/CustomIcons";
+import { Card, CardContent } from "@/components/ui/card";
 
-/**
- * Packages Listing Section
- * 3-column grid with pricing packages
- */
 const PackagesListing = () => {
-  const packages = [
-    {
-      name: "Uma Sessão",
-      price: "22€",
-      per: "por sessão",
-      description: "Pack de 1 hora, para maior flexibilidade de horários",
-      features: [
-        "1 sessão de 1 hora",
-        "Escolha o dia e hora",
-        "Equipamento premium",
-        "Internet incluída",
-      ],
-      image: "/images/07.png",
-      link: "/packs/uma-sessao",
-      popular: false,
-    },
-    {
-      name: "Quatro Aulas",
-      price: "20€",
-      per: "por sessão",
-      description:
-        "Pack de 4 horas, pode escolher o dia e hora que desejar até um limite de 4 aulas",
-      features: [
-        "4 sessões de 1 hora",
-        "Validade: 1 mês",
-        "Flexibilidade de horários",
-        "Equipamento premium",
-        "Melhor relação qualidade-preço",
-      ],
-      image: "/images/08.png",
-      link: "/packs/quatro-aulas",
-      popular: true,
-    },
-    {
-      name: "Oito Aulas",
-      price: "18€",
-      per: "por sessão",
-      description:
-        "Pack de 8 horas, pode escolher o dia e hora que desejar até um limite de 8 aulas",
-      features: [
-        "8 sessões de 1 hora",
-        "Validade: 2 meses",
-        "Melhor valor",
-        "Equipamento premium",
-        "Máxima economia",
-      ],
-      image: "/images/10.png",
-      link: "/packs/oito-aulas",
-      popular: false,
-    },
-  ];
+	const packages = [
+		{
+			name: "1 sessão hora/aula",
+			description: "Pack de 1 hora, para maior flexibilidade de horários.",
+			price: "Preço: 22€/sessão",
+			image: "/images/3.jpg",
+			link: "/packs/uma-sessao",
+		},
+		{
+			name: "Pack de 4 horas/aula",
+			description:
+				"Pack de 4 horas, pode escolher o dia e hora que desejar até um limite de 4 aulas.",
+			price: "Preço: 20€/sessão",
+			image: "/images/1.jpg",
+			link: "/packs/quatro-aulas",
+		},
+		{
+			name: "Pack de 8 horas/aula",
+			description:
+				"Pack de 8 horas, pode escolher o dia e hora que desejar até um limite de 8 aulas.",
+			price: "Preço: 18€/sessão",
+			image: "/images/13.jpg",
+			link: "/packs/oito-aulas",
+		},
+	];
 
-  // Stagger animation
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-      },
-    },
-  };
+	return (
+		<section className="pt-0 pb-20 bg-[#f8fbff]">
+			<div className="container mx-auto px-4 md:px-6 lg:px-8 text-center">
+				<h2 className="text-5xl font-medium mb-12 mt-20 font-accent text-[#88a9c3]">
+					Agendar o espaço
+				</h2>
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5 },
-    },
-  };
+				{/* Compact Grid Layout */}
+				<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[2px] justify-center max-w-6xl mx-auto">
+					{packages.map((pkg, index) => (
+						<Card
+							key={index}
+							className="bg-[#f1f5f8] rounded-3xl shadow-md overflow-hidden w-[340px] md:w-[350px] p-0"
+						>
+							{/* Image */}
+							<div className="relative w-full h-[300px] overflow-hidden">
+								<Image
+									src={pkg.image}
+									alt={pkg.name}
+									fill
+									className="object-cover"
+									sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+								/>
+							</div>
 
-  return (
-    <section className="py-20 bg-white">
-      <div className="container mx-auto px-4 md:px-6 lg:px-8">
-        {/* Section Title */}
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          className="text-primary text-center text-2xl md:text-4xl font-normal mb-12 md:mb-16"
-        >
-          Agendar o espaço
-        </motion.h2>
+							<CardContent className="p-6 flex flex-col text-left font-sans">
+								<h3 className="text-2xl font-bold text-sky-900 mb-3 font-sans">
+									{pkg.name}
+								</h3>
+								<p className="text-sky-900 font-normal text-base mb-3 font-sans">
+									{pkg.description}
+								</p>
+								<p className="text-sky-900 font-semibold text-lg mb-6 font-mono">
+									{pkg.price}
+								</p>
 
-        {/* Packages Grid */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
-          {packages.map((pkg, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-              className="relative"
-            >
-              {/* Popular Badge */}
-              {pkg.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10 bg-gradient-button text-white px-6 py-1.5 rounded-full text-sm font-semibold shadow-lg">
-                  Popular
-                </div>
-              )}
+								<div className="flex flex-col items-start gap-3 mt-auto">
+									<Button
+										asChild
+										className="bg-sky-900 text-white rounded-full py-2 px-6 text-base font-medium w-auto normal-case"
+									>
+										<Link href={pkg.link}>Agendar</Link>
+									</Button>
 
-              <Card
-                className={`
-                  h-full flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-2
-                  ${
-                    pkg.popular
-                      ? "border-2 border-primary shadow-xl"
-                      : "border border-border"
-                  }
-                `}
-              >
-                {/* Package Image */}
-                <div className="relative w-full h-48 overflow-hidden rounded-t-lg">
-                  <Image
-                    src={pkg.image}
-                    alt={pkg.name}
-                    fill
-                    className="object-cover transition-transform duration-500 hover:scale-110"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  />
-                </div>
-
-                <CardHeader>
-                  <CardTitle className="text-2xl text-center">
-                    {pkg.name}
-                  </CardTitle>
-                </CardHeader>
-
-                <CardContent className="flex-1 space-y-6">
-                  {/* Price */}
-                  <div className="text-center">
-                    <div className="text-5xl font-bold text-primary">
-                      {pkg.price}
-                    </div>
-                    <div className="text-muted text-sm mt-1">{pkg.per}</div>
-                  </div>
-
-                  {/* Description */}
-                  <p className="text-secondary text-sm text-center leading-relaxed">
-                    {pkg.description}
-                  </p>
-
-                  {/* Features List */}
-                  <ul className="space-y-3">
-                    {pkg.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-start space-x-3">
-                        <CheckIcon className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                        <span className="text-secondary text-sm">
-                          {feature}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-
-                <CardFooter className="pt-6">
-                  <Button
-                    asChild
-                    className={`
-                      w-full rounded-2xl
-                      ${
-                        pkg.popular ? "bg-gradient-button hover:opacity-90" : ""
-                      }
-                    `}
-                    size="lg"
-                  >
-                    <Link href={pkg.link}>Ver Pack</Link>
-                  </Button>
-                </CardFooter>
-              </Card>
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
-    </section>
-  );
+									<Button
+										variant="outline"
+										className="border-2 border-sky-900 text-sky-900 rounded-full py-2 px-6 text-base font-medium w-auto normal-case"
+									>
+										Saber Mais
+									</Button>
+								</div>
+							</CardContent>
+						</Card>
+					))}
+				</div>
+			</div>
+		</section>
+	);
 };
 
 export default PackagesListing;
