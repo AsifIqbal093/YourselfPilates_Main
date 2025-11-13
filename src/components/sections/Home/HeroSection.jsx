@@ -1,9 +1,9 @@
 "use client";
-
 import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import BrandIntroduction from "@/components/sections/Home/BrandIntroduction";
 import { Button } from "@/components/ui/button";
 import {
   LocationDotIcon,
@@ -11,12 +11,7 @@ import {
   PhoneIcon,
 } from "@/components/icons/CustomIcons";
 
-/**
- * Hero Section - Home Page
- * Main landing section with location badge, heading, CTAs, and overlapping images
- */
 const HeroSection = () => {
-  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -27,7 +22,6 @@ const HeroSection = () => {
       },
     },
   };
-
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -42,7 +36,7 @@ const HeroSection = () => {
       {/* Container */}
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left Column - Content */}
+          {/* Left Column */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
@@ -52,28 +46,48 @@ const HeroSection = () => {
             {/* Location Badge */}
             <motion.div
               variants={itemVariants}
-              className="flex items-center space-x-3"
+              className="flex items-center space-x-3 -ml-4 md:-ml-6 lg:-ml-28"
             >
-              <LocationDotIcon className="w-5 h-5 text-accent" />
-              <span className="text-secondary text-lg font-normal">
+              <LocationDotIcon className="w-5 h-5" />
+              <span className=" text-lg font-medium text-[#88a9c3] ">
                 Localizado nas Caldas da Rainha
               </span>
             </motion.div>
 
-            {/* Main Heading */}
+            {/* Heading */}
             <motion.h1
+              className="flex w-full -ml-4 md:-ml-6 lg:-ml-28"
               variants={itemVariants}
-              className="text-secondary font-normal leading-[1.4] max-w-[740px]"
               style={{
-                fontSize: "clamp(34px, 5vw, 56px)",
+                fontFamily:
+                  "var(--e-global-typography-primary-font-family), Sans-serif",
+                fontSize: "clamp(34px, 5vw, 40px)",
+                fontWeight: "300",
+                lineHeight:
+                  "var(--e-global-typography-primary-line-height)",
+                color: "#104c88ff",
+                maxWidth: "600px",
+                display: "-webkit-box",
+                WebkitLineClamp: 3,
+                WebkitBoxOrient: "vertical",
+                overflow: "hidden",
+                marginTop: "20px",
+                marginBottom: "20px",
+                textAlign: "left",
               }}
             >
-              Cowork de Pilates exclusivo para profissionais em equipamentos
+              Cowork de Pilates <br />
+              exclusivo para profissionais <br />
+              equipamentos
             </motion.h1>
 
-            {/* Primary CTA Button */}
+            {/* Primary Button below heading */}
             <motion.div variants={itemVariants}>
-              <Button asChild size="lg" className="rounded-[29px] group">
+              <Button
+                asChild
+                size="lg"
+                className="rounded-[29px] border-2 border-[#ffffff] text-[#ffffff] bg-[#f6f9fb] hover:bg-[#104c88] hover:text-white transition-colors duration-300 -ml-4 md:-ml-6 lg:-ml-28"
+              >
                 <Link
                   href="/agendar-espaco"
                   className="flex items-center space-x-2"
@@ -84,22 +98,23 @@ const HeroSection = () => {
               </Button>
             </motion.div>
 
-            {/* Divider Section */}
+            {/* Divider + Phone */}
             <motion.div
               variants={itemVariants}
-              className="flex items-center space-x-4 py-4"
+              className="flex w-full mt-60 -ml-4 md:-ml-6 lg:-ml-58 items-center space-x-4"
             >
-              <div className="w-[68px] h-[1px] bg-primary" />
-              <span className="text-secondary text-sm font-normal whitespace-nowrap">
-                Ou ligue para o
-              </span>
-            </motion.div>
+              {/* Divider on left */}
+              <div className="flex items-center space-x-2">
+                <div className="w-[68px] h-[1px] bg-primary" />
+                <span className="text-secondary text-sm font-normal whitespace-nowrap">
+                  Ou ligue para o
+                </span>
+              </div>
 
-            {/* Phone CTA Button */}
-            <motion.div variants={itemVariants}>
+              {/* Phone Button on right */}
               <a
                 href="tel:927078842"
-                className="group inline-flex items-start space-x-4 transition-all duration-200 hover:scale-[1.02]"
+                className="group inline-flex items-center transition-all duration-200 hover:scale-[1.02]"
               >
                 <div className="flex items-center justify-center w-12 h-12 rounded-full bg-[#15467d]/10 text-[#15467d] group-hover:bg-[#15467d] group-hover:text-white transition-all duration-200 flex-shrink-0">
                   <PhoneIcon className="w-6 h-6" />
@@ -121,39 +136,31 @@ const HeroSection = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="relative h-[500px] md:h-[600px] lg:h-[700px]"
+            className="relative flex flex-col sm:flex-row items-start gap-6 pt-12"
           >
-            {/* Portrait Image (Small - Behind) */}
-            <div className="absolute left-0 lg:left-4 top-0 w-[45%] h-[80%] z-10">
-              <div className="relative w-full h-full rounded-[140px] overflow-hidden shadow-xl">
-                <Image
-                  src="/images/1.jpg"
-                  alt="Yourself Pilates Studio Interior"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 45vw, (max-width: 1024px) 30vw, 20vw"
-                  priority
-                />
-              </div>
+            {/* Left Image */}
+            <div className="w-full sm:w-1/2 flex-shrink-0">
+              <Image
+                src="/images/15.jpg"
+                alt="Yourself Pilates Studio Interior"
+                width={400}
+                height={500}
+                className="rounded-[170px] shadow-xl"
+                priority
+              />
             </div>
 
-            {/* Square Image (Large - Front) */}
-            <div className="absolute right-0 top-[10%] lg:top-[15%] w-[65%] h-[75%] z-20">
-              <div className="relative w-full h-full rounded-[140px] overflow-hidden shadow-2xl">
-                <Image
-                  src="/images/2.jpg"
-                  alt="Yourself Pilates Equipment"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 65vw, (max-width: 1024px) 45vw, 35vw"
-                  priority
-                />
-              </div>
+            {/* Right Image */}
+            <div className="w-full sm:w-auto flex-shrink-0">
+              <Image
+                src="/images/16.jpg"
+                alt="Yourself Pilates Equipment"
+                width={700}
+                height={850}
+                className="rounded-[100px] shadow-2xl"
+                priority
+              />
             </div>
-
-            {/* Decorative Elements */}
-            <div className="absolute -bottom-8 -right-8 w-32 h-32 rounded-full bg-primary/10 blur-2xl" />
-            <div className="absolute -top-8 -left-8 w-24 h-24 rounded-full bg-accent/10 blur-xl" />
           </motion.div>
         </div>
       </div>
@@ -163,6 +170,8 @@ const HeroSection = () => {
         <div className="absolute top-20 right-20 w-64 h-64 rounded-full bg-primary/5 blur-3xl" />
         <div className="absolute bottom-20 left-20 w-96 h-96 rounded-full bg-accent/5 blur-3xl" />
       </div>
+
+      <BrandIntroduction />
     </section>
   );
 };

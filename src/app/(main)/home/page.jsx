@@ -1,6 +1,6 @@
 import React from "react";
 import HeroSection from "@/components/sections/Home/HeroSection";
-import BrandIntroduction from "@/components/sections/Home/BrandIntroduction";
+// import BrandIntroduction from "@/components/sections/Home/BrandIntroduction";
 import SectionDivider from "@/components/sections/Home/SectionDivider";
 import FeaturesGrid from "@/components/sections/Home/FeaturesGrid";
 import ImageCarousel from "@/components/sections/Home/ImageCarousel";
@@ -27,7 +27,7 @@ const HomePage = () => {
       <HeroSection />
 
       {/* Brand Introduction - Logo and company description */}
-      <BrandIntroduction />
+      {/* <BrandIntroduction /> */}
 
       {/* Section Divider - "O seu studio de Pilates" */}
       <SectionDivider

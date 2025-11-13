@@ -379,17 +379,20 @@ export const LocationDotIcon = ({ className = "w-5 h-5", ...props }) => (
     className={className}
     {...props}
   >
+    {/* Blue outline */}
     <circle
       cx="12"
       cy="12"
       r="10"
-      stroke="currentColor"
+      stroke="#88a9c3"
       strokeWidth="2"
       fill="none"
     />
-    <circle cx="12" cy="12" r="4" fill="currentColor" />
+    {/* Black center dot */}
+    <circle cx="12" cy="12" r="4" fill="#104c88ff" />
   </svg>
 );
+
 
 // Chevron Right Icon - Buttons
 export const ChevronRightIcon = ({ className = "w-5 h-5", ...props }) => (
