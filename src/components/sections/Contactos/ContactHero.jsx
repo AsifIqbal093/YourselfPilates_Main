@@ -70,7 +70,10 @@ const ContactHero = () => {
 
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.2, delayChildren: 0.1 } },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2, delayChildren: 0.1 },
+    },
   };
 
   const itemVariants = {
@@ -79,9 +82,8 @@ const ContactHero = () => {
   };
 
   return (
-    <section className="relative bg-gradient-to-br from-[#e8f1fa] via-[#f0f5fb] to-[#ffffff] py-12 md:py-16 lg:py-24 overflow-hidden min-h-screen">
-
-      <div className="absolute top-0 left-0 w-1/2 h-full hidden lg:block">
+    <section className="relative min-h-screen overflow-hidden bg-gradient-to-br from-[#e8f1fa] via-[#f0f5fb] to-[#ffffff] py-12 md:py-16 lg:py-24">
+      <div className="absolute top-0 left-0 hidden h-full w-1/2 lg:block">
         <Image
           src="/images/Contact.png"
           alt="Contact - YourSelf Pilates"
@@ -91,9 +93,8 @@ const ContactHero = () => {
         />
       </div>
 
-      <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-
+      <div className="relative z-10 container mx-auto px-4 md:px-6 lg:px-8">
+        <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-12">
           {/* Empty left column for spacing on large screens */}
           <div className="hidden lg:block"></div>
 
@@ -102,15 +103,14 @@ const ContactHero = () => {
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="w-full order-1 lg:order-2 flex flex-col justify-start h-full pt-24"
+            className="order-1 flex h-full w-full flex-col justify-start pt-24 lg:order-2"
           >
-
             {/* Heading */}
             <motion.div variants={itemVariants} className="mb-6 lg:mb-8">
-              <p className="text-[#88a9c3] text-sm md:text-base mb-2 font-normal">
+              <p className="mb-2 text-sm font-normal text-[#88a9c3] md:text-base">
                 Schedule a visit or get in touch.
               </p>
-              <h1 className="text-[#15467d] text-4xl md:text-5xl lg:text-6xl leading-tight font-accent">
+              <h1 className="font-accent text-4xl leading-tight text-[#15467d] md:text-5xl lg:text-6xl">
                 Contact
               </h1>
             </motion.div>
@@ -118,7 +118,6 @@ const ContactHero = () => {
             {/* Contact Form */}
             <motion.div variants={itemVariants}>
               <form onSubmit={handleSubmit} className="space-y-6">
-
                 {/* Nome */}
                 <div>
                   <Input
@@ -129,7 +128,7 @@ const ContactHero = () => {
                     value={formData.nome}
                     onChange={handleChange}
                     required
-                    className="w-full h-12 px-0 pb-3 pt-2 border-0 border-b-2 border-[#c8d4e0] rounded-none focus:border-transparent focus:ring-0 text-[#3b3d42] text-base placeholder:text-[#8b9daf]"
+                    className="h-12 w-full rounded-none border-0 border-b-2 border-[#c8d4e0] px-0 pt-2 pb-3 text-base text-[#3b3d42] placeholder:text-[#8b9daf] focus:border-transparent focus:ring-0"
                   />
                 </div>
 
@@ -143,7 +142,7 @@ const ContactHero = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full h-12 px-0 pb-3 pt-2 border-0 border-b-2 border-[#c8d4e0] rounded-none focus:border-transparent focus:ring-0 text-[#3b3d42] text-base placeholder:text-[#8b9daf]"
+                    className="h-12 w-full rounded-none border-0 border-b-2 border-[#c8d4e0] px-0 pt-2 pb-3 text-base text-[#3b3d42] placeholder:text-[#8b9daf] focus:border-transparent focus:ring-0"
                   />
                 </div>
 
@@ -152,11 +151,13 @@ const ContactHero = () => {
                   <textarea
                     name="mensagem"
                     id="mensagem"
-                    placeholder={CONTACT_FORM_CONFIG.fields.mensagem.placeholder}
+                    placeholder={
+                      CONTACT_FORM_CONFIG.fields.mensagem.placeholder
+                    }
                     value={formData.mensagem}
                     onChange={handleChange}
                     rows={4}
-                    className="w-full px-0 pb-3 pt-2 border-0 border-b-2 border-[#c8d4e0] rounded-none focus:border-transparent focus:ring-0 text-[#3b3d42] text-base placeholder:text-[#8b9daf] resize-none"
+                    className="w-full resize-none rounded-none border-0 border-b-2 border-[#c8d4e0] px-0 pt-2 pb-3 text-base text-[#3b3d42] placeholder:text-[#8b9daf] focus:border-transparent focus:ring-0"
                   />
                 </div>
 
@@ -169,19 +170,22 @@ const ContactHero = () => {
                     checked={formData.consentimento}
                     onChange={handleChange}
                     required
-                    className="mt-1 w-4 h-4 rounded accent-[#15467d] border-[#15467d] focus:ring-[#15467d]"
+                    className="mt-1 h-4 w-4 rounded border-[#15467d] accent-[#15467d] focus:ring-[#15467d]"
                   />
 
                   <label
                     htmlFor="consentimento"
-                    className="text-sm text-[#88a9c3] leading-relaxed cursor-pointer"
+                    className="cursor-pointer text-sm leading-relaxed text-[#88a9c3]"
                   >
                     I accept the{" "}
                     <Link href="/termos-e-condicoes" className="text-[#88a9c3]">
                       terms and conditions
                     </Link>{" "}
                     and the{" "}
-                    <Link href="/politica-de-privacidade" className="text-[#88a9c3]">
+                    <Link
+                      href="/politica-de-privacidade"
+                      className="text-[#88a9c3]"
+                    >
                       privacy policy
                     </Link>
                     .
@@ -191,26 +195,26 @@ const ContactHero = () => {
                 <Button
                   type="submit"
                   disabled={loading}
-                  className="w-40 h-12 rounded-[29px] text-base bg-[#15467d] text-white hover:bg-[#15467d] focus:bg-[#15467d] active:bg-[#15467d] transition-none"
+                  className="h-12 w-40 rounded-[29px] bg-[#15467d] text-base text-white transition-none hover:bg-[#15467d] focus:bg-[#15467d] active:bg-[#15467d]"
                   size="lg"
                 >
                   {loading ? "Sending..." : "To send"}
                 </Button>
-                
+
                 {/* Success/Error Message */}
                 {message.text && (
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className={`p-4 rounded-lg text-sm ${message.type === "success"
-                      ? "bg-green-50 text-green-700 border border-green-200"
-                      : "bg-red-50 text-red-700 border border-red-200"
-                      }`}
+                    className={`rounded-lg p-4 text-sm ${
+                      message.type === "success"
+                        ? "border border-green-200 bg-green-50 text-green-700"
+                        : "border border-red-200 bg-red-50 text-red-700"
+                    }`}
                   >
                     {message.text}
                   </motion.div>
                 )}
-
               </form>
             </motion.div>
           </motion.div>

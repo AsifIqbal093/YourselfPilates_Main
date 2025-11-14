@@ -31,7 +31,7 @@ const AboutHero = () => {
   };
 
   return (
-    <section className="relative w-full py-0 md:py-0 overflow-hidden bg-white">
+    <section className="relative w-full overflow-hidden bg-white py-0 md:py-0">
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -39,11 +39,11 @@ const AboutHero = () => {
         className="space-y-0"
       >
         {/* Row 1: Large hero image with text + Curved barrel image */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
+        <div className="grid grid-cols-1 gap-0 md:grid-cols-2">
           {/* Large image with text overlay */}
           <motion.div
             variants={imageVariants}
-            className="relative h-[300px] md:h-[350px] lg:h-[400px] overflow-hidden"
+            className="relative h-[300px] overflow-hidden md:h-[350px] lg:h-[400px]"
           >
             <Image
               src="/images/16.jpg"
@@ -56,7 +56,7 @@ const AboutHero = () => {
             {/* Text Overlay */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-white/40 to-transparent" />
             <div className="absolute inset-0 flex items-center justify-start px-8 md:px-12 lg:px-16">
-              <h1 className="text-[#d4b896] text-4xl md:text-5xl lg:text-6xl font-light tracking-[0.2em] leading-tight">
+              <h1 className="text-4xl leading-tight font-light tracking-[0.2em] text-[#d4b896] md:text-5xl lg:text-6xl">
                 YourSelf Pilates
               </h1>
             </div>
@@ -65,7 +65,7 @@ const AboutHero = () => {
           {/* Curved barrel/equipment image */}
           <motion.div
             variants={imageVariants}
-            className="relative h-[300px] md:h-[350px] lg:h-[400px] overflow-hidden"
+            className="relative h-[300px] overflow-hidden md:h-[350px] lg:h-[400px]"
           >
             <Image
               src="/images/2.jpg"
@@ -79,10 +79,10 @@ const AboutHero = () => {
         </div>
 
         {/* Row 2: Three equal images */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
+        <div className="grid grid-cols-1 gap-0 md:grid-cols-3">
           <motion.div
             variants={imageVariants}
-            className="relative h-[200px] md:h-[250px] lg:h-[300px] overflow-hidden"
+            className="relative h-[200px] overflow-hidden md:h-[250px] lg:h-[300px]"
           >
             <Image
               src="/images/3.jpg"
@@ -95,7 +95,7 @@ const AboutHero = () => {
 
           <motion.div
             variants={imageVariants}
-            className="relative h-[200px] md:h-[250px] lg:h-[300px] overflow-hidden"
+            className="relative h-[200px] overflow-hidden md:h-[250px] lg:h-[300px]"
           >
             <Image
               src="/images/16.jpg"
@@ -108,7 +108,7 @@ const AboutHero = () => {
 
           <motion.div
             variants={imageVariants}
-            className="relative h-[200px] md:h-[250px] lg:h-[300px] overflow-hidden"
+            className="relative h-[200px] overflow-hidden md:h-[250px] lg:h-[300px]"
           >
             <Image
               src="/images/2.jpg"
@@ -121,11 +121,11 @@ const AboutHero = () => {
         </div>
 
         {/* Row 3: Image with logo overlay + Text content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
+        <div className="grid grid-cols-1 gap-0 md:grid-cols-2">
           {/* Image with logo overlay */}
           <motion.div
             variants={imageVariants}
-            className="relative h-[350px] md:h-[400px] lg:h-[450px] overflow-hidden bg-[#e8e8e8]"
+            className="relative h-[350px] overflow-hidden bg-[#e8e8e8] md:h-[400px] lg:h-[450px]"
           >
             <Image
               src="/images/15.jpg"
@@ -136,7 +136,7 @@ const AboutHero = () => {
             />
             {/* Logo Overlay - larger and more prominent */}
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="relative w-40 h-40 md:w-52 md:h-52 lg:w-64 lg:h-64 opacity-40">
+              <div className="relative h-40 w-40 opacity-40 md:h-52 md:w-52 lg:h-64 lg:w-64">
                 <Image
                   src="/images/Ylogo.png"
                   alt="YourSelf Logo"
@@ -151,10 +151,10 @@ const AboutHero = () => {
           {/* Text content block */}
           <motion.div
             variants={imageVariants}
-            className="relative h-[350px] md:h-[400px] lg:h-[450px] bg-white flex items-center justify-center px-8 md:px-12 lg:px-16"
+            className="relative flex h-[350px] items-center justify-center bg-white px-8 md:h-[400px] md:px-12 lg:h-[450px] lg:px-16"
           >
             <div className="max-w-xl">
-              <p className="text-[#398ffc] text-base md:text-lg leading-relaxed">
+              <p className="text-base leading-relaxed text-[#398ffc] md:text-lg">
                 {ABOUT_INTRO.description}
               </p>
             </div>

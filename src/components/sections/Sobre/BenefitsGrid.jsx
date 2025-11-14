@@ -48,7 +48,7 @@ const BenefitsGrid = () => {
   };
 
   return (
-    <section className="py-16 md:py-20 lg:py-24 bg-[#f8f9fa]">
+    <section className="bg-[#f8f9fa] py-16 md:py-20 lg:py-24">
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -56,9 +56,9 @@ const BenefitsGrid = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12 md:mb-16"
+          className="mb-12 text-center md:mb-16"
         >
-          <h2 className="text-[#3b3d42] text-3xl md:text-4xl lg:text-5xl font-semibold">
+          <h2 className="text-3xl font-semibold text-[#3b3d42] md:text-4xl lg:text-5xl">
             {ABOUT_BENEFITS.sectionTitle}{" "}
             <span className="text-[#15467d]">
               {ABOUT_BENEFITS.sectionHighlight}
@@ -73,7 +73,7 @@ const BenefitsGrid = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+          className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-3"
         >
           {ABOUT_BENEFITS.benefits.map((benefit) => {
             const IconComponent = iconMap[benefit.icon];
@@ -82,21 +82,21 @@ const BenefitsGrid = () => {
                 key={benefit.id}
                 variants={itemVariants}
                 whileHover={{ y: -5 }}
-                className="bg-white rounded-[26px] p-6 md:p-8 shadow-sm hover:shadow-xl transition-all duration-300"
+                className="rounded-[26px] bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-xl md:p-8"
               >
                 {/* Icon */}
                 <div className="mb-5">
-                  <div className="w-16 h-16 flex items-center justify-center rounded-full bg-[#398ffc]/10">
-                    <IconComponent className="w-8 h-8 text-[#398ffc]" />
+                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#398ffc]/10">
+                    <IconComponent className="h-8 w-8 text-[#398ffc]" />
                   </div>
                 </div>
 
                 {/* Text Content */}
                 <div className="space-y-3">
-                  <h3 className="text-[#15467d] text-xl md:text-2xl font-semibold leading-snug">
+                  <h3 className="text-xl leading-snug font-semibold text-[#15467d] md:text-2xl">
                     {benefit.title}
                   </h3>
-                  <p className="text-[#3b3d42] text-sm md:text-base leading-relaxed">
+                  <p className="text-sm leading-relaxed text-[#3b3d42] md:text-base">
                     {benefit.description}
                   </p>
                 </div>

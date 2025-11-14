@@ -16,8 +16,7 @@ export const PRIVACY_POLICY = {
         },
         {
           type: "paragraph",
-          text:
-            "Este website pertence e é operado por YOURSELF PILATES, titular de BIGPIRES IMPORTS LDA, com sede em Largo dos Heróis de Naulila 16 17, Loja 15, 2500-107 Caldas da Rainha, NIF 515004405, Telefone +351 927078842 e email: yourselfpilates@gmail.com. O uso dos serviços e a navegação no site implicam a aceitação plena dos presentes Termos e Condições, celebrados ao abrigo da legislação portuguesa em vigor.",
+          text: "Este website pertence e é operado por YOURSELF PILATES, titular de BIGPIRES IMPORTS LDA, com sede em Largo dos Heróis de Naulila 16 17, Loja 15, 2500-107 Caldas da Rainha, NIF 515004405, Telefone +351 927078842 e email: yourselfpilates@gmail.com. O uso dos serviços e a navegação no site implicam a aceitação plena dos presentes Termos e Condições, celebrados ao abrigo da legislação portuguesa em vigor.",
         },
       ],
     },
@@ -31,8 +30,7 @@ export const PRIVACY_POLICY = {
         },
         {
           type: "paragraph",
-          text:
-            "Os presentes Termos e Condições regulam a prestação de serviços pela Yourself Pilates, designadamente o aluguer temporário de espaço equipado para a prática de Pilates, por hora ou pacote de horas, mediante agendamento prévio e pagamento antecipado.",
+          text: "Os presentes Termos e Condições regulam a prestação de serviços pela Yourself Pilates, designadamente o aluguer temporário de espaço equipado para a prática de Pilates, por hora ou pacote de horas, mediante agendamento prévio e pagamento antecipado.",
         },
       ],
     },

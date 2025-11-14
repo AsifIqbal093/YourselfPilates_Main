@@ -68,17 +68,17 @@ const ExamplePage = () => {
 
       {/* Main Content - Add padding-top to account for fixed header */}
       <div className="pt-20 md:pt-24">
-        <div className="p-8 space-y-8">
+        <div className="space-y-8 p-8">
           <section className="space-y-4">
             <h1 className="text-3xl font-bold">Shadcn UI Component Examples</h1>
 
             {/* Header Component Info */}
-            <div className="p-4 bg-primary/10 border border-primary/20 rounded-lg">
-              <h2 className="text-xl font-semibold mb-2">Header Component</h2>
-              <p className="text-sm text-muted-foreground">
+            <div className="bg-primary/10 border-primary/20 rounded-lg border p-4">
+              <h2 className="mb-2 text-xl font-semibold">Header Component</h2>
+              <p className="text-muted-foreground text-sm">
                 The header is now visible at the top of this page. It features:
               </p>
-              <ul className="text-sm text-muted-foreground mt-2 space-y-1 list-disc list-inside">
+              <ul className="text-muted-foreground mt-2 list-inside list-disc space-y-1 text-sm">
                 <li>Fixed positioning with scroll effects</li>
                 <li>Responsive design (mobile hamburger menu)</li>
                 <li>Logo with hover animation</li>
@@ -89,12 +89,12 @@ const ExamplePage = () => {
             </div>
 
             {/* Footer Component Info */}
-            <div className="p-4 bg-secondary/10 border border-secondary/20 rounded-lg">
-              <h2 className="text-xl font-semibold mb-2">Footer Component</h2>
-              <p className="text-sm text-muted-foreground">
+            <div className="bg-secondary/10 border-secondary/20 rounded-lg border p-4">
+              <h2 className="mb-2 text-xl font-semibold">Footer Component</h2>
+              <p className="text-muted-foreground text-sm">
                 The footer is visible at the bottom of this page. It includes:
               </p>
-              <ul className="text-sm text-muted-foreground mt-2 space-y-1 list-disc list-inside">
+              <ul className="text-muted-foreground mt-2 list-inside list-disc space-y-1 text-sm">
                 <li>
                   4-column responsive layout (logo, service info,
                   schedule/location, social media)
@@ -109,14 +109,14 @@ const ExamplePage = () => {
             </div>
 
             {/* WhatsApp Button Info */}
-            <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
-              <h2 className="text-xl font-semibold mb-2">
+            <div className="rounded-lg border border-green-200 bg-green-50 p-4">
+              <h2 className="mb-2 text-xl font-semibold">
                 WhatsApp Floating Button
               </h2>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-muted-foreground text-sm">
                 Look at the bottom-right corner! The WhatsApp button features:
               </p>
-              <ul className="text-sm text-muted-foreground mt-2 space-y-1 list-disc list-inside">
+              <ul className="text-muted-foreground mt-2 list-inside list-disc space-y-1 text-sm">
                 <li>Fixed position floating button</li>
                 <li>Pulse animation effect</li>
                 <li>Hover tooltip with message</li>
@@ -185,7 +185,7 @@ const ExamplePage = () => {
             <h2 className="text-2xl font-semibold">Input Examples</h2>
 
             {/* Basic Input Types */}
-            <div className="space-y-3 max-w-md">
+            <div className="max-w-md space-y-3">
               <div className="space-y-2">
                 <label className="text-sm font-medium">Text Input</label>
                 <Input
@@ -195,7 +195,7 @@ const ExamplePage = () => {
                   onChange={(e) => setInputValue(e.target.value)}
                 />
                 {inputValue && (
-                  <p className="text-xs text-muted">
+                  <p className="text-muted text-xs">
                     Current value: {inputValue}
                   </p>
                 )}
@@ -252,7 +252,7 @@ const ExamplePage = () => {
           <section className="space-y-4">
             <h2 className="text-2xl font-semibold">Input States</h2>
 
-            <div className="space-y-3 max-w-md">
+            <div className="max-w-md space-y-3">
               <div className="space-y-2">
                 <label className="text-sm font-medium">Disabled Input</label>
                 <Input type="text" placeholder="Disabled input" disabled />
@@ -270,7 +270,7 @@ const ExamplePage = () => {
                   placeholder="Invalid email"
                   aria-invalid="true"
                 />
-                <p className="text-xs text-destructive">
+                <p className="text-destructive text-xs">
                   Please enter a valid email address
                 </p>
               </div>
@@ -286,7 +286,7 @@ const ExamplePage = () => {
           <section className="space-y-4">
             <h2 className="text-2xl font-semibold">Input with Actions</h2>
 
-            <div className="space-y-3 max-w-md">
+            <div className="max-w-md space-y-3">
               <div className="space-y-2">
                 <label className="text-sm font-medium">
                   Input with Submit Button
@@ -336,7 +336,7 @@ const ExamplePage = () => {
             <h2 className="text-2xl font-semibold">Card Examples</h2>
 
             {/* Basic Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
               {/* Simple Card */}
               <Card>
                 <CardHeader>
@@ -394,17 +394,17 @@ const ExamplePage = () => {
             {/* Feature Cards */}
             <div className="space-y-4">
               <h3 className="text-xl font-semibold">Feature Cards</h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
                 <Card className="bg-gradient-primary">
                   <CardHeader>
                     <CardTitle>Pilates Classes</CardTitle>
                     <CardDescription>Group & Private Sessions</CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-sm mb-4">
+                    <p className="mb-4 text-sm">
                       Join our expert-led pilates classes for all skill levels.
                     </p>
-                    <ul className="text-sm space-y-2">
+                    <ul className="space-y-2 text-sm">
                       <li>✓ Small group classes</li>
                       <li>✓ One-on-one training</li>
                       <li>✓ Flexible scheduling</li>
@@ -422,8 +422,8 @@ const ExamplePage = () => {
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-3">
-                      <div className="text-3xl font-bold text-primary">€49</div>
-                      <ul className="text-sm space-y-2">
+                      <div className="text-primary text-3xl font-bold">€49</div>
+                      <ul className="space-y-2 text-sm">
                         <li>✓ 8 classes per month</li>
                         <li>✓ Online booking</li>
                         <li>✓ Member discounts</li>
@@ -472,7 +472,7 @@ const ExamplePage = () => {
             {/* Interactive Cards */}
             <div className="space-y-4">
               <h3 className="text-xl font-semibold">Interactive Cards</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
+              <div className="grid max-w-4xl grid-cols-1 gap-6 md:grid-cols-2">
                 {/* Form Card */}
                 <Card>
                   <CardHeader>
@@ -512,34 +512,34 @@ const ExamplePage = () => {
                   <CardContent>
                     <div className="grid grid-cols-2 gap-4">
                       <div className="space-y-1">
-                        <div className="text-2xl font-bold text-primary">
+                        <div className="text-primary text-2xl font-bold">
                           250+
                         </div>
-                        <div className="text-xs text-muted-foreground">
+                        <div className="text-muted-foreground text-xs">
                           Active Members
                         </div>
                       </div>
                       <div className="space-y-1">
-                        <div className="text-2xl font-bold text-primary">
+                        <div className="text-primary text-2xl font-bold">
                           500+
                         </div>
-                        <div className="text-xs text-muted-foreground">
+                        <div className="text-muted-foreground text-xs">
                           Classes This Month
                         </div>
                       </div>
                       <div className="space-y-1">
-                        <div className="text-2xl font-bold text-primary">
+                        <div className="text-primary text-2xl font-bold">
                           4.9
                         </div>
-                        <div className="text-xs text-muted-foreground">
+                        <div className="text-muted-foreground text-xs">
                           Average Rating
                         </div>
                       </div>
                       <div className="space-y-1">
-                        <div className="text-2xl font-bold text-primary">
+                        <div className="text-primary text-2xl font-bold">
                           98%
                         </div>
-                        <div className="text-xs text-muted-foreground">
+                        <div className="text-muted-foreground text-xs">
                           Satisfaction Rate
                         </div>
                       </div>
@@ -552,8 +552,8 @@ const ExamplePage = () => {
             {/* Card Variants */}
             <div className="space-y-4">
               <h3 className="text-xl font-semibold">Card Variants</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
-                <Card className="border-2 border-primary">
+              <div className="grid max-w-4xl grid-cols-1 gap-6 md:grid-cols-2">
+                <Card className="border-primary border-2">
                   <CardHeader>
                     <CardTitle>Highlighted Card</CardTitle>
                     <CardDescription>
@@ -652,7 +652,7 @@ const ExamplePage = () => {
                       </DialogDescription>
                     </DialogHeader>
                     <div className="py-4">
-                      <p className="text-sm text-destructive font-medium">
+                      <p className="text-destructive text-sm font-medium">
                         Warning: This will permanently delete your account and
                         all associated data.
                       </p>
@@ -791,10 +791,10 @@ const ExamplePage = () => {
                         transformative power of movement and mindful exercise.
                       </p>
                       <div className="space-y-2">
-                        <h4 className="font-semibold text-sm">
+                        <h4 className="text-sm font-semibold">
                           What We Offer:
                         </h4>
-                        <ul className="text-sm space-y-1 ml-4">
+                        <ul className="ml-4 space-y-1 text-sm">
                           <li>• Small group classes (max 6 people)</li>
                           <li>• Private one-on-one sessions</li>
                           <li>• Specialized equipment</li>
@@ -803,8 +803,8 @@ const ExamplePage = () => {
                         </ul>
                       </div>
                       <div className="space-y-2">
-                        <h4 className="font-semibold text-sm">Location:</h4>
-                        <p className="text-sm text-muted-foreground">
+                        <h4 className="text-sm font-semibold">Location:</h4>
+                        <p className="text-muted-foreground text-sm">
                           Caldas da Rainha, Portugal
                         </p>
                       </div>
@@ -854,7 +854,7 @@ const ExamplePage = () => {
                       </DialogDescription>
                     </DialogHeader>
                     <div className="py-4">
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                         <Card>
                           <CardHeader>
                             <CardTitle className="text-base">
@@ -895,7 +895,7 @@ const ExamplePage = () => {
                   <DialogTrigger asChild>
                     <Button variant="outline">Scrollable Content</Button>
                   </DialogTrigger>
-                  <DialogContent className="sm:max-w-lg max-h-[80vh] overflow-y-auto">
+                  <DialogContent className="max-h-[80vh] overflow-y-auto sm:max-w-lg">
                     <DialogHeader>
                       <DialogTitle>Terms and Conditions</DialogTitle>
                       <DialogDescription>
@@ -909,7 +909,7 @@ const ExamplePage = () => {
                         terms:
                       </p>
                       <div>
-                        <h4 className="font-semibold mb-2">
+                        <h4 className="mb-2 font-semibold">
                           1. Class Bookings
                         </h4>
                         <p className="text-muted-foreground">
@@ -919,14 +919,14 @@ const ExamplePage = () => {
                         </p>
                       </div>
                       <div>
-                        <h4 className="font-semibold mb-2">2. Memberships</h4>
+                        <h4 className="mb-2 font-semibold">2. Memberships</h4>
                         <p className="text-muted-foreground">
                           Monthly memberships renew automatically. You can
                           cancel at any time with 30 days notice.
                         </p>
                       </div>
                       <div>
-                        <h4 className="font-semibold mb-2">
+                        <h4 className="mb-2 font-semibold">
                           3. Health & Safety
                         </h4>
                         <p className="text-muted-foreground">
@@ -937,7 +937,7 @@ const ExamplePage = () => {
                         </p>
                       </div>
                       <div>
-                        <h4 className="font-semibold mb-2">4. Studio Rules</h4>
+                        <h4 className="mb-2 font-semibold">4. Studio Rules</h4>
                         <p className="text-muted-foreground">
                           Please arrive 10 minutes early for class. Late
                           arrivals may not be admitted to maintain a peaceful
@@ -945,7 +945,7 @@ const ExamplePage = () => {
                         </p>
                       </div>
                       <div>
-                        <h4 className="font-semibold mb-2">5. Equipment</h4>
+                        <h4 className="mb-2 font-semibold">5. Equipment</h4>
                         <p className="text-muted-foreground">
                           All equipment is provided. Please treat it with care
                           and report any damage immediately.
@@ -971,7 +971,7 @@ const ExamplePage = () => {
             {/* Basic Selects */}
             <div className="space-y-4">
               <h3 className="text-xl font-semibold">Basic Selects</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl">
+              <div className="grid max-w-4xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {/* Simple Select */}
                 <div className="space-y-2">
                   <label className="text-sm font-medium">Class Type</label>
@@ -995,7 +995,7 @@ const ExamplePage = () => {
                     </SelectContent>
                   </Select>
                   {classType && (
-                    <p className="text-xs text-muted">Selected: {classType}</p>
+                    <p className="text-muted text-xs">Selected: {classType}</p>
                   )}
                 </div>
 
@@ -1053,7 +1053,7 @@ const ExamplePage = () => {
             {/* Select States */}
             <div className="space-y-4">
               <h3 className="text-xl font-semibold">Select States</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl">
+              <div className="grid max-w-2xl grid-cols-1 gap-6 md:grid-cols-2">
                 {/* Disabled Select */}
                 <div className="space-y-2">
                   <label className="text-sm font-medium">Disabled Select</label>
@@ -1097,7 +1097,7 @@ const ExamplePage = () => {
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                     <div className="space-y-2">
                       <label className="text-sm font-medium">Class Type</label>
                       <Select value={classType} onValueChange={setClassType}>
@@ -1214,7 +1214,7 @@ const ExamplePage = () => {
             {/* Complex Selects */}
             <div className="space-y-4">
               <h3 className="text-xl font-semibold">Complex Select Examples</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
+              <div className="grid max-w-4xl grid-cols-1 gap-6 md:grid-cols-2">
                 {/* Membership Plans */}
                 <div className="space-y-2">
                   <label className="text-sm font-medium">Membership Plan</label>
@@ -1360,7 +1360,7 @@ const ExamplePage = () => {
             {/* Basic Calendars */}
             <div className="space-y-4">
               <h3 className="text-xl font-semibold">Basic Calendar</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {/* Single Date Selection */}
                 <Card>
                   <CardHeader>
@@ -1375,7 +1375,7 @@ const ExamplePage = () => {
                       className="rounded-md border"
                     />
                     {selectedDate && (
-                      <p className="mt-4 text-sm text-center">
+                      <p className="mt-4 text-center text-sm">
                         Selected: {selectedDate.toLocaleDateString()}
                       </p>
                     )}
@@ -1396,7 +1396,7 @@ const ExamplePage = () => {
                       className="rounded-md border"
                     />
                     {dateRange?.from && (
-                      <div className="mt-4 text-sm text-center space-y-1">
+                      <div className="mt-4 space-y-1 text-center text-sm">
                         <p>From: {dateRange.from.toLocaleDateString()}</p>
                         {dateRange.to && (
                           <p>To: {dateRange.to.toLocaleDateString()}</p>
@@ -1420,7 +1420,7 @@ const ExamplePage = () => {
                       className="rounded-md border"
                     />
                     {multipleDate.length > 0 && (
-                      <p className="mt-4 text-sm text-center">
+                      <p className="mt-4 text-center text-sm">
                         {multipleDate.length} date(s) selected
                       </p>
                     )}
@@ -1434,7 +1434,7 @@ const ExamplePage = () => {
               <h3 className="text-xl font-semibold">
                 Calendar with Constraints
               </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                 {/* Disabled Past Dates */}
                 <Card>
                   <CardHeader>
@@ -1485,7 +1485,7 @@ const ExamplePage = () => {
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                     <div className="space-y-4">
                       <div className="space-y-2">
                         <label className="text-sm font-medium">
@@ -1564,9 +1564,9 @@ const ExamplePage = () => {
                   </div>
 
                   {selectedDate && (
-                    <div className="p-4 bg-primary/10 rounded-lg">
+                    <div className="bg-primary/10 rounded-lg p-4">
                       <p className="text-sm font-medium">Booking Summary</p>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-muted-foreground text-sm">
                         Date:{" "}
                         {selectedDate.toLocaleDateString("en-US", {
                           weekday: "long",
@@ -1594,7 +1594,7 @@ const ExamplePage = () => {
             {/* Calendar Variants */}
             <div className="space-y-4">
               <h3 className="text-xl font-semibold">Calendar Variants</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                 {/* Multiple Months */}
                 <Card>
                   <CardHeader>
@@ -1667,7 +1667,7 @@ const ExamplePage = () => {
                 </DialogContent>
               </Dialog>
               {selectedDate && (
-                <p className="text-sm text-muted-foreground">
+                <p className="text-muted-foreground text-sm">
                   Selected:{" "}
                   {selectedDate.toLocaleDateString("en-US", {
                     weekday: "long",

@@ -28,10 +28,10 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-gradient-to-r from-[#d9e4ee] to-[#c9d7e4] pt-12 pb-6 relative">
-      <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-[1200px]">
+    <footer className="relative bg-gradient-to-r from-[#d9e4ee] to-[#c9d7e4] pt-12 pb-6">
+      <div className="container mx-auto max-w-[1200px] px-4 md:px-6 lg:px-8">
         {/* Top Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-16">
+        <div className="mb-16 grid grid-cols-1 gap-10 md:grid-cols-2">
           <div className="space-y-4 md:space-y-6">
             <Link href="/" className="inline-block">
               <Image
@@ -47,7 +47,7 @@ const Footer = () => {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-[#15467d] text-base font-normal hover:text-primary transition-colors duration-200 w-fit"
+                  className="hover:text-primary w-fit text-base font-normal text-[#15467d] transition-colors duration-200"
                 >
                   {link.name}
                 </Link>
@@ -55,20 +55,20 @@ const Footer = () => {
             </nav>
           </div>
 
-          <div className="flex flex-col sm:flex-row justify-center sm:justify-end sm:space-x-16 space-y-6 sm:space-y-0 text-[#15467d] pr-0 sm:pr-8">
-            <div className="flex flex-col space-y-4 sm:space-y-8 min-w-[160px] text-center sm:text-right">
-              <h3 className="font-semibold text-base">Atendimento</h3>
-              <h3 className="font-semibold text-base leading-snug">
+          <div className="flex flex-col justify-center space-y-6 pr-0 text-[#15467d] sm:flex-row sm:justify-end sm:space-y-0 sm:space-x-16 sm:pr-8">
+            <div className="flex min-w-[160px] flex-col space-y-4 text-center sm:space-y-8 sm:text-right">
+              <h3 className="text-base font-semibold">Atendimento</h3>
+              <h3 className="text-base leading-snug font-semibold">
                 Horário e <br /> Localização
               </h3>
             </div>
 
             {/* Right Content */}
             <div className="flex flex-col space-y-6 text-center sm:text-left">
-              <div className="flex flex-col sm:flex-row items-center sm:items-start justify-center sm:justify-start space-y-2 sm:space-y-0 sm:space-x-3">
-                <PhoneCall className="w-4 h-4 shrink-0 text-[#15467d]" />
+              <div className="flex flex-col items-center justify-center space-y-2 sm:flex-row sm:items-start sm:justify-start sm:space-y-0 sm:space-x-3">
+                <PhoneCall className="h-4 w-4 shrink-0 text-[#15467d]" />
                 <div className="flex flex-col leading-tight">
-                  <span className="font-semibold text-base tracking-wide">
+                  <span className="text-base font-semibold tracking-wide">
                     927&nbsp;078&nbsp;842
                   </span>
                   <span className="text-xs">
@@ -78,13 +78,14 @@ const Footer = () => {
               </div>
 
               {/* Horário + Endereço */}
-              <div className="text-sm space-y-2">
+              <div className="space-y-2 text-sm">
                 <p>
                   Segunda a Sábado <br />
                   das 8h às 20h
                 </p>
                 <p>
-                  Rua Diário de Notícias nº 09, 2500-107 <br />Caldas da Rainha
+                  Rua Diário de Notícias nº 09, 2500-107 <br />
+                  Caldas da Rainha
                 </p>
               </div>
             </div>
@@ -92,25 +93,26 @@ const Footer = () => {
         </div>
 
         {/* Bottom Section */}
-        <div className="flex flex-col md:flex-row items-center md:items-end justify-between gap-6 mt-8">
+        <div className="mt-8 flex flex-col items-center justify-between gap-6 md:flex-row md:items-end">
           {/* Redes Sociais */}
-          <div className="flex items-center justify-center md:justify-start space-x-2">
-            <span className="text-[#15467d] text-sm font-normal">Redes Sociais</span>
+          <div className="flex items-center justify-center space-x-2 md:justify-start">
+            <span className="text-sm font-normal text-[#15467d]">
+              Redes Sociais
+            </span>
             <a
               href="https://www.instagram.com/yourselfpilates/?hl=en"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center w-7 h-7 rounded-full bg-[#15467d] text-white hover:opacity-80 transition"
+              className="flex h-7 w-7 items-center justify-center rounded-full bg-[#15467d] text-white transition hover:opacity-80"
               aria-label="Instagram"
             >
-              <Instagram className="w-4 h-4" />
+              <Instagram className="h-4 w-4" />
             </a>
           </div>
 
-
-          <div className="flex flex-col md:items-end items-center gap-2 md:gap-0 mt-4 md:mt-0">
+          <div className="mt-4 flex flex-col items-center gap-2 md:mt-0 md:items-end md:gap-0">
             {/* Legal Links */}
-            <div className="flex flex-col md:flex-row items-center md:items-end justify-center md:justify-end gap-y-1 md:gap-y-0 gap-x-2 text-center md:text-right">
+            <div className="flex flex-col items-center justify-center gap-x-2 gap-y-1 text-center md:flex-row md:items-end md:justify-end md:gap-y-0 md:text-right">
               {legalLinks.map((link, index) => (
                 <React.Fragment key={link.href}>
                   {link.external ? (
@@ -118,34 +120,35 @@ const Footer = () => {
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[#15467d] text-xs hover:opacity-80 transition"
+                      className="text-xs text-[#15467d] transition hover:opacity-80"
                     >
                       {link.name}
                     </a>
                   ) : (
                     <Link
                       href={link.href}
-                      className="text-[#15467d] text-xs hover:opacity-80 transition"
+                      className="text-xs text-[#15467d] transition hover:opacity-80"
                     >
                       {link.name}
                     </Link>
                   )}
                   {index < legalLinks.length - 1 && (
-                    <span className="hidden md:inline text-[#15467d]/50 mx-1">|</span>
+                    <span className="mx-1 hidden text-[#15467d]/50 md:inline">
+                      |
+                    </span>
                   )}
                 </React.Fragment>
               ))}
             </div>
 
-
-            <div className="text-right mt-2">
-              <p className="text-[#15467d] text-xs md:text-sm">
+            <div className="mt-2 text-right">
+              <p className="text-xs text-[#15467d] md:text-sm">
                 © {currentYear} – All rights Reserved. Powered by:{" "}
                 <a
                   href="https://oonify.pt/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center font-medium text-[#15467d] hover:opacity-80 transition"
+                  className="inline-flex items-center font-medium text-[#15467d] transition hover:opacity-80"
                 >
                   OONIFY
                 </a>

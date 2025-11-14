@@ -30,9 +30,7 @@ const HomePage = () => {
       {/* <BrandIntroduction /> */}
 
       {/* Section Divider - "O seu studio de Pilates" */}
-      <SectionDivider
-        title="O seu studio de Pilates"
-      />
+      <SectionDivider title="O seu studio de Pilates" />
 
       {/* Features Grid - 6 feature boxes */}
       <FeaturesGrid />

@@ -27,7 +27,7 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className="flex items-center space-x-9 text-[19px] text-[#15467d] font-normal">
+    <nav className="flex items-center space-x-9 text-[19px] font-normal text-[#15467d]">
       {navItems.map((item) => {
         const isActive = pathname === item.href;
 
@@ -35,9 +35,9 @@ const Navigation = () => {
           <Link
             key={item.href}
             href={item.href}
-            className={`hover:text-[#5380A6] transition-colors duration-200 ${
+            className={`transition-colors duration-200 hover:text-[#5380A6] ${
               isActive
-                ? "text-[#5380A6] font-semibold underline"
+                ? "font-semibold text-[#5380A6] underline"
                 : "text-[#15467d]"
             }`}
           >

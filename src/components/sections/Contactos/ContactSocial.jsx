@@ -31,18 +31,18 @@ const ContactSocial = () => {
   };
 
   return (
-    <section className="py-12 md:py-16 bg-gradient-to-br from-[#15467d] to-[#398ffc]">
+    <section className="bg-gradient-to-br from-[#15467d] to-[#398ffc] py-12 md:py-16">
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="max-w-4xl mx-auto text-center space-y-8"
+          className="mx-auto max-w-4xl space-y-8 text-center"
         >
           {/* Section Title */}
           <motion.div variants={itemVariants}>
-            <h2 className="text-2xl md:text-3xl font-normal text-white">
+            <h2 className="text-2xl font-normal text-white md:text-3xl">
               Visite as nossas redes sociais
             </h2>
           </motion.div>
@@ -59,15 +59,15 @@ const ContactSocial = () => {
               className="group"
               aria-label={CONTACT_INFO.social.instagram.label}
             >
-              <div className="w-16 h-16 md:w-20 md:h-20 bg-white rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-lg">
-                <InstagramIcon className="w-8 h-8 md:w-10 md:h-10 text-primary group-hover:text-accent transition-colors duration-300" />
+              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white shadow-lg transition-transform duration-300 hover:scale-110 md:h-20 md:w-20">
+                <InstagramIcon className="text-primary group-hover:text-accent h-8 w-8 transition-colors duration-300 md:h-10 md:w-10" />
               </div>
             </a>
           </motion.div>
 
           {/* Social Handle (Optional) */}
           <motion.div variants={itemVariants}>
-            <p className="text-white/90 text-lg">
+            <p className="text-lg text-white/90">
               {CONTACT_INFO.social.instagram.handle}
             </p>
           </motion.div>

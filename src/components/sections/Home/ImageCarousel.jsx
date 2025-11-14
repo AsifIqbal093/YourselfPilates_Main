@@ -41,7 +41,7 @@ const ImageCarousel = () => {
   ];
 
   return (
-    <section className="py-0 bg-white">
+    <section className="bg-white py-0">
       <div className="relative w-full">
         <Swiper
           modules={[Navigation, Pagination, Autoplay, EffectFade]}
@@ -67,7 +67,7 @@ const ImageCarousel = () => {
         >
           {slides.map((slide, index) => (
             <SwiperSlide key={index}>
-              <div className="relative w-full h-[400px] md:h-[500px] lg:h-[600px]">
+              <div className="relative h-[400px] w-full md:h-[500px] lg:h-[600px]">
                 <Image
                   src={slide.src}
                   alt={slide.alt}
@@ -81,9 +81,9 @@ const ImageCarousel = () => {
           ))}
 
           {/* Custom Navigation Arrows */}
-          <div className="swiper-button-prev-custom absolute left-4 md:left-[46%] bottom-8 md:bottom-16 z-10 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full cursor-pointer hover:bg-white transition-all duration-200 shadow-lg">
+          <div className="swiper-button-prev-custom absolute bottom-8 left-4 z-10 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-white/80 shadow-lg backdrop-blur-sm transition-all duration-200 hover:bg-white md:bottom-16 md:left-[46%] md:h-12 md:w-12">
             <svg
-              className="w-5 h-5 md:w-6 md:h-6 text-[#003b5c]"
+              className="h-5 w-5 text-[#003b5c] md:h-6 md:w-6"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -97,9 +97,9 @@ const ImageCarousel = () => {
             </svg>
           </div>
 
-          <div className="swiper-button-next-custom absolute right-4 md:right-[46%] bottom-8 md:bottom-16 z-10 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full cursor-pointer hover:bg-white transition-all duration-200 shadow-lg">
+          <div className="swiper-button-next-custom absolute right-4 bottom-8 z-10 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-white/80 shadow-lg backdrop-blur-sm transition-all duration-200 hover:bg-white md:right-[46%] md:bottom-16 md:h-12 md:w-12">
             <svg
-              className="w-5 h-5 md:w-6 md:h-6 text-[#003b5c]"
+              className="h-5 w-5 text-[#003b5c] md:h-6 md:w-6"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -114,7 +114,7 @@ const ImageCarousel = () => {
           </div>
 
           {/* Custom Pagination */}
-          <div className="swiper-pagination-custom flex justify-center items-center gap-2 absolute bottom-4 left-0 right-0 z-10" />
+          <div className="swiper-pagination-custom absolute right-0 bottom-4 left-0 z-10 flex items-center justify-center gap-2" />
         </Swiper>
 
         <style jsx global>{`

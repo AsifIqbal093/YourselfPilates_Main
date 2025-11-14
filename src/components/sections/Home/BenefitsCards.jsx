@@ -14,8 +14,8 @@ const BenefitsCards = () => {
       logo: "/images/WhiteLogo.png",
       image: "/images/04.png",
       accent: true,
-      overlayColor: "#5d8fb6ff", 
-      textColor: "white", 
+      overlayColor: "#5d8fb6ff",
+      textColor: "white",
     },
     {
       title: "Total focus on the student.",
@@ -24,8 +24,8 @@ const BenefitsCards = () => {
       logo: "/images/DarkBlueLogo.png",
       image: "/images/06.png",
       accent: false,
-      overlayColor: "white", 
-      textColor: "#15467d", 
+      overlayColor: "white",
+      textColor: "#15467d",
     },
     {
       title: "Total Professional Environment",
@@ -34,8 +34,8 @@ const BenefitsCards = () => {
       logo: "/images/DarkBlueLogo.png",
       image: "/images/07.png",
       accent: true,
-      overlayColor: "white", 
-      textColor: "#15467d", 
+      overlayColor: "white",
+      textColor: "#15467d",
     },
     {
       title: "Networking",
@@ -44,7 +44,7 @@ const BenefitsCards = () => {
       logo: "/images/WhiteLogo.png",
       image: "/images/08.png",
       accent: false,
-      overlayColor: "#5d8fb6ff", 
+      overlayColor: "#5d8fb6ff",
       textColor: "white",
     },
     {
@@ -54,8 +54,8 @@ const BenefitsCards = () => {
       logo: "/images/WhiteLogo.png",
       image: "/images/07.png",
       accent: true,
-      overlayColor: "#5d8fb6ff", 
-      textColor: "white", 
+      overlayColor: "#5d8fb6ff",
+      textColor: "white",
     },
     {
       title: "Finances under control",
@@ -64,8 +64,8 @@ const BenefitsCards = () => {
       logo: "/images/DarkBlueLogo.png",
       image: "/images/10.png",
       accent: false,
-      overlayColor: "white", 
-      textColor: "#15467d", 
+      overlayColor: "white",
+      textColor: "#15467d",
     },
   ];
 
@@ -80,13 +80,13 @@ const BenefitsCards = () => {
   };
 
   return (
-    <section className="py-20 bg-gradient-primary">
+    <section className="bg-gradient-primary py-20">
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-10"
+          className="grid grid-cols-1 gap-x-4 gap-y-10 md:grid-cols-2"
         >
           {benefits.map((benefit, index) => (
             <motion.div key={index} variants={itemVariants}>
@@ -106,7 +106,7 @@ const BenefitsCards = () => {
                 image={benefit.image}
                 accent={benefit.accent}
                 overlayColor={benefit.overlayColor}
-                textColor={benefit.textColor} 
+                textColor={benefit.textColor}
               />
             </motion.div>
           ))}
@@ -117,19 +117,3 @@ const BenefitsCards = () => {
 };
 
 export default BenefitsCards;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
