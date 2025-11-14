@@ -34,20 +34,18 @@ const PackagesListing = () => {
 	];
 
 	return (
-		<section className="pt-0 pb-20 bg-[#f8fbff]">
+		<section className="pt-0 pb-20">
 			<div className="container mx-auto px-4 md:px-6 lg:px-8 text-center">
-				<h2 className="text-5xl font-medium mb-12 mt-20 font-accent text-[#88a9c3]">
+				<h2 className="text-5xl font-normal mb-12 mt-20 font-accent text-[#88a9c3]">
 					Agendar o espaço
 				</h2>
 
-				{/* Compact Grid Layout */}
 				<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[2px] justify-center max-w-6xl mx-auto">
 					{packages.map((pkg, index) => (
 						<Card
 							key={index}
-							className="bg-[#f1f5f8] rounded-3xl shadow-md overflow-hidden w-[340px] md:w-[350px] p-0"
+							className="bg-gradient-to-b from-sky-900/30 via-[#f1f5f8] to-white rounded-3xl shadow-none border-none overflow-hidden overflow-hidden w-[340px] md:w-[350px] p-0"
 						>
-							{/* Image */}
 							<div className="relative w-full h-[300px] overflow-hidden">
 								<Image
 									src={pkg.image}
