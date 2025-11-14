@@ -5,23 +5,14 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 
-/**
- * FeatureCard Component
- * Large card with background image used in Benefits section
- *
- * @param {string} title - Card title
- * @param {string} description - Card description
- * @param {ReactNode} icon - Icon component
- * @param {string} image - Image path (optional)
- * @param {boolean} accent - Use accent color scheme
- * @param {string} className - Additional CSS classes
- */
 const FeatureCard = ({
   title,
   description,
   icon,
   image,
   accent = false,
+  overlayColor,
+  textColor = "#15467d",
   className,
 }) => {
   return (
@@ -32,9 +23,8 @@ const FeatureCard = ({
       transition={{ duration: 0.5 }}
       whileHover={{ scale: 1.02 }}
       className={cn(
-        "relative min-h-[378px] rounded-[26px] p-8 md:p-10 overflow-hidden group",
+        "relative h-[378px] rounded-[26px] p-8 md:p-10 overflow-hidden group",
         "flex flex-col justify-end",
-        accent ? "bg-gradient-button" : "bg-secondary",
         className
       )}
     >
@@ -47,33 +37,44 @@ const FeatureCard = ({
             fill
             className="object-cover"
             sizes="(max-width: 768px) 100vw, 50vw"
+            style={{ opacity: 0.3 }}
           />
           <div
-            className={cn(
-              "absolute inset-0",
-              accent
-                ? "bg-gradient-to-br from-primary/80 to-accent/70"
-                : "bg-secondary/80"
-            )}
+            className={cn("absolute inset-0")}
+            style={{
+              backgroundColor: overlayColor ? overlayColor : "#5d8fb6ff",
+              opacity: 0.35,
+            }}
           />
         </div>
       )}
 
+
       {/* Content */}
-      <div className="relative z-10 space-y-4 text-white max-w-[352px]">
-        {/* Icon */}
+      <div
+        className="relative z-10 space-y-4 max-w-[352px]"
+        style={{ bottom: "4rem", color: textColor }}
+      >
         {icon && (
-          <div className="w-12 h-12 flex items-center justify-center text-white">
+          <div
+            className="w-12 h-12 flex items-center justify-center"
+            style={{ color: textColor }}
+          >
             {icon}
           </div>
         )}
 
-        {/* Title */}
-        <h3 className="text-3xl font-semibold leading-tight">{title}</h3>
+        <h3 className="text-3xl font-semibold leading-tight" style={{ color: textColor }}>
+          {title}
+        </h3>
 
-        {/* Description */}
         {description && (
-          <p className="text-base leading-relaxed opacity-90">{description}</p>
+          <p
+            className="text-base leading-relaxed opacity-90"
+            style={{ color: textColor }}
+          >
+            {description}
+          </p>
         )}
       </div>
 
