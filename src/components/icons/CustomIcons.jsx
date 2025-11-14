@@ -393,7 +393,6 @@ export const LocationDotIcon = ({ className = "w-5 h-5", ...props }) => (
   </svg>
 );
 
-
 // Chevron Right Icon - Buttons
 export const ChevronRightIcon = ({ className = "w-5 h-5", ...props }) => (
   <svg
@@ -557,6 +556,322 @@ export const InstagramIcon = ({ className = "w-6 h-6", ...props }) => (
   </svg>
 );
 
+// Trophy Icon - Premium/Excellence
+export const TrophyIcon = ({ className = "w-6 h-6", ...props }) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+    {...props}
+  >
+    <path
+      d="M6 9C6 9 6 4 12 4C18 4 18 9 18 9"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+    <path
+      d="M6 9H4C3.44772 9 3 9.44772 3 10V11C3 12.6569 4.34315 14 6 14C6 14 6 11.5 6 9Z"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M18 9H20C20.5523 9 21 9.44772 21 10V11C21 12.6569 19.6569 14 18 14C18 14 18 11.5 18 9Z"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M8 14C8 17.3137 9.79086 20 12 20C14.2091 20 16 17.3137 16 14"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+    <path
+      d="M12 20V22"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+    <path
+      d="M9 22H15"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+  </svg>
+);
+
+// Building Icon - Space/Property
+export const BuildingIcon = ({ className = "w-6 h-6", ...props }) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+    {...props}
+  >
+    <rect
+      x="4"
+      y="2"
+      width="16"
+      height="20"
+      rx="1"
+      stroke="currentColor"
+      strokeWidth="2"
+    />
+    <path
+      d="M9 6H10"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+    <path
+      d="M14 6H15"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+    <path
+      d="M9 10H10"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+    <path
+      d="M14 10H15"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+    <path
+      d="M9 14H10"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+    <path
+      d="M14 14H15"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+    <rect x="11" y="18" width="2" height="4" fill="currentColor" />
+  </svg>
+);
+
+// Wallet Icon - Finance/Money
+export const WalletIcon = ({ className = "w-6 h-6", ...props }) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+    {...props}
+  >
+    <rect
+      x="3"
+      y="6"
+      width="18"
+      height="14"
+      rx="2"
+      stroke="currentColor"
+      strokeWidth="2"
+    />
+    <path
+      d="M3 10H21"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+    <circle cx="17" cy="15" r="1" fill="currentColor" />
+    <path
+      d="M7 6L5 4"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+  </svg>
+);
+
+// Target/Focus Icon - Precision/Focus
+export const TargetIcon = ({ className = "w-6 h-6", ...props }) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+    {...props}
+  >
+    <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2" />
+    <circle cx="12" cy="12" r="6" stroke="currentColor" strokeWidth="2" />
+    <circle cx="12" cy="12" r="3" fill="currentColor" />
+  </svg>
+);
+
+// Briefcase Icon - Professional
+export const BriefcaseIcon = ({ className = "w-6 h-6", ...props }) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+    {...props}
+  >
+    <rect
+      x="3"
+      y="7"
+      width="18"
+      height="13"
+      rx="2"
+      stroke="currentColor"
+      strokeWidth="2"
+    />
+    <path
+      d="M8 7V5C8 3.89543 8.89543 3 10 3H14C15.1046 3 16 3.89543 16 5V7"
+      stroke="currentColor"
+      strokeWidth="2"
+    />
+    <path
+      d="M3 12H21"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+    <path
+      d="M12 12V16"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+  </svg>
+);
+
+// Users/Network Icon - Community/Networking
+export const UsersIcon = ({ className = "w-6 h-6", ...props }) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+    {...props}
+  >
+    <circle cx="9" cy="7" r="3" stroke="currentColor" strokeWidth="2" />
+    <circle cx="17" cy="7" r="3" stroke="currentColor" strokeWidth="2" />
+    <path
+      d="M3 19C3 16.7909 4.79086 15 7 15H11C13.2091 15 15 16.7909 15 19"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+    <path
+      d="M13 19C13 17.3431 14.3431 16 16 16H18C19.6569 16 21 17.3431 21 19"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+  </svg>
+);
+
+// Clock/Schedule Icon - Time Management
+export const ClockIcon = ({ className = "w-6 h-6", ...props }) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+    {...props}
+  >
+    <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2" />
+    <path
+      d="M12 7V12L15 15"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+// Chart/Finances Icon - Financial Control
+export const ChartIcon = ({ className = "w-6 h-6", ...props }) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+    {...props}
+  >
+    <path
+      d="M3 3V18C3 19.1046 3.89543 20 5 20H21"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+    <path
+      d="M7 14V17"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+    <path
+      d="M12 10V17"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+    <path
+      d="M17 6V17"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+  </svg>
+);
+
+// Amenities Icon - Facilities
+export const AmenitiesIcon = ({ className = "w-6 h-6", ...props }) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+    {...props}
+  >
+    <circle cx="12" cy="8" r="2" stroke="currentColor" strokeWidth="2" />
+    <path
+      d="M12 10V14"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+    <path
+      d="M8 16L12 14L16 16"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M8 16V20"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+    <path
+      d="M16 16V20"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+    <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2" />
+  </svg>
+);
+
 // Export all icons as a group
 export const Icons = {
   YLogo: YLogoIcon,
@@ -573,6 +888,15 @@ export const Icons = {
   Money: MoneyIcon,
   DocumentCheck: DocumentCheckIcon,
   Instagram: InstagramIcon,
+  Trophy: TrophyIcon,
+  Building: BuildingIcon,
+  Wallet: WalletIcon,
+  Target: TargetIcon,
+  Briefcase: BriefcaseIcon,
+  Users: UsersIcon,
+  Clock: ClockIcon,
+  Chart: ChartIcon,
+  Amenities: AmenitiesIcon,
 };
 
 export default Icons;
