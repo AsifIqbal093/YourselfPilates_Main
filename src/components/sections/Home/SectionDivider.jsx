@@ -21,7 +21,7 @@ const kodchasan = Kodchasan({
 
 const SectionDivider = ({ title, subtitle }) => {
 	return (
-		<section className="py-20 bg-white">
+		<section className="py-10 bg-white -mb-9">
 			<div className="container mx-auto px-4 md:px-6 lg:px-8">
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}

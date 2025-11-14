@@ -3,14 +3,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import IconBox from "@/components/shared/IconBox";
-// import {
-// 	QualityBadgeIcon,
-// 	WifiIcon,
-// 	FloorPlanIcon,
-// 	TvIcon,
-// 	AirConditioningIcon,
-// 	SecurityCameraIcon,
-// } from "@/components/icons/CustomIcons";
 
 const FeaturesGrid = () => {
 	const features = [
