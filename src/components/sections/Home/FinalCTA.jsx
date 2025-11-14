@@ -10,66 +10,57 @@ import { Button } from "@/components/ui/button";
  * Dark background with compelling call-to-action
  */
 const FinalCTA = () => {
-  return (
-    <section className="relative bg-secondary py-20 md:py-32 text-white overflow-hidden">
-      <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left Column - Content */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6 }}
-            className="space-y-6"
-          >
-            <p className="text-accent uppercase tracking-wider text-sm font-semibold">
-              Comece Hoje
-            </p>
-            <h2 className="text-white font-normal text-3xl md:text-5xl leading-tight">
-              Transforme o seu trabalho como instrutor de Pilates
-            </h2>
-            <p className="text-white/80 text-lg leading-relaxed">
-              Tenha acesso a um espaço profissional, totalmente equipado, sem
-              compromissos fixos. A liberdade que procura para ensinar ao seu
-              estilo.
-            </p>
-          </motion.div>
+	return (
+		<section className="relative overflow-hidden bg-white">
+			{" "}
 
-          {/* Right Column - CTAs */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex flex-col md:flex-row gap-4 md:justify-end"
-          >
-            <Button
-              asChild
-              size="lg"
-              className="bg-gradient-button hover:opacity-90 rounded-2xl text-base px-8 py-6"
-            >
-              <Link href="/agendar-espaco">Agendar Espaço</Link>
-            </Button>
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              className="border-2 border-white text-white hover:bg-white hover:text-secondary rounded-2xl text-base px-8 py-6"
-            >
-              <Link href="/sobre">Saber Mais</Link>
-            </Button>
-          </motion.div>
-        </div>
-      </div>
+			<div className="grid grid-cols-1 md:grid-cols-2">
+				<div
+					className="h-64 md:h-[500px] bg-cover bg-center"
+					style={{ backgroundImage: 'url("/images/12.jpg")' }} 
+				></div>
+				<div
+					className="h-64 md:h-[500px] bg-cover bg-center"
+					style={{ backgroundImage: 'url("/images/5.jpg")' }} 
+				></div>
+			</div>
+			<div className="bg-[#15467d] py-20 md:py-32 text-white relative z-10">
+				{" "}
+				<div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
+					<div className="flex flex-col md:flex-row justify-between items-center gap-8">
+						<motion.div
+							initial={{ opacity: 0, x: -30 }}
+							whileInView={{ opacity: 1, x: 0 }}
+							viewport={{ once: true, margin: "-100px" }}
+							transition={{ duration: 0.6 }}
+							className="text-center md:text-left space-y-2 -ml-40"
+						>
+							<h2 className="text-white font-medium text-2xl md:text-5xl font-accent">
+								I would like to get in touch.
+							</h2>
+							<p className="text-white text-[25px] font-accent">Or schedule a visit.</p>
+						</motion.div>
 
-      {/* Decorative Background Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-primary/10 blur-3xl" />
-        <div className="absolute -bottom-32 -left-32 w-96 h-96 rounded-full bg-accent/10 blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary/5 blur-3xl" />
-      </div>
-    </section>
-  );
+						<motion.div
+							initial={{ opacity: 0, x: 30 }}
+							whileInView={{ opacity: 1, x: 0 }}
+							viewport={{ once: true, margin: "-100px" }}
+							transition={{ duration: 0.6, delay: 0.2 }}
+						>
+							<Link href="/contact">
+								<Button
+									size="lg"
+                  className="bg-gradient-to-l from-[#15467d] via-white to-white text-[#15467d] mr-40 rounded-full text-base px-8 py-4 w-40"
+                  >
+									Contact
+								</Button>
+							</Link>
+						</motion.div>
+					</div>
+				</div>
+			</div>
+		</section>
+	);
 };
 
 export default FinalCTA;
