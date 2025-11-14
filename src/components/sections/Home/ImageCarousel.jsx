@@ -16,33 +16,32 @@ import "swiper/css/effect-fade";
  * Full-width carousel with fade transitions
  */
 const ImageCarousel = () => {
-  // Carousel images
   const slides = [
     {
-      src: "/images/3.jpg",
+      src: "/images/home/1.jpg",
       alt: "Yourself Pilates Studio - Slide 1",
     },
     {
-      src: "/images/5.jpg",
+      src: "/images/home/2.jpg",
       alt: "Yourself Pilates Studio - Slide 2",
     },
     {
-      src: "/images/09.jpg",
+      src: "/images/home/3.jpg",
       alt: "Yourself Pilates Studio - Slide 3",
     },
     {
-      src: "/images/11.jpg",
+      src: "/images/home/4.jpg",
       alt: "Yourself Pilates Studio - Slide 4",
     },
     {
-      src: "/images/12.jpg",
+      src: "/images/home/5.jpg",
       alt: "Yourself Pilates Studio - Slide 5",
     },
   ];
 
   return (
     <section className="bg-white py-0">
-      <div className="relative w-full">
+      <div className="relative w-470">
         <Swiper
           modules={[Navigation, Pagination, Autoplay, EffectFade]}
           effect="fade"
@@ -67,7 +66,7 @@ const ImageCarousel = () => {
         >
           {slides.map((slide, index) => (
             <SwiperSlide key={index}>
-              <div className="relative h-[400px] w-full md:h-[500px] lg:h-[600px]">
+              <div className="relative h-[700px] w-full md:h-[500px] lg:h-[950px]">
                 <Image
                   src={slide.src}
                   alt={slide.alt}
@@ -80,7 +79,6 @@ const ImageCarousel = () => {
             </SwiperSlide>
           ))}
 
-          {/* Custom Navigation Arrows */}
           <div className="swiper-button-prev-custom absolute bottom-8 left-4 z-10 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-white/80 shadow-lg backdrop-blur-sm transition-all duration-200 hover:bg-white md:bottom-16 md:left-[46%] md:h-12 md:w-12">
             <svg
               className="h-5 w-5 text-[#003b5c] md:h-6 md:w-6"
@@ -112,9 +110,6 @@ const ImageCarousel = () => {
               />
             </svg>
           </div>
-
-          {/* Custom Pagination */}
-          <div className="swiper-pagination-custom absolute right-0 bottom-4 left-0 z-10 flex items-center justify-center gap-2" />
         </Swiper>
 
         <style jsx global>{`

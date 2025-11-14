@@ -7,6 +7,7 @@ import ImageCarousel from "@/components/sections/Home/ImageCarousel";
 import PackagesListing from "@/components/sections/Home/PackagesListing";
 import BenefitsCards from "@/components/sections/Home/BenefitsCards";
 import FinalCTA from "@/components/sections/Home/FinalCTA";
+import Availibility from "@/components/sections/Home/Availability";
 
 /**
  * Home Page - YourSelf Pilates
@@ -44,6 +45,7 @@ const HomePage = () => {
       {/* Benefits Cards - 2 large benefit cards */}
       <BenefitsCards />
 
+      <Availibility />
       {/* Final CTA - Dark section with call to action */}
       <FinalCTA />
     </main>

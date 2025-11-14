@@ -29,7 +29,6 @@ const EmailIcon = () => (
  * Displays phone and email contact information in icon boxes
  */
 const ContactInfo = () => {
-
   // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },

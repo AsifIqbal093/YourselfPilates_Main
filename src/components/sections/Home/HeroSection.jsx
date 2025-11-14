@@ -5,10 +5,10 @@ import Image from "next/image";
 import Link from "next/link";
 import BrandIntroduction from "@/components/sections/Home/BrandIntroduction";
 import { Button } from "@/components/ui/button";
+import { PhoneCall } from "lucide-react";
 import {
   LocationDotIcon,
   ChevronRightIcon,
-  PhoneIcon,
 } from "@/components/icons/CustomIcons";
 
 const HeroSection = () => {
@@ -33,54 +33,42 @@ const HeroSection = () => {
 
   return (
     <section className="bg-gradient-primary relative overflow-hidden py-16 md:py-20 lg:py-32">
-      {/* Container */}
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          {/* Left Column */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
             className="space-y-8 lg:pr-8"
           >
-            {/* Location Badge */}
             <motion.div
               variants={itemVariants}
               className="-ml-4 flex items-center space-x-3 md:-ml-6 lg:-ml-28"
             >
               <LocationDotIcon className="h-5 w-5" />
-              <span className="text-lg font-medium text-[#88a9c3]">
-                Localizado nas Caldas da Rainha
+              <span className="font-display text-lg font-[100] text-[#88a9c3]">
+                LOCALIZADO NAS CALDAS DA RAINHA
               </span>
             </motion.div>
 
-            {/* Heading */}
             <motion.h1
-              className="-ml-4 flex w-full md:-ml-6 lg:-ml-28"
+              className="font-accent -ml-4 flex w-full md:-ml-6 lg:-ml-28"
               variants={itemVariants}
               style={{
-                fontFamily:
-                  "var(--e-global-typography-primary-font-family), Sans-serif",
-                fontSize: "clamp(34px, 5vw, 40px)",
-                fontWeight: "300",
-                lineHeight: "var(--e-global-typography-primary-line-height)",
+                fontSize: "40px",
+                fontWeight: "400",
                 color: "#104c88ff",
-                maxWidth: "600px",
+                maxWidth: "500px",
                 display: "-webkit-box",
-                WebkitLineClamp: 3,
-                WebkitBoxOrient: "vertical",
                 overflow: "hidden",
-                marginTop: "20px",
-                marginBottom: "20px",
                 textAlign: "left",
               }}
             >
               Cowork de Pilates <br />
               exclusivo para profissionais <br />
-              equipamentos
+              em equipamentos
             </motion.h1>
 
-            {/* Primary Button below heading */}
             <motion.div variants={itemVariants}>
               <Button
                 asChild
@@ -97,32 +85,29 @@ const HeroSection = () => {
               </Button>
             </motion.div>
 
-            {/* Divider + Phone */}
             <motion.div
               variants={itemVariants}
               className="mt-60 -ml-4 flex w-full items-center space-x-4 md:-ml-6 lg:-ml-58"
             >
-              {/* Divider on left */}
               <div className="flex items-center space-x-2">
-                <div className="bg-primary h-[1px] w-[68px]" />
-                <span className="text-secondary text-sm font-normal whitespace-nowrap">
+                <div className="h-[1px] w-[68px] bg-[#88a9c3]" />
+                <span className="font-mono text-sm font-normal whitespace-nowrap text-[#15467d]">
                   Ou ligue para o
                 </span>
               </div>
 
-              {/* Phone Button on right */}
               <a
                 href="tel:927078842"
                 className="group inline-flex items-center transition-all duration-200 hover:scale-[1.02]"
               >
-                <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-[#15467d]/10 text-[#15467d] transition-all duration-200 group-hover:bg-[#15467d] group-hover:text-white">
-                  <PhoneIcon className="h-6 w-6" />
+                <div className="mr-3 flex flex-shrink-0 items-center justify-center text-[#15467d]">
+                  <PhoneCall className="h-6 w-6" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-secondary group-hover:text-primary text-xl leading-tight font-normal transition-colors duration-200">
+                  <span className="ml-9 text-xl leading-tight font-normal text-[#104c88] duration-200">
                     927 078 842
                   </span>
-                  <span className="text-muted mt-1 text-xs">
+                  <span className="mt-1 font-mono text-xs font-normal text-[#104c88]">
                     (Chamada para a rede móvel nacional)
                   </span>
                 </div>
@@ -130,14 +115,12 @@ const HeroSection = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right Column - Images */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             className="relative flex flex-col items-start gap-6 pt-12 sm:flex-row"
           >
-            {/* Left Image */}
             <div className="w-full flex-shrink-0 sm:w-1/2">
               <Image
                 src="/images/15.jpg"
@@ -149,7 +132,6 @@ const HeroSection = () => {
               />
             </div>
 
-            {/* Right Image */}
             <div className="w-full flex-shrink-0 sm:w-auto">
               <Image
                 src="/images/16.jpg"
@@ -164,7 +146,6 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Background Decorative Elements */}
       <div className="pointer-events-none absolute top-0 left-0 h-full w-full overflow-hidden">
         <div className="bg-primary/5 absolute top-20 right-20 h-64 w-64 rounded-full blur-3xl" />
         <div className="bg-accent/5 absolute bottom-20 left-20 h-96 w-96 rounded-full blur-3xl" />
