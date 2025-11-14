@@ -81,7 +81,7 @@ const BenefitsCards = () => {
 	};
 
 	return (
-		<section className="py-20 bg-gradient-primary">
+		<section className="py-20">
 			<div className="flex flex-col items-center text-center space-y-4">
 				<h1 className="text-5xl font-light font-accent mb-9 text-center">
 					<span className="text-[#88a9c3]">Porquê a </span>
