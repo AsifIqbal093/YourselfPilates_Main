@@ -48,18 +48,18 @@ const ContactInfo = () => {
 
   return (
     <section className="py-12 md:py-16 bg-white">
-      <div className="container mx-auto px-4 md:px-6 lg:px-8">
+      <div className="container mx-auto px-4 md:px-6 lg:px-8 ">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto"
-        >
+          className="grid grid-cols-1 md:grid-cols-2 gap-y-1 max-w-5xl mx-auto">
+
           {/* Phone Contact Box */}
           <motion.div
             variants={itemVariants}
-            className="bg-gradient-to-br from-[#f8f9fa] to-[#e9ecef] rounded-[26px] p-8 hover:shadow-xl transition-shadow duration-300"
+            className="bg-gradient-to-br from-[#f8f9fa] to-[#e9ecef] rounded-[17px] p-8 w-100 "
           >
             <a
               href={`tel:${CONTACT_INFO.phone.formatted}`}
@@ -68,13 +68,13 @@ const ContactInfo = () => {
               {/* Icon */}
               <div className="flex-shrink-0">
                 <div className="w-16 h-16 flex items-center justify-center">
-                  <PhoneIcon className="w-full h-full text-[#88a9c3] group-hover:text-primary transition-colors duration-300" />
+                  <PhoneIcon className="w-full h-full text-[#88a9c3] " />
                 </div>
               </div>
 
               {/* Content */}
               <div className="flex-1">
-                <h3 className="text-xl font-semibold text-secondary mb-3 group-hover:text-primary transition-colors duration-300">
+                <h3 className="text-xl font-semibold text-secondary mb-3 ">
                   {CONTACT_INFO.phone.label}
                 </h3>
                 <p className="text-lg font-medium text-secondary mb-1">
@@ -90,7 +90,7 @@ const ContactInfo = () => {
           {/* Email Contact Box */}
           <motion.div
             variants={itemVariants}
-            className="bg-gradient-to-br from-[#f8f9fa] to-[#e9ecef] rounded-[26px] p-8 hover:shadow-xl transition-shadow duration-300"
+            className="bg-gradient-to-br from-[#f8f9fa] to-[#e9ecef] rounded-[17px] p-8 w-100 "
           >
             <a
               href={`mailto:${CONTACT_INFO.email.address}`}
@@ -105,10 +105,10 @@ const ContactInfo = () => {
 
               {/* Content */}
               <div className="flex-1">
-                <h3 className="text-xl font-semibold text-secondary mb-3 group-hover:text-primary transition-colors duration-300">
+                <h3 className="text-xl font-semibold text-secondary mb-3 ">
                   {CONTACT_INFO.email.label}
                 </h3>
-                <p className="text-lg font-medium text-secondary break-all group-hover:text-primary transition-colors duration-300">
+                <p className="text-lg font-medium text-secondary break-all g">
                   {CONTACT_INFO.email.address}
                 </p>
               </div>
