@@ -28,7 +28,7 @@ const PackagesListing = () => {
 			description:
 				"Pack de 8 horas, pode escolher o dia e hora que desejar até um limite de 8 aulas.",
 			price: "Preço: 18€/sessão",
-			image: "/images/13.jpg",
+			image: "/images/2.jpg",
 			link: "/packs/oito-aulas",
 		},
 	];
