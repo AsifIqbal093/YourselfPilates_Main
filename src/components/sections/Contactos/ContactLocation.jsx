@@ -31,22 +31,22 @@ const ContactLocation = () => {
   };
 
   return (
-    <section className="py-12 md:py-16 bg-white">
+    <section className="bg-white py-12 md:py-16">
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="max-w-6xl mx-auto space-y-8"
+          className="mx-auto max-w-6xl space-y-8"
         >
           {/* Section Title */}
           <motion.div
             variants={itemVariants}
             className="flex items-center justify-center space-x-3"
           >
-            <LocationDotIcon className="w-6 h-6 text-primary" />
-            <h2 className="text-2xl md:text-3xl font-normal text-secondary text-center">
+            <LocationDotIcon className="text-primary h-6 w-6" />
+            <h2 className="text-secondary text-center text-2xl font-normal md:text-3xl">
               {CONTACT_INFO.address.label}
             </h2>
           </motion.div>
@@ -54,13 +54,13 @@ const ContactLocation = () => {
           {/* Google Maps */}
           <motion.div
             variants={itemVariants}
-            className="w-full h-[400px] md:h-[500px] rounded-[26px] overflow-hidden shadow-lg"
+            className="h-[400px] w-full overflow-hidden rounded-[26px] shadow-lg md:h-[500px]"
           >
             <iframe
               src={CONTACT_INFO.maps.embedUrl}
               title={CONTACT_INFO.maps.label}
               aria-label={CONTACT_INFO.maps.label}
-              className="w-full h-full border-0"
+              className="h-full w-full border-0"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />
@@ -68,7 +68,7 @@ const ContactLocation = () => {
 
           {/* Address Text */}
           <motion.div variants={itemVariants} className="text-center">
-            <h3 className="text-xl md:text-2xl font-normal text-secondary">
+            <h3 className="text-secondary text-xl font-normal md:text-2xl">
               {CONTACT_INFO.address.fullAddress}
             </h3>
           </motion.div>

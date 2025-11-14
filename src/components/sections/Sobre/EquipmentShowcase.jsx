@@ -31,7 +31,7 @@ const EquipmentShowcase = () => {
   };
 
   return (
-    <section className="py-16 md:py-20 lg:py-24 bg-white">
+    <section className="bg-white py-16 md:py-20 lg:py-24">
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -39,9 +39,9 @@ const EquipmentShowcase = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12 md:mb-16"
+          className="mb-12 text-center md:mb-16"
         >
-          <h2 className="text-[#88a9c3] text-3xl md:text-4xl lg:text-5xl font-normal">
+          <h2 className="text-3xl font-normal text-[#88a9c3] md:text-4xl lg:text-5xl">
             Discover our equipment
           </h2>
         </motion.div>
@@ -52,31 +52,31 @@ const EquipmentShowcase = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12 max-w-7xl mx-auto"
+          className="mx-auto grid max-w-7xl grid-cols-1 gap-8 md:grid-cols-2 md:gap-10 lg:gap-12"
         >
           {ABOUT_EQUIPMENT.equipment.map((item) => (
             <motion.div
               key={item.id}
               variants={itemVariants}
-              className="flex flex-col group"
+              className="group flex flex-col"
             >
               {/* Image Container */}
-              <div className="relative w-full aspect-square mb-6 overflow-hidden rounded-lg bg-white">
+              <div className="relative mb-6 aspect-square w-full overflow-hidden rounded-lg bg-white">
                 <Image
                   src={item.image}
                   alt={item.name}
                   fill
-                  className="object-contain p-4 group-hover:scale-105 transition-transform duration-500"
+                  className="object-contain p-4 transition-transform duration-500 group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>
 
               {/* Text Content */}
               <div className="space-y-3 text-center md:text-left">
-                <h3 className="text-[#88a9c3] text-2xl md:text-3xl font-normal">
+                <h3 className="text-2xl font-normal text-[#88a9c3] md:text-3xl">
                   {item.name}
                 </h3>
-                <p className="text-[#5a7a94] text-sm md:text-base leading-relaxed">
+                <p className="text-sm leading-relaxed text-[#5a7a94] md:text-base">
                   {item.description}
                 </p>
               </div>

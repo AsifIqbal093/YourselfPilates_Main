@@ -31,21 +31,21 @@ const AboutIntro = () => {
   };
 
   return (
-    <section className="py-16 md:py-20 lg:py-24 bg-white">
+    <section className="bg-white py-16 md:py-20 lg:py-24">
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center"
+          className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16"
         >
           {/* Left Column - Logo/Brand Mark */}
           <motion.div
             variants={itemVariants}
             className="relative flex items-center justify-center lg:justify-start"
           >
-            <div className="relative w-full max-w-[400px] h-[300px] md:h-[400px]">
+            <div className="relative h-[300px] w-full max-w-[400px] md:h-[400px]">
               <Image
                 src="/images/Logo.png"
                 alt={ABOUT_INTRO.logoAlt}
@@ -55,16 +55,16 @@ const AboutIntro = () => {
                 priority
               />
               {/* Decorative background circle */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] rounded-full bg-gradient-to-br from-[#398ffc]/5 to-[#15467d]/5 -z-10" />
+              <div className="absolute top-1/2 left-1/2 -z-10 h-[80%] w-[80%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-[#398ffc]/5 to-[#15467d]/5" />
             </div>
           </motion.div>
 
           {/* Right Column - Text Content */}
           <motion.div variants={itemVariants} className="space-y-6">
-            <h2 className="text-[#15467d] text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight">
+            <h2 className="text-3xl leading-tight font-semibold text-[#15467d] md:text-4xl lg:text-5xl">
               {ABOUT_INTRO.heading}
             </h2>
-            <p className="text-[#3b3d42] text-base md:text-lg leading-relaxed">
+            <p className="text-base leading-relaxed text-[#3b3d42] md:text-lg">
               {ABOUT_INTRO.description}
             </p>
           </motion.div>

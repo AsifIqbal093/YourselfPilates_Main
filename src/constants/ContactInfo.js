@@ -55,9 +55,9 @@ export const CONTACT_INFO = {
 export const CONTACT_FORM_CONFIG = {
   fields: {
     nome: {
-      name: "nome",
+      name: "name",
       label: "Nome",
-      placeholder: "Nome",
+      placeholder: "Name",
       type: "text",
       required: true,
     },
@@ -69,9 +69,9 @@ export const CONTACT_FORM_CONFIG = {
       required: true,
     },
     mensagem: {
-      name: "mensagem",
-      label: "Mensagem",
-      placeholder: "Mensagem...",
+      name: "Message",
+      label: "Message",
+      placeholder: "Message...",
       type: "textarea",
       required: false,
     },

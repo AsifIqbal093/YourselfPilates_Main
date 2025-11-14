@@ -8,10 +8,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { CONTACT_FORM_CONFIG } from "@/constants/ContactInfo";
 
-/**
- * Contact Hero Section
- * Includes heading, background image, and contact form
- */
 const ContactHero = () => {
   const [formData, setFormData] = useState({
     nome: "",
@@ -19,10 +15,10 @@ const ContactHero = () => {
     mensagem: "",
     consentimento: false,
   });
+
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState({ type: "", text: "" });
 
-  // Handle input changes
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData((prev) => ({
@@ -31,7 +27,6 @@ const ContactHero = () => {
     }));
   };
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -40,9 +35,7 @@ const ContactHero = () => {
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
@@ -53,7 +46,6 @@ const ContactHero = () => {
           type: "success",
           text: CONTACT_FORM_CONFIG.messages.success,
         });
-        // Reset form
         setFormData({
           nome: "",
           email: "",
@@ -76,82 +68,57 @@ const ContactHero = () => {
     }
   };
 
-  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1,
-      },
+      transition: { staggerChildren: 0.2, delayChildren: 0.1 },
     },
   };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6 },
-    },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   };
 
   return (
-    <section className="relative bg-gradient-to-br from-[#e8f1fa] via-[#f0f5fb] to-[#ffffff] py-12 md:py-16 lg:py-24 overflow-hidden min-h-[700px]">
-      {/* Content */}
-      <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          {/* Left Column - Contact Image */}
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            className="relative w-full h-full flex items-center justify-center order-2 lg:order-1"
-          >
-            {/* Contact Image */}
-            <motion.div
-              variants={itemVariants}
-              className="relative w-full max-w-[600px] h-[400px] md:h-[500px] lg:h-[600px]"
-            >
-              <Image
-                src="/images/Contact.png"
-                alt="Contact - YourSelf Pilates"
-                fill
-                className="object-contain"
-                priority
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-              {/* Decorative circles behind image */}
-              <div className="absolute -top-10 -left-10 w-32 h-32 rounded-full border-2 border-[#398ffc]/20" />
-              <div className="absolute -bottom-10 -left-10 w-40 h-40 rounded-full border-2 border-[#398ffc]/20" />
-            </motion.div>
-          </motion.div>
+    <section className="relative min-h-screen overflow-hidden bg-gradient-to-br from-[#e8f1fa] via-[#f0f5fb] to-[#ffffff] py-12 md:py-16 lg:py-24">
+      <div className="absolute top-0 left-0 hidden h-full w-1/2 lg:block">
+        <Image
+          src="/images/Contact.png"
+          alt="Contact - YourSelf Pilates"
+          fill
+          className="object-cover object-left"
+          priority
+        />
+      </div>
 
-          {/* Right Column - Heading & Contact Form */}
+      <div className="relative z-10 container mx-auto px-4 md:px-6 lg:px-8">
+        <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-12">
+          {/* Empty left column for spacing on large screens */}
+          <div className="hidden lg:block"></div>
+
+          {/* Right Column */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="w-full order-1 lg:order-2"
+            className="order-1 flex h-full w-full flex-col justify-start pt-24 lg:order-2"
           >
-            {/* Section Heading */}
+            {/* Heading */}
             <motion.div variants={itemVariants} className="mb-6 lg:mb-8">
-              <p className="text-[#a1a2a4] text-sm md:text-base mb-2 font-normal">
+              <p className="mb-2 text-sm font-normal text-[#88a9c3] md:text-base">
                 Schedule a visit or get in touch.
               </p>
-              <h1 className="text-[#15467d] text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight">
+              <h1 className="font-accent text-4xl leading-tight text-[#15467d] md:text-5xl lg:text-6xl">
                 Contact
               </h1>
             </motion.div>
 
-            {/* Contact Form Card */}
-            <motion.div
-              variants={itemVariants}
-              className="bg-white rounded-[26px] p-6 md:p-8 shadow-lg"
-            >
+            {/* Contact Form */}
+            <motion.div variants={itemVariants}>
               <form onSubmit={handleSubmit} className="space-y-6">
-                {/* Nome Field */}
+                {/* Nome */}
                 <div>
                   <Input
                     type="text"
@@ -161,11 +128,11 @@ const ContactHero = () => {
                     value={formData.nome}
                     onChange={handleChange}
                     required
-                    className="w-full h-12 px-0 pb-3 pt-2 border-0 border-b-2 border-[#c8d4e0] rounded-none focus:border-[#398ffc] focus:ring-0 text-[#3b3d42] text-base placeholder:text-[#8b9daf] bg-white transition-colors duration-200"
+                    className="h-12 w-full rounded-none border-0 border-b-2 border-[#c8d4e0] px-0 pt-2 pb-3 text-base text-[#3b3d42] placeholder:text-[#8b9daf] focus:border-transparent focus:ring-0"
                   />
                 </div>
 
-                {/* Email Field */}
+                {/* Email */}
                 <div>
                   <Input
                     type="email"
@@ -175,11 +142,11 @@ const ContactHero = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full h-12 px-0 pb-3 pt-2 border-0 border-b-2 border-[#c8d4e0] rounded-none focus:border-[#398ffc] focus:ring-0 text-[#3b3d42] text-base placeholder:text-[#8b9daf] bg-white transition-colors duration-200"
+                    className="h-12 w-full rounded-none border-0 border-b-2 border-[#c8d4e0] px-0 pt-2 pb-3 text-base text-[#3b3d42] placeholder:text-[#8b9daf] focus:border-transparent focus:ring-0"
                   />
                 </div>
 
-                {/* Mensagem Field */}
+                {/* Mensagem */}
                 <div>
                   <textarea
                     name="mensagem"
@@ -190,11 +157,11 @@ const ContactHero = () => {
                     value={formData.mensagem}
                     onChange={handleChange}
                     rows={4}
-                    className="w-full px-0 pb-3 pt-2 border-0 border-b-2 border-[#c8d4e0] rounded-none focus:border-[#398ffc] focus:ring-0 text-[#3b3d42] text-base placeholder:text-[#8b9daf] resize-none bg-white transition-colors duration-200"
+                    className="w-full resize-none rounded-none border-0 border-b-2 border-[#c8d4e0] px-0 pt-2 pb-3 text-base text-[#3b3d42] placeholder:text-[#8b9daf] focus:border-transparent focus:ring-0"
                   />
                 </div>
 
-                {/* Consentimento Checkbox */}
+                {/* Checkbox */}
                 <div className="flex items-start space-x-3 pt-2">
                   <input
                     type="checkbox"
@@ -203,23 +170,21 @@ const ContactHero = () => {
                     checked={formData.consentimento}
                     onChange={handleChange}
                     required
-                    className="mt-1 w-4 h-4 text-[#398ffc] border-gray-300 rounded focus:ring-[#398ffc]"
+                    className="mt-1 h-4 w-4 rounded border-[#15467d] accent-[#15467d] focus:ring-[#15467d]"
                   />
+
                   <label
                     htmlFor="consentimento"
-                    className="text-sm text-[#a1a2a4] leading-relaxed cursor-pointer"
+                    className="cursor-pointer text-sm leading-relaxed text-[#88a9c3]"
                   >
                     I accept the{" "}
-                    <Link
-                      href="/termos-e-condicoes"
-                      className="text-[#398ffc] hover:underline"
-                    >
+                    <Link href="/termos-e-condicoes" className="text-[#88a9c3]">
                       terms and conditions
                     </Link>{" "}
                     and the{" "}
                     <Link
                       href="/politica-de-privacidade"
-                      className="text-[#398ffc] hover:underline"
+                      className="text-[#88a9c3]"
                     >
                       privacy policy
                     </Link>
@@ -227,11 +192,10 @@ const ContactHero = () => {
                   </label>
                 </div>
 
-                {/* Submit Button */}
                 <Button
                   type="submit"
                   disabled={loading}
-                  className="w-full h-12 rounded-[29px] text-base font-semibold bg-[#15467d] hover:bg-[#1a5691] text-white transition-colors duration-300"
+                  className="h-12 w-40 rounded-[29px] bg-[#15467d] text-base text-white transition-none hover:bg-[#15467d] focus:bg-[#15467d] active:bg-[#15467d]"
                   size="lg"
                 >
                   {loading ? "Sending..." : "To send"}
@@ -242,10 +206,10 @@ const ContactHero = () => {
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className={`p-4 rounded-lg text-sm ${
+                    className={`rounded-lg p-4 text-sm ${
                       message.type === "success"
-                        ? "bg-green-50 text-green-700 border border-green-200"
-                        : "bg-red-50 text-red-700 border border-red-200"
+                        ? "border border-green-200 bg-green-50 text-green-700"
+                        : "border border-red-200 bg-red-50 text-red-700"
                     }`}
                   >
                     {message.text}

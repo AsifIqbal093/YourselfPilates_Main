@@ -23,7 +23,7 @@ const FeatureCard = ({
       transition={{ duration: 0.5 }}
       whileHover={{ scale: 1.02 }}
       className={cn(
-        "relative h-[378px] rounded-[26px] p-8 md:p-10 overflow-hidden group",
+        "group relative h-[378px] overflow-hidden rounded-[26px] p-8 md:p-10",
         "flex flex-col justify-end",
         className
       )}
@@ -49,22 +49,24 @@ const FeatureCard = ({
         </div>
       )}
 
-
       {/* Content */}
       <div
-        className="relative z-10 space-y-4 max-w-[352px]"
+        className="relative z-10 max-w-[352px] space-y-4"
         style={{ bottom: "4rem", color: textColor }}
       >
         {icon && (
           <div
-            className="w-12 h-12 flex items-center justify-center"
+            className="flex h-12 w-12 items-center justify-center"
             style={{ color: textColor }}
           >
             {icon}
           </div>
         )}
 
-        <h3 className="text-3xl font-semibold leading-tight" style={{ color: textColor }}>
+        <h3
+          className="text-3xl leading-tight font-semibold"
+          style={{ color: textColor }}
+        >
           {title}
         </h3>
 
@@ -81,7 +83,7 @@ const FeatureCard = ({
       {/* Decorative Element */}
       <div
         className={cn(
-          "absolute -bottom-12 -right-12 opacity-10",
+          "absolute -right-12 -bottom-12 opacity-10",
           "transition-transform duration-500 group-hover:scale-110",
           accent ? "bg-white" : "bg-primary"
         )}

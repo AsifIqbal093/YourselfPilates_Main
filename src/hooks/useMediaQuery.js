@@ -8,17 +8,24 @@ import { useState, useEffect } from "react";
  * @returns {boolean} - Whether the media query matches
  */
 export function useMediaQuery(query) {
+  // Initialize with false to avoid hydration mismatch
   const [matches, setMatches] = useState(false);
-  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
-    const mediaQuery = window.matchMedia(query);
-    setMatches(mediaQuery.matches);
+    // Early return check for window
+    if (typeof window === "undefined") {
+      return;
+    }
 
+    const mediaQuery = window.matchMedia(query);
+
+    // Handler function to update state
     const handler = (event) => {
       setMatches(event.matches);
     };
+
+    // Set initial value
+    handler(mediaQuery);
 
     // Modern browsers
     if (mediaQuery.addEventListener) {
@@ -30,11 +37,6 @@ export function useMediaQuery(query) {
       return () => mediaQuery.removeListener(handler);
     }
   }, [query]);
-
-  // Return false on server-side and before mount to avoid hydration mismatch
-  if (!mounted) {
-    return false;
-  }
 
   return matches;
 }
