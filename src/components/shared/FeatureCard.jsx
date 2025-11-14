@@ -81,7 +81,7 @@ const FeatureCard = ({
       {/* Decorative Element */}
       <div
         className={cn(
-          "absolute -bottom-12 -right-12 w-48 h-48 rounded-full opacity-10",
+          "absolute -bottom-12 -right-12 opacity-10",
           "transition-transform duration-500 group-hover:scale-110",
           accent ? "bg-white" : "bg-primary"
         )}

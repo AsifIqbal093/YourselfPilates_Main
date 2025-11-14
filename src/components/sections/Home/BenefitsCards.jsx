@@ -12,8 +12,8 @@ const BenefitsCards = () => {
 			title: "Low Initial Cost",
 			description:
 				"Aluguer flexível por hora, sem compromissos mensais fixos. Pague apenas pelo tempo que utiliza e maximize o seu investimento.",
-			logo: "/images/WhiteLogo.png",
-			image: "/images/04.png",
+			logo: "/icons/LightLogo.png",
+			image: "/images/WhyYourself/1.jpg",
 			accent: true,
 			overlayColor: "#5d8fb6ff",
 			textColor: "white",
@@ -22,8 +22,8 @@ const BenefitsCards = () => {
 			title: "Total focus on the student.",
 			description:
 				"Processo simples e rápido. Agende online em poucos cliques e comece a utilizar o espaço imediatamente, sem papelada desnecessária.",
-			logo: "/images/DarkBlueLogo.png",
-			image: "/images/06.png",
+			logo: "/icons/DarkLogo.png",
+			image: "/images/WhyYourself/2.jpg",
 			accent: false,
 			overlayColor: "white",
 			textColor: "#15467d",
@@ -32,8 +32,8 @@ const BenefitsCards = () => {
 			title: "Total Professional Environment",
 			description:
 				"Use o espaço sempre que precisar. Horários totalmente flexíveis e adaptados à sua rotina.",
-			logo: "/images/DarkBlueLogo.png",
-			image: "/images/07.png",
+        logo: "/icons/DarkLogo.png",
+        image: "/images/WhyYourself/3.jpg",
 			accent: true,
 			overlayColor: "white",
 			textColor: "#15467d",
@@ -42,8 +42,8 @@ const BenefitsCards = () => {
 			title: "Networking",
 			description:
 				"Estrutura moderna, limpa e equipada para oferecer a melhor experiência aos seus clientes.",
-			logo: "/images/WhiteLogo.png",
-			image: "/images/08.png",
+			logo: "/icons/LightLogo.png",
+			image: "/images/WhyYourself/1.jpg",
 			accent: false,
 			overlayColor: "#5d8fb6ff",
 			textColor: "white",
@@ -52,8 +52,8 @@ const BenefitsCards = () => {
 			title: "Flexible Hours",
 			description:
 				"Equipe pronta para ajudar você em tudo que precisar, garantindo uma experiência sem preocupações.",
-			logo: "/images/WhiteLogo.png",
-			image: "/images/07.png",
+			logo: "/icons/LightLogo.png",
+			image: "/images/WhyYourself/5.jpg",
 			accent: true,
 			overlayColor: "#5d8fb6ff",
 			textColor: "white",
@@ -62,8 +62,8 @@ const BenefitsCards = () => {
 			title: "Finances under control",
 			description:
 				"Espaços em áreas estratégicas, fáceis de acessar e próximas aos principais pontos da cidade.",
-			logo: "/images/DarkBlueLogo.png",
-			image: "/images/10.png",
+        logo: "/icons/DarkLogo.png",
+        image: "/images/WhyYourself/6.png",
 			accent: false,
 			overlayColor: "white",
 			textColor: "#15467d",
@@ -102,7 +102,7 @@ const BenefitsCards = () => {
 					variants={containerVariants}
 					initial="hidden"
 					animate="visible"
-					className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-10"
+					className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-10 justify-items-center mx-auto max-w-[1200px]"
 				>
 					{benefits.map((benefit, index) => (
 						<motion.div key={index} variants={itemVariants}>
