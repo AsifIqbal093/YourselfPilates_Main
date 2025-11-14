@@ -84,7 +84,7 @@ const WhatsappButtonWithDialog = () => {
 					</div>
 					<Button
 						onClick={handleWhatsAppContact}
-            className="mx-auto w-full bg-[#25D366] text-white flex items-center justify-center rounded-full lowercase transition-colors duration-200 hover:bg-[#20b358]"
+						className="mx-auto w-full bg-[#25D366] text-white flex items-center justify-center rounded-full lowercase transition-colors duration-200 hover:bg-[#20b358]"
 						size="sm"
 					>
 						<img src="/icons/whatsapp.svg" alt="WhatsApp" className="w-5 h-5" />
@@ -93,12 +93,7 @@ const WhatsappButtonWithDialog = () => {
 
 					<p className="text-center text-sm text-muted-foreground mt-2">
 						🟢 Online |{" "}
-						<a
-							href="/politica-de-privacidade"
-							className="text-red-500"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
+						<a href="/politica-de-privacidade" className="text-red-500">
 							Política de Privacidade
 						</a>
 					</p>

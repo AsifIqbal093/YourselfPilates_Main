@@ -1,657 +1,199 @@
 /**
- * Privacy Policy Content - YourSelf Pilates
- * GDPR/RGPD Compliant Privacy Policy
- * Language: Portuguese (PT-PT)
- * Last Updated: November 12, 2025
+ * Política de Privacidade — YourSelf Pilates
+ * Conteúdo fornecido pelo cliente
+ * Última atualização: 14 de Novembro de 2025
  */
 
 export const PRIVACY_POLICY = {
-  lastUpdated: "12 de Novembro de 2025",
+  lastUpdated: "14 de Novembro de 2025",
 
   sections: [
     {
       id: "introducao",
-      title: "1. Introdução",
-      content: [
-        {
-          type: "paragraph",
-          text: 'A YourSelf Pilates ("nós", "nosso" ou "empresa") está comprometida em proteger a privacidade dos visitantes do nosso website e dos nossos clientes. Esta Política de Privacidade descreve como recolhemos, usamos, divulgamos e protegemos as suas informações pessoais quando utiliza o nosso website www.yourselfpilates.pt e os nossos serviços.',
-        },
-        {
-          type: "paragraph",
-          text: "Ao utilizar o nosso website e serviços, concorda com a recolha e utilização de informações de acordo com esta política.",
-        },
-      ],
-    },
-    {
-      id: "responsavel",
-      title: "2. Responsável pelo Tratamento de Dados",
       content: [
         {
           type: "heading",
-          text: "YourSelf Pilates",
         },
         {
-          type: "list",
-          items: [
-            "Morada: Rua Diário de Notícias nº 09, 2500-107 Caldas da Rainha",
-            "Email: info@yourselfpilates.pt",
-            "Telefone: 927 078 842",
-          ],
+          type: "paragraph",
+          text:
+            "Este website pertence e é operado por YOURSELF PILATES, titular de BIGPIRES IMPORTS LDA, com sede em Largo dos Heróis de Naulila 16 17, Loja 15, 2500-107 Caldas da Rainha, NIF 515004405, Telefone +351 927078842 e email: yourselfpilates@gmail.com. O uso dos serviços e a navegação no site implicam a aceitação plena dos presentes Termos e Condições, celebrados ao abrigo da legislação portuguesa em vigor.",
         },
       ],
     },
+
     {
-      id: "informacoes-recolhidas",
-      title: "3. Informações que Recolhemos",
+      id: "conteudo-acesso",
       content: [
-        {
-          type: "subheading",
-          text: "3.1 Informações Fornecidas Diretamente por Si",
-        },
-        {
-          type: "paragraph",
-          text: "Recolhemos informações que nos fornece diretamente quando:",
-        },
-        {
-          type: "list",
-          items: [
-            "Preenche formulários de contacto",
-            "Efetua reservas de espaço",
-            "Cria uma conta no nosso website",
-            "Subscreve a nossa newsletter",
-            "Contacta-nos por email ou telefone",
-          ],
-        },
-        {
-          type: "paragraph",
-          text: "Estas informações podem incluir:",
-        },
-        {
-          type: "list",
-          items: [
-            "Nome completo",
-            "Endereço de email",
-            "Número de telefone",
-            "Informações de pagamento",
-            "Credenciais profissionais (quando aplicável)",
-            "Preferências de comunicação",
-          ],
-        },
-        {
-          type: "subheading",
-          text: "3.2 Informações Recolhidas Automaticamente",
-        },
-        {
-          type: "paragraph",
-          text: "Quando visita o nosso website, recolhemos automaticamente certas informações, incluindo:",
-        },
-        {
-          type: "list",
-          items: [
-            "Endereço IP",
-            "Tipo de navegador",
-            "Sistema operativo",
-            "Páginas visitadas e duração da visita",
-            "Fonte de referência",
-            "Cookies e tecnologias similares",
-          ],
-        },
-        {
-          type: "subheading",
-          text: "3.3 Informações de Terceiros",
-        },
-        {
-          type: "paragraph",
-          text: "Podemos receber informações sobre si de terceiros, como:",
-        },
-        {
-          type: "list",
-          items: [
-            "Plataformas de redes sociais (quando conecta as suas contas)",
-            "Processadores de pagamento",
-            "Serviços de análise",
-          ],
-        },
-      ],
-    },
-    {
-      id: "como-utilizamos",
-      title: "4. Como Utilizamos as Suas Informações",
-      content: [
-        {
-          type: "paragraph",
-          text: "Utilizamos as informações recolhidas para os seguintes fins:",
-        },
-        {
-          type: "subheading",
-          text: "4.1 Prestação de Serviços",
-        },
-        {
-          type: "list",
-          items: [
-            "Processar e gerir as suas reservas de espaço",
-            "Confirmar disponibilidade e horários",
-            "Processar pagamentos",
-            "Fornecer suporte ao cliente",
-            "Comunicar sobre os nossos serviços",
-          ],
-        },
-        {
-          type: "subheading",
-          text: "4.2 Comunicações de Marketing",
-        },
-        {
-          type: "list",
-          items: [
-            "Enviar newsletters e atualizações (com o seu consentimento)",
-            "Informar sobre novas ofertas e promoções",
-            "Partilhar conteúdo relevante sobre Pilates e bem-estar",
-          ],
-        },
-        {
-          type: "subheading",
-          text: "4.3 Melhorias e Análise",
-        },
-        {
-          type: "list",
-          items: [
-            "Melhorar o nosso website e serviços",
-            "Analisar tendências e comportamentos de utilização",
-            "Realizar pesquisas de mercado",
-            "Desenvolver novos produtos e serviços",
-          ],
-        },
-        {
-          type: "subheading",
-          text: "4.4 Cumprimento Legal",
-        },
-        {
-          type: "list",
-          items: [
-            "Cumprir obrigações legais",
-            "Proteger direitos e propriedade",
-            "Prevenir fraudes e atividades ilegais",
-          ],
-        },
-      ],
-    },
-    {
-      id: "base-legal",
-      title: "5. Base Legal para o Tratamento de Dados (RGPD)",
-      content: [
-        {
-          type: "paragraph",
-          text: "Tratamos os seus dados pessoais com base nas seguintes bases legais:",
-        },
-        {
-          type: "list",
-          items: [
-            "Consentimento: Quando nos dá permissão explícita",
-            "Execução de Contrato: Para fornecer os serviços que solicitou",
-            "Interesse Legítimo: Para melhorar os nossos serviços e comunicações",
-            "Obrigação Legal: Para cumprir requisitos legais",
-          ],
-        },
-      ],
-    },
-    {
-      id: "partilha",
-      title: "6. Partilha de Informações",
-      content: [
-        {
-          type: "paragraph",
-          text: "Não vendemos, alugamos ou trocamos as suas informações pessoais. Podemos partilhar informações apenas nas seguintes circunstâncias:",
-        },
-        {
-          type: "subheading",
-          text: "6.1 Prestadores de Serviços",
-        },
-        {
-          type: "list",
-          items: [
-            "Processadores de pagamento (ex: Stripe, PayPal)",
-            "Serviços de email marketing (ex: Mailchimp)",
-            "Serviços de hospedagem web (ex: Vercel)",
-            "Ferramentas de análise (ex: Google Analytics)",
-          ],
-        },
-        {
-          type: "subheading",
-          text: "6.2 Requisitos Legais",
-        },
-        {
-          type: "list",
-          items: [
-            "Quando exigido por lei ou ordem judicial",
-            "Para proteger direitos, propriedade ou segurança",
-            "Em caso de fusão, aquisição ou venda de ativos",
-          ],
-        },
-        {
-          type: "subheading",
-          text: "6.3 Com o Seu Consentimento",
-        },
-        {
-          type: "list",
-          items: ["Quando autoriza expressamente a partilha"],
-        },
-      ],
-    },
-    {
-      id: "cookies",
-      title: "7. Cookies e Tecnologias de Rastreamento",
-      content: [
-        {
-          type: "subheading",
-          text: "7.1 O Que São Cookies?",
-        },
-        {
-          type: "paragraph",
-          text: "Cookies são pequenos ficheiros de texto armazenados no seu dispositivo quando visita um website.",
-        },
-        {
-          type: "subheading",
-          text: "7.2 Tipos de Cookies Que Utilizamos",
-        },
-        {
-          type: "paragraph",
-          text: "Cookies Essenciais:",
-        },
-        {
-          type: "list",
-          items: [
-            "Necessários para o funcionamento do website",
-            "Gestão de sessões e autenticação",
-          ],
-        },
-        {
-          type: "paragraph",
-          text: "Cookies de Desempenho:",
-        },
-        {
-          type: "list",
-          items: [
-            "Google Analytics para análise de tráfego",
-            "Medição de desempenho do website",
-          ],
-        },
-        {
-          type: "paragraph",
-          text: "Cookies de Funcionalidade:",
-        },
-        {
-          type: "list",
-          items: [
-            "Lembrar preferências do utilizador",
-            "Personalização da experiência",
-          ],
-        },
-        {
-          type: "paragraph",
-          text: "Cookies de Marketing:",
-        },
-        {
-          type: "list",
-          items: [
-            "Publicidade direcionada (com consentimento)",
-            "Redes sociais e integração de terceiros",
-          ],
-        },
-        {
-          type: "subheading",
-          text: "7.3 Gestão de Cookies",
-        },
-        {
-          type: "paragraph",
-          text: "Pode controlar e gerir cookies através das configurações do seu navegador. Note que desativar cookies pode afetar a funcionalidade do website.",
-        },
-      ],
-    },
-    {
-      id: "direitos",
-      title: "8. Os Seus Direitos (RGPD)",
-      content: [
-        {
-          type: "paragraph",
-          text: "De acordo com o Regulamento Geral de Proteção de Dados (RGPD), tem os seguintes direitos:",
-        },
-        {
-          type: "subheading",
-          text: "8.1 Direito de Acesso",
-        },
-        {
-          type: "paragraph",
-          text: "Pode solicitar uma cópia dos seus dados pessoais.",
-        },
-        {
-          type: "subheading",
-          text: "8.2 Direito de Retificação",
-        },
-        {
-          type: "paragraph",
-          text: "Pode solicitar a correção de dados incorretos ou incompletos.",
-        },
-        {
-          type: "subheading",
-          text: '8.3 Direito ao Apagamento ("Direito a Ser Esquecido")',
-        },
-        {
-          type: "paragraph",
-          text: "Pode solicitar a eliminação dos seus dados pessoais.",
-        },
-        {
-          type: "subheading",
-          text: "8.4 Direito à Limitação do Tratamento",
-        },
-        {
-          type: "paragraph",
-          text: "Pode solicitar a restrição do tratamento dos seus dados.",
-        },
-        {
-          type: "subheading",
-          text: "8.5 Direito à Portabilidade dos Dados",
-        },
-        {
-          type: "paragraph",
-          text: "Pode solicitar a transferência dos seus dados para outro prestador de serviços.",
-        },
-        {
-          type: "subheading",
-          text: "8.6 Direito de Oposição",
-        },
-        {
-          type: "paragraph",
-          text: "Pode opor-se ao tratamento dos seus dados para fins de marketing.",
-        },
-        {
-          type: "subheading",
-          text: "8.7 Direito de Retirar o Consentimento",
-        },
-        {
-          type: "paragraph",
-          text: "Pode retirar o seu consentimento a qualquer momento.",
-        },
-        {
-          type: "subheading",
-          text: "8.8 Direito de Apresentar Reclamação",
-        },
-        {
-          type: "paragraph",
-          text: "Pode apresentar uma reclamação à CNPD (Comissão Nacional de Proteção de Dados).",
-        },
-        {
-          type: "paragraph",
-          text: "Para exercer os seus direitos, contacte-nos através de: info@yourselfpilates.pt",
-        },
-      ],
-    },
-    {
-      id: "seguranca",
-      title: "9. Segurança dos Dados",
-      content: [
-        {
-          type: "paragraph",
-          text: "Implementamos medidas técnicas e organizacionais adequadas para proteger os seus dados pessoais:",
-        },
-        {
-          type: "list",
-          items: [
-            "Encriptação SSL/TLS para transmissão de dados",
-            "Armazenamento seguro em servidores protegidos",
-            "Acesso restrito aos dados pessoais",
-            "Formação regular da equipa sobre proteção de dados",
-            "Políticas de segurança e procedimentos rigorosos",
-          ],
-        },
-        {
-          type: "paragraph",
-          text: "No entanto, nenhum método de transmissão ou armazenamento é 100% seguro. Fazemos o nosso melhor para proteger os seus dados, mas não podemos garantir segurança absoluta.",
-        },
-      ],
-    },
-    {
-      id: "retencao",
-      title: "10. Retenção de Dados",
-      content: [
-        {
-          type: "paragraph",
-          text: "Retemos os seus dados pessoais apenas pelo tempo necessário para:",
-        },
-        {
-          type: "list",
-          items: [
-            "Cumprir os fins para os quais foram recolhidos",
-            "Satisfazer requisitos legais, contabilísticos ou de reporte",
-            "Resolver disputas e fazer cumprir acordos",
-          ],
-        },
-        {
-          type: "paragraph",
-          text: "Períodos de retenção típicos:",
-        },
-        {
-          type: "list",
-          items: [
-            "Dados de clientes ativos: Durante a relação comercial",
-            "Dados de reservas: 5 anos (requisitos fiscais)",
-            "Dados de marketing: Até retirar o consentimento",
-            "Dados de análise: Dados agregados e anonimizados",
-          ],
-        },
-      ],
-    },
-    {
-      id: "transferencias",
-      title: "11. Transferências Internacionais de Dados",
-      content: [
-        {
-          type: "paragraph",
-          text: "Os seus dados podem ser transferidos e processados em países fora da União Europeia. Quando isso ocorre, garantimos que:",
-        },
-        {
-          type: "list",
-          items: [
-            "Existem salvaguardas adequadas (cláusulas contratuais padrão)",
-            "O país garante um nível adequado de proteção de dados",
-            "Obtemos o seu consentimento explícito quando necessário",
-          ],
-        },
-        {
-          type: "paragraph",
-          text: "Prestadores de serviços internacionais que utilizamos:",
-        },
-        {
-          type: "list",
-          items: [
-            "Google (EUA - Privacy Shield Framework)",
-            "Vercel (EUA - cláusulas contratuais padrão)",
-            "Stripe (EUA - certificações de segurança)",
-          ],
-        },
-      ],
-    },
-    {
-      id: "menores",
-      title: "12. Proteção de Menores",
-      content: [
-        {
-          type: "paragraph",
-          text: "Os nossos serviços são destinados a adultos e profissionais. Não recolhemos intencionalmente informações de menores de 18 anos. Se descobrirmos que recolhemos dados de menores, eliminaremos essas informações prontamente.",
-        },
-        {
-          type: "paragraph",
-          text: "Se acredita que o seu filho nos forneceu informações pessoais, contacte-nos imediatamente.",
-        },
-      ],
-    },
-    {
-      id: "links",
-      title: "13. Links para Outros Websites",
-      content: [
-        {
-          type: "paragraph",
-          text: "O nosso website pode conter links para websites de terceiros. Não somos responsáveis pelas práticas de privacidade desses websites. Recomendamos que leia as políticas de privacidade de qualquer website que visite.",
-        },
-        {
-          type: "paragraph",
-          text: "Terceiros que podemos linkar:",
-        },
-        {
-          type: "list",
-          items: [
-            "Redes sociais (Instagram, Facebook)",
-            "Plataformas de reserva",
-            "Processadores de pagamento",
-          ],
-        },
-      ],
-    },
-    {
-      id: "alteracoes",
-      title: "14. Alterações a Esta Política",
-      content: [
-        {
-          type: "paragraph",
-          text: "Podemos atualizar esta Política de Privacidade periodicamente para refletir:",
-        },
-        {
-          type: "list",
-          items: [
-            "Mudanças nas nossas práticas",
-            "Alterações legais ou regulamentares",
-            "Novos serviços ou funcionalidades",
-          ],
-        },
-        {
-          type: "paragraph",
-          text: "Notificaremos sobre alterações significativas através de:",
-        },
-        {
-          type: "list",
-          items: [
-            "Aviso destacado no website",
-            "Email para utilizadores registados",
-            'Atualização da data "Última atualização" no topo desta página',
-          ],
-        },
-        {
-          type: "paragraph",
-          text: "O seu uso continuado dos nossos serviços após alterações constitui aceitação da política atualizada.",
-        },
-      ],
-    },
-    {
-      id: "marketing",
-      title: "15. Marketing e Comunicações",
-      content: [
-        {
-          type: "subheading",
-          text: "15.1 Subscrição de Newsletter",
-        },
-        {
-          type: "paragraph",
-          text: "Com o seu consentimento, enviamos:",
-        },
-        {
-          type: "list",
-          items: [
-            "Newsletters mensais",
-            "Ofertas especiais e promoções",
-            "Dicas e conteúdo sobre Pilates",
-            "Atualizações de serviços",
-          ],
-        },
-        {
-          type: "subheading",
-          text: "15.2 Como Cancelar a Subscrição",
-        },
-        {
-          type: "paragraph",
-          text: "Pode cancelar a subscrição a qualquer momento:",
-        },
-        {
-          type: "list",
-          items: [
-            'Clicando no link "Cancelar subscrição" nos emails',
-            "Contactando-nos diretamente",
-            "Ajustando as preferências na sua conta",
-          ],
-        },
-        {
-          type: "subheading",
-          text: "15.3 Comunicações Transacionais",
-        },
-        {
-          type: "paragraph",
-          text: "Algumas comunicações são essenciais para o serviço e não podem ser canceladas:",
-        },
-        {
-          type: "list",
-          items: [
-            "Confirmações de reserva",
-            "Recibos e faturas",
-            "Atualizações importantes de serviço",
-            "Comunicações de segurança",
-          ],
-        },
-      ],
-    },
-    {
-      id: "contacto",
-      title: "16. Informações de Contacto",
-      content: [
-        {
-          type: "paragraph",
-          text: "Para questões relacionadas com privacidade ou para exercer os seus direitos:",
-        },
         {
           type: "heading",
-          text: "YourSelf Pilates",
+          text: "CONTEÚDO E ACESSO",
         },
         {
-          type: "list",
-          items: [
-            "Endereço: Rua Diário de Notícias nº 09, 2500-107 Caldas da Rainha",
-            "Email: info@yourselfpilates.pt",
-            "Telefone: 927 078 842",
-            "Website: www.yourselfpilates.pt",
-          ],
+          type: "paragraph",
+          text:
+            "Os presentes Termos e Condições regulam a prestação de serviços pela Yourself Pilates, designadamente o aluguer temporário de espaço equipado para a prática de Pilates, por hora ou pacote de horas, mediante agendamento prévio e pagamento antecipado.",
         },
+      ],
+    },
+
+    {
+      id: "utilizacao-espaco",
+      content: [
         {
           type: "heading",
-          text: "Autoridade de Proteção de Dados em Portugal:",
+          text: "Utilização do Espaço",
         },
         {
           type: "list",
           items: [
-            "CNPD - Comissão Nacional de Proteção de Dados",
-            "Website: www.cnpd.pt",
-            "Email: geral@cnpd.pt",
-            "Telefone: +351 213 928 400",
+            "Utilizar o espaço exclusivamente para a prática de Pilates, de forma responsável e segura.",
+            "Respeitar os horários de reserva agendados.",
+            "Zelar pela boa utilização dos equipamentos, devendo comunicar qualquer anomalia imediatamente.",
+            "Não subalugar, ceder ou partilhar o espaço com terceiros sem autorização prévia.",
           ],
         },
       ],
     },
+
     {
-      id: "consentimento",
-      title: "17. Consentimento",
+      id: "reservas-pagamento",
       content: [
         {
-          type: "paragraph",
-          text: "Ao utilizar o nosso website e serviços, confirma que:",
+          type: "heading",
+          text: "Reservas e Pagamentos",
         },
         {
           type: "list",
           items: [
-            "Leu e compreendeu esta Política de Privacidade",
-            "Concorda com a recolha e utilização de informações conforme descrito",
-            "Tem mais de 18 anos ou tem permissão dos pais/tutores",
+            "As reservas devem ser realizadas através do site oficial ou canais autorizados.",
+            "O pagamento será efetuado antecipadamente por sessão ou pacote, via cartão de crédito, transferência bancária, MBWay ou outros meios disponíveis na plataforma.",
+            "O contrato de prestação de serviços considera-se celebrado no momento da confirmação do pagamento por parte da Yourself Pilates, nos termos do artigo 405.º do Código Civil.",
           ],
         },
+      ],
+    },
+
+    {
+      id: "cancelamentos",
+      content: [
         {
-          type: "paragraph",
-          text: "Se não concorda com esta política, por favor não utilize os nossos serviços.",
+          type: "heading",
+          text: "Cancelamentos e Livre Resolução",
+        },
+        {
+          type: "list",
+          items: [
+            "O cliente poderá cancelar ou remarcar uma sessão com mínimo de 24 horas de antecedência, sem qualquer penalização.",
+            "Cancelamentos com menos de 24 horas ou não comparência resultam na perda do valor pago.",
+            "Nos termos do Decreto-Lei n.º 24/2014, quando aplicável (ex.: compra de pacotes online sem agendamento imediato), o cliente tem 14 dias de calendário para exercer o direito de livre resolução, desde que não tenha usufruído do serviço durante esse período.",
+          ],
+        },
+      ],
+    },
+
+    {
+      id: "conduta",
+      content: [
+        {
+          type: "heading",
+          text: "Utilização do Espaço e Conduta",
+        },
+        {
+          type: "list",
+          items: [
+            "O cliente compromete-se a utilizar o espaço exclusivamente para práticas de Pilates, de forma individual ou com acompanhantes previamente autorizados.",
+            "O uso do espaço fora do horário reservado, ou por terceiros não registados, não é permitido.",
+            "O cliente deverá seguir as instruções de segurança, higiene e bom uso dos equipamentos fornecidas pela Yourself Pilates.",
+          ],
+        },
+      ],
+    },
+
+    {
+      id: "responsabilidade",
+      content: [
+        {
+          type: "heading",
+          text: "Danos, Responsabilidade e Seguro",
+        },
+        {
+          type: "list",
+          items: [
+            "A Yourself Pilates dispõe de seguro de responsabilidade civil profissional, conforme exigido pela legislação aplicável.",
+            "O cliente é responsável por danos causados por uso negligente dos equipamentos ou infraestruturas.",
+            "A Yourself Pilates não se responsabiliza por objetos pessoais deixados no espaço, salvo em caso de dolo ou negligência grave.",
+          ],
+        },
+      ],
+    },
+
+    {
+      id: "seguranca-acesso",
+      content: [
+        {
+          type: "heading",
+          text: "Acessibilidade e Segurança",
+        },
+        {
+          type: "list",
+          items: [
+            "A entrada no espaço está sujeita à apresentação de confirmação de reserva.",
+            "A Yourself Pilates reserva-se o direito de impedir o acesso ou permanência de utilizadores que violem estas condições ou coloquem em risco a segurança de terceiros.",
+            "As instalações cumprem os requisitos mínimos de segurança, higiene e acessibilidade previstos na legislação em vigor.",
+          ],
+        },
+      ],
+    },
+
+    {
+      id: "dados-pessoais",
+      content: [
+        {
+          type: "heading",
+          text: "Proteção de Dados Pessoais",
+        },
+        {
+          type: "list",
+          items: [
+            "Os dados recolhidos são tratados em conformidade com o Regulamento (UE) 2016/679 (RGPD), e utilizados exclusivamente para efeitos de reserva, faturação e comunicação.",
+            "O cliente tem o direito de aceder, corrigir, eliminar ou limitar o tratamento dos seus dados, bastando para isso contactar através dos canais disponibilizados no site.",
+            "Os dados não serão partilhados com terceiros, exceto por obrigação legal.",
+          ],
+        },
+      ],
+    },
+
+    {
+      id: "alteracoes-termos",
+      content: [
+        {
+          type: "heading",
+          text: "Alterações aos Termos e Condições",
+        },
+        {
+          type: "list",
+          items: [
+            "A Yourself Pilates reserva-se o direito de atualizar estes Termos e Condições a qualquer momento.",
+            "As alterações entrarão em vigor após a sua publicação no website, sendo aplicáveis apenas a reservas futuras.",
+          ],
+        },
+      ],
+    },
+
+    {
+      id: "legislacao-foro",
+      content: [
+        {
+          type: "heading",
+          text: "Legislação Aplicável e Foro Competente",
+        },
+        {
+          type: "list",
+          items: [
+            "Os presentes Termos regem-se pela legislação portuguesa.",
+            "Para a resolução de qualquer litígio emergente da interpretação ou execução deste contrato, é competente o Tribunal da Comarca da sede da Yourself Pilates, com expressa renúncia a qualquer outro.",
+          ],
         },
       ],
     },
