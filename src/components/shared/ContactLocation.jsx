@@ -71,7 +71,7 @@ const ContactLocation = () => {
 
           {/* Address Text Below Map*/}
           <motion.div variants={itemVariants} className="text-center">
-            <h3 className="text-sm font-normal text-[#15467d] md:text-base">
+            <h3 className="font-heading text-sm font-normal text-[#15467d] md:text-base">
               {CONTACT_INFO.address.fullAddress}
             </h3>
           </motion.div>
