@@ -2,6 +2,9 @@ import React from "react";
 import AboutHero from "@/components/sections/Sobre/AboutHero";
 import AboutIntro from "@/components/sections/Sobre/AboutIntro";
 import AboutFeatures from "@/components/sections/Sobre/AboutFeatures";
+import FeaturesGrid from "@/components/shared/FeaturesGrid";
+import SectionDivider from "@/components/shared/SectionDivider";
+import ImageCarousel from "@/components/shared/ImageCarousel";
 import EquipmentShowcase from "@/components/sections/Sobre/EquipmentShowcase";
 import BenefitsGrid from "@/components/sections/Sobre/BenefitsGrid";
 import ContactLocation from "@/components/sections/Contactos/ContactLocation";
@@ -22,8 +25,11 @@ const SobrePage = () => {
   return (
     <main className="min-h-screen">
       <AboutHero />
-      <AboutIntro />
-      <AboutFeatures />
+      {/* <AboutIntro /> */}
+      {/* <AboutFeatures /> */}
+      <SectionDivider title="Disponibilizamos" />
+      <FeaturesGrid />
+      <ImageCarousel />
       <EquipmentShowcase />
       <BenefitsGrid />
       <ContactLocation />
