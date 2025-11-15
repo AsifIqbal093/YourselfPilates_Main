@@ -10,6 +10,8 @@ import BenefitsCards from "@/components/shared/BenefitsCards";
 import BenefitsGrid from "@/components/sections/Sobre/BenefitsGrid";
 import ContactLocation from "@/components/shared/ContactLocation";
 import ContactSocial from "@/components/shared/ContactSocial";
+import FinalCTA from "@/components/sections/Home/FinalCTA";
+import CTAInfoText from "@/components/sections/Sobre/CTAInfoText";
 import { ABOUT_SEO } from "@/constants/AboutContent";
 
 export const metadata = {
@@ -35,6 +37,8 @@ const SobrePage = () => {
       {/* <BenefitsGrid /> */}
       <BenefitsCards />
       <ContactLocation />
+      <FinalCTA showCTA={false} />
+      <CTAInfoText />
       <ContactSocial />
     </main>
   );

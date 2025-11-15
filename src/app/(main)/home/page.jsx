@@ -24,30 +24,14 @@ export const metadata = {
 const HomePage = () => {
   return (
     <main className="min-h-screen">
-      {/* Hero Section - Main landing with CTAs and images */}
       <HeroSection />
-
-      {/* Brand Introduction - Logo and company description */}
-      {/* <BrandIntroduction /> */}
-
-      {/* Section Divider - "O seu studio de Pilates" */}
       <SectionDivider title="O seu studio de Pilates" />
-
-      {/* Features Grid - 6 feature boxes */}
       <FeaturesGrid />
-
-      {/* Image Carousel - Studio photos */}
       <ImageCarousel />
-
-      {/* Packages Listing - 3 pricing cards */}
       <PackagesListing />
-
-      {/* Benefits Cards - 2 large benefit cards */}
       <BenefitsCards />
-
       <Availibility />
-      {/* Final CTA - Dark section with call to action */}
-      <FinalCTA />
+      <FinalCTA showCTA={true} />
     </main>
   );
 };
