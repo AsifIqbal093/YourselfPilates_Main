@@ -5,10 +5,6 @@ import { motion } from "framer-motion";
 import { PhoneIcon } from "@/components/icons/CustomIcons";
 import { CONTACT_INFO } from "@/constants/ContactInfo";
 
-/**
- * Email Icon Component
- * SVG icon for email/message
- */
 const EmailIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -24,30 +20,20 @@ const EmailIcon = () => (
   </svg>
 );
 
-/**
- * Contact Info Section
- * Displays phone and email contact information in icon boxes
- */
 const ContactInfo = () => {
-  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
+    visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
   };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6 },
-    },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   };
+
+  const textColor = "#15467d";
+  const iconColor = "#88a9c3";
+  const fontFamily = "var(--font-accent)";
 
   return (
     <section className="bg-white py-12 md:py-16">
@@ -57,33 +43,39 @@ const ContactInfo = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="mx-auto grid max-w-5xl grid-cols-1 gap-y-1 md:grid-cols-2"
+          className="mx-auto grid max-w-6xl grid-cols-1 gap-8 md:grid-cols-2"
         >
           {/* Phone Contact Box */}
           <motion.div
             variants={itemVariants}
-            className="w-100 rounded-[17px] bg-gradient-to-br from-[#f8f9fa] to-[#e9ecef] p-8"
+            className="flex min-h-[220px] w-full items-center rounded-[17px] bg-gradient-to-br from-[#e8eff3] to-[#e9ecef] p-12"
           >
             <a
               href={`tel:${CONTACT_INFO.phone.formatted}`}
-              className="group flex items-start space-x-6"
+              className="group mx-auto flex items-center space-x-6"
             >
-              {/* Icon */}
               <div className="flex-shrink-0">
                 <div className="flex h-16 w-16 items-center justify-center">
-                  <PhoneIcon className="h-full w-full text-[#88a9c3]" />
+                  <PhoneIcon
+                    className="h-full w-full"
+                    style={{ color: iconColor }}
+                  />
                 </div>
               </div>
-
-              {/* Content */}
-              <div className="flex-1">
-                <h3 className="text-secondary mb-3 text-xl font-semibold">
+              <div className="flex-1 text-left" style={{ fontFamily }}>
+                <h3
+                  className="mb-2 text-xl font-semibold"
+                  style={{ color: textColor }}
+                >
                   {CONTACT_INFO.phone.label}
                 </h3>
-                <p className="text-secondary mb-1 text-lg font-medium">
+                <p
+                  className="mb-1 text-2xl font-bold"
+                  style={{ color: textColor }}
+                >
                   {CONTACT_INFO.phone.number}
                 </p>
-                <p className="text-xs text-gray-600">
+                <p className="text-xs" style={{ color: textColor }}>
                   {CONTACT_INFO.phone.note}
                 </p>
               </div>
@@ -93,25 +85,28 @@ const ContactInfo = () => {
           {/* Email Contact Box */}
           <motion.div
             variants={itemVariants}
-            className="w-100 rounded-[17px] bg-gradient-to-br from-[#f8f9fa] to-[#e9ecef] p-8"
+            className="flex min-h-[220px] w-full items-center rounded-[17px] bg-gradient-to-br from-[#e8eff3] to-[#e9ecef] p-12"
           >
             <a
               href={`mailto:${CONTACT_INFO.email.address}`}
-              className="group flex items-start space-x-6"
+              className="group mx-auto flex items-center space-x-6"
             >
-              {/* Icon */}
               <div className="flex-shrink-0">
                 <div className="flex h-16 w-16 items-center justify-center">
                   <EmailIcon />
                 </div>
               </div>
-
-              {/* Content */}
-              <div className="flex-1">
-                <h3 className="text-secondary mb-3 text-xl font-semibold">
+              <div className="flex-1 text-left" style={{ fontFamily }}>
+                <h3
+                  className="mb-2 text-xl font-semibold"
+                  style={{ color: textColor }}
+                >
                   {CONTACT_INFO.email.label}
                 </h3>
-                <p className="text-secondary g text-lg font-medium break-all">
+                <p
+                  className="text-2xl font-bold break-all"
+                  style={{ color: textColor }}
+                >
                   {CONTACT_INFO.email.address}
                 </p>
               </div>
