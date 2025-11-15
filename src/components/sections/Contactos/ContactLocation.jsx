@@ -2,8 +2,8 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { LocationDotIcon } from "@/components/icons/CustomIcons";
 import { CONTACT_INFO } from "@/constants/ContactInfo";
+import { MapPin } from "lucide-react";
 
 /**
  * Contact Location Section
@@ -40,12 +40,13 @@ const ContactLocation = () => {
           viewport={{ once: true, margin: "-100px" }}
           className="mx-auto max-w-6xl space-y-8"
         >
+          <MapPin className="h-6 w-6 items-center text-[#8faac1] md:mr-10 md:mb-[50px]" />
+
           {/* Section Title */}
           <motion.div
             variants={itemVariants}
             className="flex items-center justify-center space-x-3"
           >
-            <LocationDotIcon className="text-primary h-6 w-6" />
             <h2 className="text-secondary text-center text-2xl font-normal md:text-3xl">
               {CONTACT_INFO.address.label}
             </h2>
