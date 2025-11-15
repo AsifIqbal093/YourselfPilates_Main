@@ -41,12 +41,11 @@ const EquipmentShowcase = () => {
           transition={{ duration: 0.6 }}
           className="mb-12 text-center md:mb-16"
         >
-          <h2 className="text-3xl font-normal text-[#88a9c3] md:text-4xl lg:text-5xl">
+          <h2 className="font-accent text-3xl font-normal text-[#88a9c3] md:text-4xl lg:text-5xl">
             Conheça os nossos equipamentos{" "}
           </h2>
         </motion.div>
 
-        {/* Equipment Grid */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -60,23 +59,31 @@ const EquipmentShowcase = () => {
               variants={itemVariants}
               className="group flex flex-col"
             >
-              {/* Image Container */}
-              <div className="relative mb-6 aspect-square w-full overflow-hidden rounded-lg bg-white">
+              <div className="relative mx-auto mb-6 aspect-square w-88 overflow-hidden rounded-lg bg-white sm:w-56 md:w-64 lg:w-110">
                 <Image
                   src={item.image}
                   alt={item.name}
                   fill
-                  className="object-contain p-4 transition-transform duration-500 group-hover:scale-105"
+                  className="object-contain p-4"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>
 
-              {/* Text Content */}
-              <div className="space-y-3 text-center md:text-left">
-                <h3 className="text-2xl font-normal text-[#88a9c3] md:text-3xl">
+              <div className="flex flex-col items-center space-y-3 text-center">
+                <div className="relative mb-10 h-6 w-6 md:h-9 md:w-9">
+                  <Image
+                    src="/images/Ylogo.png"
+                    alt="Logo"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+
+                <h3 className="font-accent text-2xl font-normal text-[#88a9c3] md:text-4xl">
                   {item.name}
                 </h3>
-                <p className="text-sm leading-relaxed text-[#5a7a94] md:text-base">
+
+                <p className="mt-4 max-w-[450px] text-sm text-[#5a7a94] md:text-base">
                   {item.description}
                 </p>
               </div>

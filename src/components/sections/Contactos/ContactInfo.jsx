@@ -43,27 +43,36 @@ const ContactInfo = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="mx-auto grid max-w-6xl grid-cols-1 md:grid-cols-2 gap-8" 
+          className="mx-auto grid max-w-6xl grid-cols-1 gap-8 md:grid-cols-2"
         >
           {/* Phone Contact Box */}
           <motion.div
             variants={itemVariants}
-            className="w-full min-h-[220px] rounded-[17px] bg-gradient-to-br from-[#e8eff3] to-[#e9ecef] p-12 flex items-center" 
+            className="flex min-h-[220px] w-full items-center rounded-[17px] bg-gradient-to-br from-[#e8eff3] to-[#e9ecef] p-12"
           >
             <a
               href={`tel:${CONTACT_INFO.phone.formatted}`}
-              className="group flex items-center space-x-6 mx-auto"
+              className="group mx-auto flex items-center space-x-6"
             >
               <div className="flex-shrink-0">
                 <div className="flex h-16 w-16 items-center justify-center">
-                  <PhoneIcon className="h-full w-full" style={{ color: iconColor }} />
+                  <PhoneIcon
+                    className="h-full w-full"
+                    style={{ color: iconColor }}
+                  />
                 </div>
               </div>
               <div className="flex-1 text-left" style={{ fontFamily }}>
-                <h3 className="mb-2 text-xl font-semibold" style={{ color: textColor }}>
+                <h3
+                  className="mb-2 text-xl font-semibold"
+                  style={{ color: textColor }}
+                >
                   {CONTACT_INFO.phone.label}
                 </h3>
-                <p className="mb-1 text-2xl font-bold" style={{ color: textColor }}>
+                <p
+                  className="mb-1 text-2xl font-bold"
+                  style={{ color: textColor }}
+                >
                   {CONTACT_INFO.phone.number}
                 </p>
                 <p className="text-xs" style={{ color: textColor }}>
@@ -76,11 +85,11 @@ const ContactInfo = () => {
           {/* Email Contact Box */}
           <motion.div
             variants={itemVariants}
-            className="w-full min-h-[220px] rounded-[17px] bg-gradient-to-br from-[#e8eff3] to-[#e9ecef] p-12 flex items-center"
+            className="flex min-h-[220px] w-full items-center rounded-[17px] bg-gradient-to-br from-[#e8eff3] to-[#e9ecef] p-12"
           >
             <a
               href={`mailto:${CONTACT_INFO.email.address}`}
-              className="group flex items-center space-x-6 mx-auto"
+              className="group mx-auto flex items-center space-x-6"
             >
               <div className="flex-shrink-0">
                 <div className="flex h-16 w-16 items-center justify-center">
@@ -88,10 +97,16 @@ const ContactInfo = () => {
                 </div>
               </div>
               <div className="flex-1 text-left" style={{ fontFamily }}>
-                <h3 className="mb-2 text-xl font-semibold" style={{ color: textColor }}>
+                <h3
+                  className="mb-2 text-xl font-semibold"
+                  style={{ color: textColor }}
+                >
                   {CONTACT_INFO.email.label}
                 </h3>
-                <p className="text-2xl font-bold break-all" style={{ color: textColor }}>
+                <p
+                  className="text-2xl font-bold break-all"
+                  style={{ color: textColor }}
+                >
                   {CONTACT_INFO.email.address}
                 </p>
               </div>

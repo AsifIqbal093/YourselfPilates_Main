@@ -6,9 +6,12 @@ import FeaturesGrid from "@/components/shared/FeaturesGrid";
 import SectionDivider from "@/components/shared/SectionDivider";
 import ImageCarousel from "@/components/shared/ImageCarousel";
 import EquipmentShowcase from "@/components/sections/Sobre/EquipmentShowcase";
+import BenefitsCards from "@/components/shared/BenefitsCards";
 import BenefitsGrid from "@/components/sections/Sobre/BenefitsGrid";
-import ContactLocation from "@/components/sections/Contactos/ContactLocation";
-import ContactSocial from "@/components/sections/Contactos/ContactSocial";
+import ContactLocation from "@/components/shared/ContactLocation";
+import ContactSocial from "@/components/shared/ContactSocial";
+import FinalCTA from "@/components/sections/Home/FinalCTA";
+import CTAInfoText from "@/components/sections/Sobre/CTAInfoText";
 import { ABOUT_SEO } from "@/constants/AboutContent";
 
 export const metadata = {
@@ -31,8 +34,11 @@ const SobrePage = () => {
       <FeaturesGrid />
       <ImageCarousel />
       <EquipmentShowcase />
-      <BenefitsGrid />
+      {/* <BenefitsGrid /> */}
+      <BenefitsCards />
       <ContactLocation />
+      <FinalCTA showCTA={false} />
+      <CTAInfoText />
       <ContactSocial />
     </main>
   );

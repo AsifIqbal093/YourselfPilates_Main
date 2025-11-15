@@ -106,14 +106,13 @@ const ContactHero = () => {
           >
             {/* Heading */}
             <motion.div variants={itemVariants} className="mb-6 lg:mb-8">
-              <p className="mb-2 text-lg md:text-xl font-normal text-[#88a9c3]">
+              <p className="mb-2 text-lg font-normal text-[#88a9c3] md:text-xl">
                 Schedule a visit or get in touch.
               </p>
               <h1 className="font-accent text-6xl leading-tight text-[#15467d] md:text-7xl lg:text-8xl">
                 Contact
               </h1>
             </motion.div>
-
 
             {/* Contact Form */}
             <motion.div variants={itemVariants}>
@@ -151,7 +150,9 @@ const ContactHero = () => {
                   <textarea
                     name="mensagem"
                     id="mensagem"
-                    placeholder={CONTACT_FORM_CONFIG.fields.mensagem.placeholder}
+                    placeholder={
+                      CONTACT_FORM_CONFIG.fields.mensagem.placeholder
+                    }
                     value={formData.mensagem}
                     onChange={handleChange}
                     rows={4}
@@ -204,10 +205,11 @@ const ContactHero = () => {
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className={`rounded-lg p-4 text-sm ${message.type === "success"
+                    className={`rounded-lg p-4 text-sm ${
+                      message.type === "success"
                         ? "border border-green-200 bg-green-50 text-green-700"
                         : "border border-red-200 bg-red-50 text-red-700"
-                      }`}
+                    }`}
                   >
                     {message.text}
                   </motion.div>

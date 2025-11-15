@@ -30,7 +30,10 @@ const ContactLocation = () => {
   const secondLine = "das Caldas da Rainha";
 
   return (
-    <section className="bg-white py-12 md:py-16" style={{ fontFamily: 'var(--font-accent)' }}>
+    <section
+      className="bg-white py-12 md:py-16"
+      style={{ fontFamily: "var(--font-accent)" }}
+    >
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         <motion.div
           variants={containerVariants}
@@ -44,15 +47,14 @@ const ContactLocation = () => {
             className="flex flex-col items-center justify-center space-y-2"
           >
             <LocationPinIcon />
-            <h2 className="text-[#88a9c3] text-center text-4xl md:text-5xl">
+            <h2 className="text-center text-4xl text-[#88a9c3] md:text-5xl">
               {firstLine}
             </h2>
-            <h2 className="text-[#88a9c3] text-center text-4xl md:text-5xl">
+            <h2 className="text-center text-4xl text-[#88a9c3] md:text-5xl">
               {secondLine}
             </h2>
           </motion.div>
 
-          {/* Google Maps */}
           <motion.div
             variants={itemVariants}
             className="h-[400px] w-full overflow-hidden rounded-[26px] shadow-lg md:h-[500px]"
@@ -69,12 +71,10 @@ const ContactLocation = () => {
 
           {/* Address Text Below Map*/}
           <motion.div variants={itemVariants} className="text-center">
-            <h3 className="text-[#15467d] text-sm md:text-base font-normal">
+            <h3 className="font-heading text-sm font-normal text-[#15467d] md:text-base">
               {CONTACT_INFO.address.fullAddress}
             </h3>
           </motion.div>
-
-
         </motion.div>
       </div>
     </section>
