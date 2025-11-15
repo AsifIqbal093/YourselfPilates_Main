@@ -31,18 +31,21 @@ const ContactSocial = () => {
   };
 
   return (
-    <section className="bg-gradient-to-br from-[#15467d] to-[#398ffc] py-12 md:py-16">
+    <section
+      className="bg-[#edf2f6] py-12 md:py-16"
+      style={{ fontFamily: "var(--font-accent)" }}
+    >
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="mx-auto max-w-4xl space-y-8 text-center"
+          className="mx-auto flex max-w-4xl items-center justify-between"
         >
           {/* Section Title */}
           <motion.div variants={itemVariants}>
-            <h2 className="text-2xl font-normal text-white md:text-3xl">
+            <h2 className="text-3xl font-normal text-[#15467d] md:text-5xl lg:text-5xl">
               Visite as nossas redes sociais
             </h2>
           </motion.div>
@@ -50,7 +53,7 @@ const ContactSocial = () => {
           {/* Social Icons */}
           <motion.div
             variants={itemVariants}
-            className="flex items-center justify-center"
+            className="flex items-center justify-end"
           >
             <a
               href={CONTACT_INFO.social.instagram.url}
@@ -59,17 +62,10 @@ const ContactSocial = () => {
               className="group"
               aria-label={CONTACT_INFO.social.instagram.label}
             >
-              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white shadow-lg transition-transform duration-300 hover:scale-110 md:h-20 md:w-20">
-                <InstagramIcon className="text-primary group-hover:text-accent h-8 w-8 transition-colors duration-300 md:h-10 md:w-10" />
+              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#15467d] shadow-lg transition-transform duration-300 hover:scale-110 md:h-10 md:w-10">
+                <InstagramIcon className="h-4 w-4 text-white transition-colors duration-300 group-hover:text-white md:h-4 md:w-4" />
               </div>
             </a>
-          </motion.div>
-
-          {/* Social Handle (Optional) */}
-          <motion.div variants={itemVariants}>
-            <p className="text-lg text-white/90">
-              {CONTACT_INFO.social.instagram.handle}
-            </p>
           </motion.div>
         </motion.div>
       </div>

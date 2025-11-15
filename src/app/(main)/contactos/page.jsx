@@ -1,8 +1,8 @@
 import React from "react";
 import ContactHero from "@/components/sections/Contactos/ContactHero";
 import ContactInfo from "@/components/sections/Contactos/ContactInfo";
-import ContactLocation from "@/components/sections/Contactos/ContactLocation";
-import ContactSocial from "@/components/sections/Contactos/ContactSocial";
+import ContactLocation from "@/components/shared/ContactLocation";
+import ContactSocial from "@/components/shared/ContactSocial";
 
 /**
  * Contactos Page - Contact Us
