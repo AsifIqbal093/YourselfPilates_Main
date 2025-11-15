@@ -42,7 +42,7 @@ const EquipmentShowcase = () => {
           className="mb-12 text-center md:mb-16"
         >
           <h2 className="text-3xl font-normal text-[#88a9c3] md:text-4xl lg:text-5xl">
-            Discover our equipment
+            Conheça os nossos equipamentos{" "}
           </h2>
         </motion.div>
 
