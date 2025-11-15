@@ -1,9 +1,9 @@
 import React from "react";
 import HeroSection from "@/components/sections/Home/HeroSection";
 // import BrandIntroduction from "@/components/sections/Home/BrandIntroduction";
-import SectionDivider from "@/components/sections/Home/SectionDivider";
-import FeaturesGrid from "@/components/sections/Home/FeaturesGrid";
-import ImageCarousel from "@/components/sections/Home/ImageCarousel";
+import SectionDivider from "@/components/shared/SectionDivider";
+import FeaturesGrid from "@/components/shared/FeaturesGrid";
+import ImageCarousel from "@/components/shared/ImageCarousel";
 import PackagesListing from "@/components/sections/Home/PackagesListing";
 import BenefitsCards from "@/components/sections/Home/BenefitsCards";
 import FinalCTA from "@/components/sections/Home/FinalCTA";

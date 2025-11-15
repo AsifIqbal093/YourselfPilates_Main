@@ -1,166 +1,146 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { ABOUT_INTRO } from "@/constants/AboutContent";
 
-/**
- * About Hero Section
- * Features image collage with YourSelf Pilates branding matching WordPress layout
- */
-const AboutHero = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.1,
-      },
-    },
-  };
-
-  const imageVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6 },
-    },
-  };
+const OvalWrapper = ({ children, side = "left", className = "" }) => {
+  const shape =
+    side === "left"
+      ? "rounded-r-[160px] rounded-l-[0px]"
+      : "rounded-l-[160px] rounded-r-[0px]";
 
   return (
-    <section className="relative w-full overflow-hidden bg-white py-0 md:py-0">
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        className="space-y-0"
-      >
-        {/* Row 1: Large hero image with text + Curved barrel image */}
-        <div className="grid grid-cols-1 gap-0 md:grid-cols-2">
-          {/* Large image with text overlay */}
-          <motion.div
-            variants={imageVariants}
-            className="relative h-[300px] overflow-hidden md:h-[350px] lg:h-[400px]"
+    <div className={`relative overflow-hidden ${shape} ${className}`}>
+      {children}
+    </div>
+  );
+};
+
+const ScrollAnimatedImage = ({ children, side }) => {
+  const ref = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start 80%", "end 20%"],
+  });
+
+  const x = useTransform(
+    scrollYProgress,
+    [0, 1],
+    side === "left" ? [-150, -350] : [150, 350] // moves more as user scrolls
+  );
+  const opacity = useTransform(scrollYProgress, [0, 1], [1, 1]);
+
+  return (
+    <motion.div ref={ref} style={{ x, opacity }}>
+      {children}
+    </motion.div>
+  );
+};
+
+const AboutHero = () => {
+  return (
+    <section className="relative mt-[100px] w-full overflow-hidden bg-white pt-10 pb-20">
+      {/* Row 1 */}
+      <div className="grid grid-cols-1 gap-10 px-6 md:grid-cols-2 md:px-16">
+        {/* LEFT */}
+        <ScrollAnimatedImage side="left">
+          <OvalWrapper
+            side="left"
+            className="h-[230px] w-[1200px] md:h-[280px] lg:h-[280px]"
           >
             <Image
-              src="/images/16.jpg"
-              alt="YourSelf Pilates Equipment"
+              src="/images/On/1.jpg"
+              alt="Neon Pilates Sign"
               fill
               className="object-cover"
-              sizes="(max-width: 768px) 100vw, 50vw"
-              priority
             />
-            {/* Text Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-white/40 to-transparent" />
-            <div className="absolute inset-0 flex items-center justify-start px-8 md:px-12 lg:px-16">
-              <h1 className="text-4xl leading-tight font-light tracking-[0.2em] text-[#d4b896] md:text-5xl lg:text-6xl">
-                YourSelf Pilates
-              </h1>
-            </div>
-          </motion.div>
+          </OvalWrapper>
+        </ScrollAnimatedImage>
 
-          {/* Curved barrel/equipment image */}
-          <motion.div
-            variants={imageVariants}
-            className="relative h-[300px] overflow-hidden md:h-[350px] lg:h-[400px]"
+        <ScrollAnimatedImage side="right">
+          <div className="relative w-full">
+            <OvalWrapper
+              side="right"
+              className="absolute right-0 h-[280px] w-[1200px] translate-x-[-250px]"
+            >
+              <Image
+                src="/images/On/2.png"
+                alt="Pilates Wood Texture"
+                fill
+                className="object-cover"
+              />
+            </OvalWrapper>
+          </div>
+        </ScrollAnimatedImage>
+      </div>
+
+      <div className="mt-14 grid grid-cols-1 gap-10 px-6 md:grid-cols-2 md:px-16">
+        <ScrollAnimatedImage side="left">
+          <OvalWrapper
+            side="left"
+            className="h-[230px] w-[900px] md:h-[250px] lg:h-[280px]"
           >
             <Image
-              src="/images/2.jpg"
-              alt="Pilates Barrel Equipment"
+              src="/images/On/3.png"
+              alt="Small Pilates detail"
               fill
               className="object-cover"
-              sizes="(max-width: 768px) 100vw, 50vw"
-              priority
             />
-          </motion.div>
-        </div>
+          </OvalWrapper>
+        </ScrollAnimatedImage>
 
-        {/* Row 2: Three equal images */}
-        <div className="grid grid-cols-1 gap-0 md:grid-cols-3">
-          <motion.div
-            variants={imageVariants}
-            className="relative h-[200px] overflow-hidden md:h-[250px] lg:h-[300px]"
+        <ScrollAnimatedImage side="right">
+          <div className="relative w-full">
+            <OvalWrapper
+              side="right"
+              className="absolute right-0 h-[280px] w-[1200px] translate-x-[-400px]"
+            >
+              <Image
+                fill
+                src="/images/On/4.jpg"
+                alt="Pilates Wood Texture"
+                className="object-cover"
+              />
+            </OvalWrapper>
+          </div>
+        </ScrollAnimatedImage>
+      </div>
+
+      <div className="mt-16 grid grid-cols-1 gap-10 px-6 md:grid-cols-2 md:px-16">
+        <ScrollAnimatedImage side="left">
+          <OvalWrapper
+            side="left"
+            className="h-[230px] w-[1050px] md:h-[280px] lg:h-[300px]"
           >
             <Image
-              src="/images/3.jpg"
-              alt="Pilates Studio Interior"
+              src="/images/On/5.png"
+              alt="Pilates full"
               fill
               className="object-cover"
-              sizes="(max-width: 768px) 100vw, 33vw"
             />
-          </motion.div>
 
-          <motion.div
-            variants={imageVariants}
-            className="relative h-[200px] overflow-hidden md:h-[250px] lg:h-[300px]"
-          >
-            <Image
-              src="/images/16.jpg"
-              alt="Pilates Studio Equipment View"
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 33vw"
-            />
-          </motion.div>
-
-          <motion.div
-            variants={imageVariants}
-            className="relative h-[200px] overflow-hidden md:h-[250px] lg:h-[300px]"
-          >
-            <Image
-              src="/images/2.jpg"
-              alt="Pilates Reformer"
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 33vw"
-            />
-          </motion.div>
-        </div>
-
-        {/* Row 3: Image with logo overlay + Text content */}
-        <div className="grid grid-cols-1 gap-0 md:grid-cols-2">
-          {/* Image with logo overlay */}
-          <motion.div
-            variants={imageVariants}
-            className="relative h-[350px] overflow-hidden bg-[#e8e8e8] md:h-[400px] lg:h-[450px]"
-          >
-            <Image
-              src="/images/15.jpg"
-              alt="Pilates Session"
-              fill
-              className="object-cover opacity-90"
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
-            {/* Logo Overlay - larger and more prominent */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="relative h-40 w-40 opacity-40 md:h-52 md:w-52 lg:h-64 lg:w-64">
+            <div className="absolute inset-0 flex items-center justify-center bg-gray-500/50 opacity-80">
+              <div className="relative h-40 w-40 md:h-56 md:w-56 lg:h-72 lg:w-72">
                 <Image
-                  src="/images/Ylogo.png"
-                  alt="YourSelf Logo"
+                  src="/images/On/yourself-pilates-header-logo@2x.png"
+                  alt="logo"
                   fill
                   className="object-contain"
-                  sizes="256px"
                 />
               </div>
             </div>
-          </motion.div>
+          </OvalWrapper>
+        </ScrollAnimatedImage>
 
-          {/* Text content block */}
-          <motion.div
-            variants={imageVariants}
-            className="relative flex h-[350px] items-center justify-center bg-white px-8 md:h-[400px] md:px-12 lg:h-[450px] lg:px-16"
-          >
-            <div className="max-w-xl">
-              <p className="text-base leading-relaxed text-[#398ffc] md:text-lg">
-                {ABOUT_INTRO.description}
-              </p>
-            </div>
-          </motion.div>
+        <div className="flex max-w-lg items-center">
+          <p className="ml-10 text-[19px] font-normal text-[#15467d]">
+            {ABOUT_INTRO.description}
+          </p>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 };
