@@ -6,6 +6,7 @@ import FeaturesGrid from "@/components/shared/FeaturesGrid";
 import SectionDivider from "@/components/shared/SectionDivider";
 import ImageCarousel from "@/components/shared/ImageCarousel";
 import EquipmentShowcase from "@/components/sections/Sobre/EquipmentShowcase";
+import BenefitsCards from "@/components/shared/BenefitsCards";
 import BenefitsGrid from "@/components/sections/Sobre/BenefitsGrid";
 import ContactLocation from "@/components/sections/Contactos/ContactLocation";
 import ContactSocial from "@/components/sections/Contactos/ContactSocial";
@@ -31,7 +32,8 @@ const SobrePage = () => {
       <FeaturesGrid />
       <ImageCarousel />
       <EquipmentShowcase />
-      <BenefitsGrid />
+      {/* <BenefitsGrid /> */}
+      <BenefitsCards />
       <ContactLocation />
       <ContactSocial />
     </main>

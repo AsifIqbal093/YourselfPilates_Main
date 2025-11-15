@@ -5,7 +5,7 @@ import SectionDivider from "@/components/shared/SectionDivider";
 import FeaturesGrid from "@/components/shared/FeaturesGrid";
 import ImageCarousel from "@/components/shared/ImageCarousel";
 import PackagesListing from "@/components/sections/Home/PackagesListing";
-import BenefitsCards from "@/components/sections/Home/BenefitsCards";
+import BenefitsCards from "@/components/shared/BenefitsCards";
 import FinalCTA from "@/components/sections/Home/FinalCTA";
 import Availibility from "@/components/sections/Home/Availability";
 
