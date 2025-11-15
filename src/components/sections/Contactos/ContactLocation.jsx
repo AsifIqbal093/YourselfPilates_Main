@@ -2,36 +2,35 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { LocationDotIcon } from "@/components/icons/CustomIcons";
 import { CONTACT_INFO } from "@/constants/ContactInfo";
 
-/**
- * Contact Location Section
- * Displays Google Maps embed and address information
- */
+const LocationPinIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    className="h-8 w-8 text-[#88a9c3]"
+    fill="currentColor"
+  >
+    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" />
+  </svg>
+);
+
 const ContactLocation = () => {
-  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
+    visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
   };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6 },
-    },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   };
 
+  const firstLine = "Localizada no centro";
+  const secondLine = "das Caldas da Rainha";
+
   return (
-    <section className="bg-white py-12 md:py-16">
+    <section className="bg-white py-12 md:py-16" style={{ fontFamily: 'var(--font-accent)' }}>
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         <motion.div
           variants={containerVariants}
@@ -40,14 +39,16 @@ const ContactLocation = () => {
           viewport={{ once: true, margin: "-100px" }}
           className="mx-auto max-w-6xl space-y-8"
         >
-          {/* Section Title */}
           <motion.div
             variants={itemVariants}
-            className="flex items-center justify-center space-x-3"
+            className="flex flex-col items-center justify-center space-y-2"
           >
-            <LocationDotIcon className="text-primary h-6 w-6" />
-            <h2 className="text-secondary text-center text-2xl font-normal md:text-3xl">
-              {CONTACT_INFO.address.label}
+            <LocationPinIcon />
+            <h2 className="text-[#88a9c3] text-center text-4xl md:text-5xl">
+              {firstLine}
+            </h2>
+            <h2 className="text-[#88a9c3] text-center text-4xl md:text-5xl">
+              {secondLine}
             </h2>
           </motion.div>
 
@@ -66,12 +67,14 @@ const ContactLocation = () => {
             />
           </motion.div>
 
-          {/* Address Text */}
+          {/* Address Text Below Map*/}
           <motion.div variants={itemVariants} className="text-center">
-            <h3 className="text-secondary text-xl font-normal md:text-2xl">
+            <h3 className="text-[#15467d] text-sm md:text-base font-normal">
               {CONTACT_INFO.address.fullAddress}
             </h3>
           </motion.div>
+
+
         </motion.div>
       </div>
     </section>

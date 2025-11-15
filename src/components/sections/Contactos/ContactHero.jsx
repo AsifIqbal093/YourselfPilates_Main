@@ -95,7 +95,6 @@ const ContactHero = () => {
 
       <div className="relative z-10 container mx-auto px-4 md:px-6 lg:px-8">
         <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-12">
-          {/* Empty left column for spacing on large screens */}
           <div className="hidden lg:block"></div>
 
           {/* Right Column */}
@@ -107,13 +106,14 @@ const ContactHero = () => {
           >
             {/* Heading */}
             <motion.div variants={itemVariants} className="mb-6 lg:mb-8">
-              <p className="mb-2 text-sm font-normal text-[#88a9c3] md:text-base">
+              <p className="mb-2 text-lg md:text-xl font-normal text-[#88a9c3]">
                 Schedule a visit or get in touch.
               </p>
-              <h1 className="font-accent text-4xl leading-tight text-[#15467d] md:text-5xl lg:text-6xl">
+              <h1 className="font-accent text-6xl leading-tight text-[#15467d] md:text-7xl lg:text-8xl">
                 Contact
               </h1>
             </motion.div>
+
 
             {/* Contact Form */}
             <motion.div variants={itemVariants}>
@@ -128,7 +128,7 @@ const ContactHero = () => {
                     value={formData.nome}
                     onChange={handleChange}
                     required
-                    className="h-12 w-full rounded-none border-0 border-b-2 border-[#c8d4e0] px-0 pt-2 pb-3 text-base text-[#3b3d42] placeholder:text-[#8b9daf] focus:border-transparent focus:ring-0"
+                    className="h-12 w-[60%] rounded-none border-0 border-b-2 border-[#c8d4e0] px-0 pt-2 pb-3 text-base text-[#3b3d42] placeholder:text-[#8b9daf] focus:border-transparent focus:ring-0"
                   />
                 </div>
 
@@ -142,7 +142,7 @@ const ContactHero = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="h-12 w-full rounded-none border-0 border-b-2 border-[#c8d4e0] px-0 pt-2 pb-3 text-base text-[#3b3d42] placeholder:text-[#8b9daf] focus:border-transparent focus:ring-0"
+                    className="h-12 w-[60%] rounded-none border-0 border-b-2 border-[#c8d4e0] px-0 pt-2 pb-3 text-base text-[#3b3d42] placeholder:text-[#8b9daf] focus:border-transparent focus:ring-0"
                   />
                 </div>
 
@@ -151,13 +151,11 @@ const ContactHero = () => {
                   <textarea
                     name="mensagem"
                     id="mensagem"
-                    placeholder={
-                      CONTACT_FORM_CONFIG.fields.mensagem.placeholder
-                    }
+                    placeholder={CONTACT_FORM_CONFIG.fields.mensagem.placeholder}
                     value={formData.mensagem}
                     onChange={handleChange}
                     rows={4}
-                    className="w-full resize-none rounded-none border-0 border-b-2 border-[#c8d4e0] px-0 pt-2 pb-3 text-base text-[#3b3d42] placeholder:text-[#8b9daf] focus:border-transparent focus:ring-0"
+                    className="w-[60%] resize-none rounded-none border-0 border-b-2 border-[#c8d4e0] px-0 pt-2 pb-3 text-base text-[#3b3d42] placeholder:text-[#8b9daf] focus:border-transparent focus:ring-0"
                   />
                 </div>
 
@@ -206,11 +204,10 @@ const ContactHero = () => {
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className={`rounded-lg p-4 text-sm ${
-                      message.type === "success"
+                    className={`rounded-lg p-4 text-sm ${message.type === "success"
                         ? "border border-green-200 bg-green-50 text-green-700"
                         : "border border-red-200 bg-red-50 text-red-700"
-                    }`}
+                      }`}
                   >
                     {message.text}
                   </motion.div>
