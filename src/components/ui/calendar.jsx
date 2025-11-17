@@ -22,6 +22,7 @@ function Calendar({
   ...props
 }) {
   const defaultClassNames = getDefaultClassNames();
+  const today = new Date();
 
   return (
     <DayPicker
@@ -32,10 +33,27 @@ function Calendar({
         String.raw`rtl:**:[.rdp-button\_previous>svg]:rotate-180`,
         className
       )}
+      disabled={{ before: today }}
+      modifiersClassNames={{
+        disabled: "text-[#88a9c3] line-through cursor-not-allowed",
+      }}
       captionLayout={captionLayout}
       formatters={{
+        formatMonthTitle: (date) =>
+          date
+            .toLocaleString("pt-BR", { month: "long", year: "numeric" })
+            .toUpperCase(),
+
         formatMonthDropdown: (date) =>
-          date.toLocaleString("default", { month: "short" }),
+          date.toLocaleString("pt-BR", { month: "long" }).toUpperCase(),
+
+        formatWeekdayName: (day) => {
+          return day
+            .toLocaleString("pt-BR", { weekday: "short" })
+            .replace(".", "")
+            .replace(/^./, (c) => c.toUpperCase());
+        },
+
         ...formatters,
       }}
       classNames={{

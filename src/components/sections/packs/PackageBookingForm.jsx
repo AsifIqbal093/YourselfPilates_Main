@@ -52,23 +52,21 @@ const PackageBookingForm = ({ packageData }) => {
   };
 
   return (
-    <div className="mx-auto min-h-screen max-w-2xl px-4 py-16 sm:px-6 lg:px-8">
-      {/* Package Title Header */}
-      <div className="mb-8 text-center">
-        <h1 className="text-3xl font-bold text-[#15467d] md:text-4xl">
-          {packageData.title}
-        </h1>
-      </div>
-
-      {/* Form Section */}
-      <div className="rounded-lg bg-[#f5f8fa] p-8 shadow-sm md:p-12">
+    <div className="mt-30 w-full bg-[#e6eef4] py-20">
+      <div className="mx-auto min-h-screen w-full max-w-4xl px-4 pt-4 pb-16">
+        {/* Form Section */}
+        <div className="mt-0 pt-2 pb-8 md:pt-4 md:pb-12">
+          <h2 className="text-center text-xl font-semibold text-[#15467d] md:text-3xl">
+            {packageData.title}
+          </h2>
+        </div>
         {/* Subheading */}
-        <h2 className="mb-6 text-center text-2xl font-light text-[#a8bfcf] md:text-3xl">
+        <h2 className="font-accent mb-6 text-center text-2xl font-normal text-[#a8bfcf] md:text-5xl">
           Agenda as datas e horas
         </h2>
 
         {/* Description */}
-        <p className="mb-4 text-center text-base text-[#5a8db8]">
+        <p className="font-heading mb-4 text-center text-base text-[#15467d]">
           {packageData.description}
         </p>
 
@@ -77,55 +75,61 @@ const PackageBookingForm = ({ packageData }) => {
           Preço: {packageData.pricePerSession}€/sessão
         </p>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-4">
           {/* Name Input */}
-          <div>
-            <label htmlFor="nome" className="sr-only">
+          <div className="flex w-full flex-col items-center">
+            <label
+              htmlFor="nome"
+              className="w-full text-center font-bold text-gray-700"
+            >
               Nome
             </label>
             <Input
               id="nome"
               name="nome"
               type="text"
-              placeholder="Nome"
               value={formData.nome}
               onChange={handleInputChange}
               required
-              className="border-gray-300 bg-white text-gray-700 placeholder:text-gray-400"
+              className="w-170 bg-white text-gray-700"
             />
           </div>
 
           {/* Contact Input */}
-          <div>
-            <label htmlFor="contacto" className="sr-only">
+          <div className="flex w-full flex-col items-center">
+            <label
+              htmlFor="contacto"
+              className="w-full text-center font-bold text-gray-700"
+            >
               Contacto
             </label>
             <Input
               id="contacto"
               name="contacto"
               type="tel"
-              placeholder="Contacto"
               value={formData.contacto}
               onChange={handleInputChange}
               required
-              className="border-gray-300 bg-white text-gray-700 placeholder:text-gray-400"
+              className="w-170 bg-white text-gray-700"
             />
           </div>
 
           {/* Email Input */}
-          <div>
-            <label htmlFor="email" className="sr-only">
+          <div className="flex w-full flex-col items-center">
+            <label
+              htmlFor="email"
+              className="w-full text-center font-bold text-gray-700"
+            >
               Email
             </label>
             <Input
               id="email"
               name="email"
               type="email"
-              placeholder="Email"
               value={formData.email}
               onChange={handleInputChange}
               required
-              className="border-gray-300 bg-white text-gray-700 placeholder:text-gray-400"
+              className="w-170 bg-white text-gray-700"
             />
           </div>
 
@@ -136,15 +140,31 @@ const PackageBookingForm = ({ packageData }) => {
               selected={selectedDates}
               onSelect={handleDateSelect}
               locale={pt}
-              className="rounded-md border bg-white"
+              className="w-170 bg-transparent p-0"
+              classNames={{
+                months: "flex flex-col gap-1",
+                month: "flex flex-col gap-5 font-heading text-[#15467d]",
+                nav: "flex justify-between items-center p-0 text-[#88a9c3]",
+                month_caption: "text-sm font-medium text-center p-0",
+                weekdays:
+                  "flex justify-between text-[0.65rem] text-muted-foreground font-sans",
+                weekday:
+                  "text-[#88a9c3] text-[17px] font-heading font-medium p-0",
+                week: "flex justify-between gap-0 mt-1",
+                day: "aspect-square text-[0.7rem] text-[#88a9c3]  p-0 m-0 flex items-center justify-center",
+                today: "bg-transparent text-muted-foreground",
+                selected: "bg-sky-900 text-white rounded-sm",
+                outside: "text-muted-foreground opacity-50",
+                disabled: "text-muted-foreground opacity-30",
+              }}
               disabled={(date) => date < new Date()}
             />
           </div>
 
           {/* Price Total */}
           <div className="text-center">
-            <p className="text-lg font-semibold text-[#15467d]">Preço total:</p>
-            <p className="text-3xl font-bold text-[#15467d]">
+            <p className="text-lg font-medium text-[#3b3d42]">Preço total:</p>
+            <p className="font-heading text-xl font-bold text-[#15467d]">
               € {calculateTotal()}
             </p>
           </div>
@@ -153,7 +173,7 @@ const PackageBookingForm = ({ packageData }) => {
           <div className="flex justify-center">
             <Button
               type="submit"
-              className="rounded-full border-2 border-[#15467d] bg-transparent px-12 py-6 text-base font-semibold tracking-wide text-[#15467d] uppercase transition-all hover:bg-[#15467d] hover:text-white"
+              className="rounded-full border-1 border-[#15467d] bg-transparent px-5 py-6 text-base font-semibold text-[#15467d]"
             >
               Agendar o Espaço
             </Button>
@@ -162,27 +182,25 @@ const PackageBookingForm = ({ packageData }) => {
       </div>
 
       {/* Access Conditions */}
-      <div className="mt-12">
-        <h3 className="mb-6 text-center text-2xl font-bold text-[#15467d]">
+      <div className="mt-0">
+        <h3 className="font-heading mb-6 text-center text-3xl font-bold text-[#15467d]">
           Condições de acesso
         </h3>
 
-        <div className="space-y-4 text-sm leading-relaxed text-gray-700">
+        <div className="mx-auto w-[600px] justify-center text-[13px] leading-relaxed font-normal text-[#15467d]">
           {ACCESS_CONDITIONS.map((condition) => (
-            <div key={condition.id} className="flex gap-3">
-              <span className="font-bold text-[#15467d]">{condition.id}.</span>
-              <p>
-                {condition.highlight ? (
-                  <>
-                    {condition.text.split(condition.highlight)[0]}
-                    <span className="font-semibold">{condition.highlight}</span>
-                    {condition.text.split(condition.highlight)[1]}
-                  </>
-                ) : (
-                  condition.text
-                )}
-              </p>
-            </div>
+            <p key={condition.id}>
+              <span className="font-bold text-[#15467d]">{condition.id}.</span>{" "}
+              {condition.highlight ? (
+                <>
+                  {condition.text.split(condition.highlight)[0]}
+                  <span className="font-semibold">{condition.highlight}</span>
+                  {condition.text.split(condition.highlight)[1]}
+                </>
+              ) : (
+                condition.text
+              )}
+            </p>
           ))}
         </div>
       </div>
