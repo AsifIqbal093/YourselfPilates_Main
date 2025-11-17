@@ -15,15 +15,15 @@ const Footer = () => {
   const legalLinks = [
     { name: "Livro de Reclamações", href: "#" },
     { name: "Política de Privacidade", href: "/politica-de-privacidade" },
-    { name: "Termos e Condições", href: "/termo-e-condicoes" },
+    { name: "Termos e Condições", href: "/termos-e-condicoes" },
+    {
+      name: "Prazos e Condições de Entrega",
+      href: "/prazos-e-condicoes-de-entrega",
+    },
     {
       name: "Resolução de Litígios",
       href: "https://justica.gov.pt/Resolucao-de-litigios",
       external: true,
-    },
-    {
-      name: "Prazos e Condições de Entrega dos Produtos / Prestação de Serviços",
-      href: "/prazos-e-condicoes-de-entrega-dos-produtos",
     },
   ];
 

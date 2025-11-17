@@ -143,9 +143,7 @@ const PackageBookingForm = ({ packageData }) => {
 
           {/* Price Total */}
           <div className="text-center">
-            <p className="text-lg font-semibold text-[#15467d]">
-              Preço total:
-            </p>
+            <p className="text-lg font-semibold text-[#15467d]">Preço total:</p>
             <p className="text-3xl font-bold text-[#15467d]">
               € {calculateTotal()}
             </p>
@@ -155,7 +153,7 @@ const PackageBookingForm = ({ packageData }) => {
           <div className="flex justify-center">
             <Button
               type="submit"
-              className="rounded-full border-2 border-[#15467d] bg-transparent px-12 py-6 text-base font-semibold uppercase tracking-wide text-[#15467d] transition-all hover:bg-[#15467d] hover:text-white"
+              className="rounded-full border-2 border-[#15467d] bg-transparent px-12 py-6 text-base font-semibold tracking-wide text-[#15467d] uppercase transition-all hover:bg-[#15467d] hover:text-white"
             >
               Agendar o Espaço
             </Button>
@@ -193,4 +191,3 @@ const PackageBookingForm = ({ packageData }) => {
 };
 
 export default PackageBookingForm;
-
