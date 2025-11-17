@@ -99,7 +99,7 @@ const BookingHero = () => {
         initial="hidden"
         animate="visible"
         variants={fadeIn}
-        className="relative h-[500px] md:h-[700px] lg:h-[800px]"
+        className="relative h-[500px] md:h-[700px] lg:h-[990px]"
       >
         <Image
           src="/images/yourself-pilates-booking-page.jpg"

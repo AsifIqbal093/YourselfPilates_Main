@@ -21,21 +21,17 @@ const Header = () => {
 
   return (
     <header
-      className={`absolute top-3 right-12 left-8 z-50 transition-all duration-200 ${
-        isScrolled ? "bg-white/95 shadow-sm backdrop-blur-sm" : "bg-white"
-      }`}
+      className={`absolute top-3 right-12 left-8 z-50 transition-all duration-200 ${isScrolled
+        ? "bg-white/95 shadow-sm backdrop-blur-sm"
+        : "bg-transparent"
+        }`}
     >
       <div className="w-full px-6 lg:px-12">
         <div className="flex items-center justify-between py-4">
           <Link href="/home" className="cursor-pointer">
             <motion.div
-              style={{
-                display: "inline-block",
-                transformOrigin: "bottom left",
-              }}
-              whileHover={{
-                transform: "skewX(-12deg)",
-              }}
+              style={{ display: "inline-block", transformOrigin: "bottom left" }}
+              whileHover={{ transform: "skewX(-12deg)" }}
               transition={{ duration: 1.0, ease: "easeOut" }}
             >
               <Image
