@@ -6,6 +6,61 @@ import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { MapPin, Clock } from "lucide-react";
 
+const LocationPinIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    className="h-8 w-8 text-[#15467d]"
+    fill="currentColor"
+  >
+    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" />
+  </svg>
+);
+
+const SquareClockIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    className="h-8 w-8"
+  >
+    {/* Define a mask for the hands */}
+    <mask id="hands-mask">
+      {/* Full opaque (white) rectangle = visible */}
+      <rect x="0" y="0" width="24" height="24" fill="white" />
+      {/* Hands cut out = transparent */}
+      <line
+        x1="12"
+        y1="12"
+        x2="12"
+        y2="7"
+        stroke="black"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+      <line
+        x1="12"
+        y1="12"
+        x2="15"
+        y2="14"
+        stroke="black"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+    </mask>
+
+    {/* Blue square using mask */}
+    <rect
+      x="2"
+      y="2"
+      width="20"
+      height="20"
+      rx="5"
+      fill="#15467d"
+      mask="url(#hands-mask)"
+    />
+  </svg>
+);
+
 /**
  * Booking Hero Section
  * Full-width hero banner with overlay quote and info cards at the bottom
@@ -38,13 +93,13 @@ const BookingHero = () => {
   };
 
   return (
-    <section className="relative w-full overflow-hidden">
+    <section className="relative w-full overflow-visible pb-40 md:pb-48">
       {/* Hero Image */}
       <motion.div
         initial="hidden"
         animate="visible"
         variants={fadeIn}
-        className="relative h-[500px] md:h-[600px] lg:h-[650px]"
+        className="relative h-[500px] md:h-[700px] lg:h-[990px]"
       >
         <Image
           src="/images/yourself-pilates-booking-page.jpg"
@@ -56,23 +111,7 @@ const BookingHero = () => {
           quality={90}
         />
 
-        {/* Subtle Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/20" />
-
-        {/* Quote Text Overlay - Left Side */}
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={fadeInLeft}
-          className="absolute top-1/4 left-8 max-w-md md:left-16 lg:left-24"
-        >
-          <p className="text-secondary text-2xl leading-relaxed font-light md:text-3xl lg:text-4xl">
-            &ldquo;Um velho habilidade e um jovem mentoria com um jovem&rdquo;
-          </p>
-        </motion.div>
-
-        {/* Info Cards Overlay - Bottom */}
-        <div className="absolute right-0 bottom-8 left-0 px-4 md:bottom-12 md:px-8 lg:px-16">
+        <div className="absolute right-0 -bottom-20 left-0 px-4 md:-bottom-24 md:px-8 lg:px-16">
           <motion.div
             initial="hidden"
             animate="visible"
@@ -80,17 +119,24 @@ const BookingHero = () => {
             className="mx-auto grid max-w-5xl grid-cols-1 gap-4 md:grid-cols-2 md:gap-6"
           >
             {/* Location Card */}
-            <Card className="border-none bg-[#88a9c3]/80 shadow-lg backdrop-blur-sm">
-              <CardContent className="flex items-center gap-4 p-6">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white/30">
-                  <MapPin className="h-6 w-6 text-white" />
+            <Card
+              className="relative min-h-[180px] overflow-hidden border-none bg-cover bg-center shadow-lg md:min-h-[220px] lg:min-h-[260px]"
+              style={{ backgroundImage: "url('/images/5.jpg')" }}
+            >
+              <div className="absolute inset-0 bg-[#90adc4]/90" />
+
+              <CardContent className="relative mt-9 flex items-center gap-4 p-6">
+                <div className="mb-19 flex h-12 w-12 shrink-0 items-center justify-center">
+                  <LocationPinIcon />
                 </div>
                 <div className="text-left">
-                  <p className="text-sm font-medium text-white md:text-base">
+                  <p className="font-heading text-lg font-medium text-white md:text-xl lg:text-2xl">
                     Localizado
                   </p>
-                  <p className="text-sm text-white/90">no centro das</p>
-                  <p className="text-base font-semibold text-white md:text-lg">
+                  <p className="font-heading text-base font-medium text-white md:text-lg lg:text-2xl">
+                    no centro das
+                  </p>
+                  <p className="font-heading text-base font-medium text-white md:text-lg lg:text-2xl">
                     Caldas da Rainha
                   </p>
                 </div>
@@ -98,19 +144,24 @@ const BookingHero = () => {
             </Card>
 
             {/* Hours Card */}
-            <Card className="border-none bg-[#88a9c3]/80 shadow-lg backdrop-blur-sm">
-              <CardContent className="flex items-center gap-4 p-6">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white/30">
-                  <Clock className="h-6 w-6 text-white" />
+            <Card
+              className="relative overflow-hidden border-none bg-cover bg-center shadow-lg"
+              style={{ backgroundImage: "url('/images/On/5.png')" }}
+            >
+              <div className="absolute inset-0 bg-[#90adc4]/90" />
+
+              <CardContent className="relative mt-9 flex items-center gap-4 p-6">
+                <div className="mb-19 flex h-12 w-12 shrink-0 items-center justify-center">
+                  <SquareClockIcon />{" "}
                 </div>
                 <div className="text-left">
-                  <p className="text-sm font-medium text-white md:text-base">
+                  <p className="font-heading text-lg font-medium text-white md:text-xl lg:text-2xl">
                     Disponível de
                   </p>
-                  <p className="text-base font-semibold text-white md:text-lg">
+                  <p className="font-heading text-lg font-medium text-white md:text-xl lg:text-2xl">
                     Segunda a Sábado
                   </p>
-                  <p className="text-base font-semibold text-white md:text-lg">
+                  <p className="font-heading text-lg font-medium text-white md:text-xl lg:text-2xl">
                     das 8h às 20h
                   </p>
                 </div>

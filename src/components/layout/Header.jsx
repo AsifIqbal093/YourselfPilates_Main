@@ -22,7 +22,7 @@ const Header = () => {
   return (
     <header
       className={`absolute top-3 right-12 left-8 z-50 transition-all duration-200 ${
-        isScrolled ? "bg-white/95 shadow-sm backdrop-blur-sm" : "bg-white"
+        isScrolled ? "bg-white/95 shadow-sm backdrop-blur-sm" : "bg-transparent"
       }`}
     >
       <div className="w-full px-6 lg:px-12">
@@ -33,9 +33,7 @@ const Header = () => {
                 display: "inline-block",
                 transformOrigin: "bottom left",
               }}
-              whileHover={{
-                transform: "skewX(-12deg)",
-              }}
+              whileHover={{ transform: "skewX(-12deg)" }}
               transition={{ duration: 1.0, ease: "easeOut" }}
             >
               <Image
@@ -55,7 +53,7 @@ const Header = () => {
 
               <a
                 href="tel:927078842"
-                className="flex items-center justify-center space-x-2 rounded-2xl bg-[#f3f6f9] px-4 py-4.5 transition-all duration-2000 hover:scale-[1.10]"
+                className="flex items-center justify-center space-x-2 rounded-2xl bg-[rgba(232,233,239,0.5)] px-4 py-4.5 transition-all duration-200 hover:scale-110"
               >
                 <PhoneCall className="h-5 w-5 text-[#88a9c3]" />
                 <div className="flex flex-col items-center text-center leading-none">

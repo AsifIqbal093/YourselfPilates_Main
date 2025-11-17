@@ -4,9 +4,9 @@ import HeroSection from "@/components/sections/Home/HeroSection";
 import SectionDivider from "@/components/shared/SectionDivider";
 import FeaturesGrid from "@/components/shared/FeaturesGrid";
 import ImageCarousel from "@/components/shared/ImageCarousel";
-import PackagesListing from "@/components/sections/Home/PackagesListing";
+import PackagesListing from "@/components/shared/PackagesListing";
 import BenefitsCards from "@/components/shared/BenefitsCards";
-import FinalCTA from "@/components/sections/Home/FinalCTA";
+import FinalCTA from "@/components/shared/FinalCTA";
 import Availibility from "@/components/sections/Home/Availability";
 
 /**
@@ -28,7 +28,7 @@ const HomePage = () => {
       <SectionDivider title="O seu studio de Pilates" />
       <FeaturesGrid />
       <ImageCarousel />
-      <PackagesListing />
+      <PackagesListing title="Agendar o espaço" />
       <BenefitsCards />
       <Availibility />
       <FinalCTA showCTA={true} />

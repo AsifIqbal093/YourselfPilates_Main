@@ -6,39 +6,44 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
-const PackagesListing = () => {
-  const packages = [
-    {
-      name: "1 sessão hora/aula",
-      description: "Pack de 1 hora, para maior flexibilidade de horários.",
-      price: "Preço: 22€/sessão",
-      image: "/images/3.jpg",
-      link: "/packs/uma-sessao",
-    },
-    {
-      name: "Pack de 4 horas/aula",
-      description:
-        "Pack de 4 horas, pode escolher o dia e hora que desejar até um limite de 4 aulas.",
-      price: "Preço: 20€/sessão",
-      image: "/images/1.jpg",
-      link: "/packs/quatro-aulas",
-    },
-    {
-      name: "Pack de 8 horas/aula",
-      description:
-        "Pack de 8 horas, pode escolher o dia e hora que desejar até um limite de 8 aulas.",
-      price: "Preço: 18€/sessão",
-      image: "/images/2.jpg",
-      link: "/packs/oito-aulas",
-    },
-  ];
+const defaultPackages = [
+  {
+    name: "1 sessão hora/aula",
+    description: "Pack de 1 hora, para maior flexibilidade de horários.",
+    price: "Preço: 22€/sessão",
+    image: "/images/3.jpg",
+    link: "/packs/uma-sessao",
+  },
+  {
+    name: "Pack de 4 horas/aula",
+    description:
+      "Pack de 4 horas, pode escolher o dia e hora que desejar até um limite de 4 aulas.",
+    price: "Preço: 20€/sessão",
+    image: "/images/1.jpg",
+    link: "/packs/quatro-aulas",
+  },
+  {
+    name: "Pack de 8 horas/aula",
+    description:
+      "Pack de 8 horas, pode escolher o dia e hora que desejar até um limite de 8 aulas.",
+    price: "Preço: 18€/sessão",
+    image: "/images/2.jpg",
+    link: "/packs/oito-aulas",
+  },
+];
 
+const PackagesListing = ({ title, subtitle, packages = defaultPackages }) => {
   return (
     <section className="pt-0 pb-20">
       <div className="container mx-auto px-4 text-center md:px-6 lg:px-8">
-        <h2 className="font-accent mt-20 mb-12 text-5xl font-normal text-[#88a9c3]">
-          Agendar o espaço
+        <h2 className="font-accent mt-20 mb-4 mb-10 text-5xl font-normal text-[#88a9c3]">
+          {title}
         </h2>
+        {subtitle && (
+          <p className="mx-auto mb-12 max-w-3xl font-normal text-sky-900 sm:text-lg md:text-lg">
+            {subtitle}
+          </p>
+        )}
 
         <div className="mx-auto grid max-w-6xl grid-cols-1 justify-center gap-[2px] sm:grid-cols-2 md:grid-cols-3">
           {packages.map((pkg, index) => (

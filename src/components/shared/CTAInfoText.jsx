@@ -18,7 +18,7 @@ const CTAInfoText = () => {
         </div>
 
         <p className="md:text-1xl text-lg font-normal text-[#15467d] underline sm:text-xl">
-          I would like to schedule a visit or get in touch.
+          Gostava de agendar uma visita ou entrar em contacto
         </p>
       </div>
     </div>
