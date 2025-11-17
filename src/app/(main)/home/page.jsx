@@ -6,7 +6,7 @@ import FeaturesGrid from "@/components/shared/FeaturesGrid";
 import ImageCarousel from "@/components/shared/ImageCarousel";
 import PackagesListing from "@/components/shared/PackagesListing";
 import BenefitsCards from "@/components/shared/BenefitsCards";
-import FinalCTA from "@/components/sections/Home/FinalCTA";
+import FinalCTA from "@/components/shared/FinalCTA";
 import Availibility from "@/components/sections/Home/Availability";
 
 /**

@@ -11,7 +11,6 @@ import { Button } from "@/components/ui/button";
 const FinalCTA = ({ showCTA = true }) => {
   return (
     <section className="relative overflow-hidden bg-white">
-      {/* Background Grid (always shown) */}
       <div className="grid grid-cols-1 md:grid-cols-2">
         <div
           className="h-56 bg-cover bg-center sm:h-64 md:h-[500px]"

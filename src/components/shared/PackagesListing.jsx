@@ -36,11 +36,13 @@ const PackagesListing = ({ title, subtitle, packages = defaultPackages }) => {
   return (
     <section className="pt-0 pb-20">
       <div className="container mx-auto px-4 text-center md:px-6 lg:px-8">
-        <h2 className="font-accent mt-20 mb-4 text-5xl font-normal text-[#88a9c3] mb-10">
+        <h2 className="font-accent mt-20 mb-4 mb-10 text-5xl font-normal text-[#88a9c3]">
           {title}
         </h2>
         {subtitle && (
-          <p className="mx-auto mb-12 max-w-3xl font-normal sm:text-lg md:text-lg text-sky-900">{subtitle}</p>
+          <p className="mx-auto mb-12 max-w-3xl font-normal text-sky-900 sm:text-lg md:text-lg">
+            {subtitle}
+          </p>
         )}
 
         <div className="mx-auto grid max-w-6xl grid-cols-1 justify-center gap-[2px] sm:grid-cols-2 md:grid-cols-3">

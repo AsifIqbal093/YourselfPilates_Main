@@ -15,7 +15,7 @@ const LocationPinIcon = () => (
   </svg>
 );
 
-const ContactLocation = () => {
+const ContactLocation = ({ showTitle = true, firstLine, secondLine }) => {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
@@ -26,8 +26,9 @@ const ContactLocation = () => {
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   };
 
-  const firstLine = "Localizada no centro";
-  const secondLine = "das Caldas da Rainha";
+  // default title lines if not passed
+  const defaultFirstLine = "Localizada no centro";
+  const defaultSecondLine = "das Caldas da Rainha";
 
   return (
     <section
@@ -42,18 +43,20 @@ const ContactLocation = () => {
           viewport={{ once: true, margin: "-100px" }}
           className="mx-auto max-w-6xl space-y-8"
         >
-          <motion.div
-            variants={itemVariants}
-            className="flex flex-col items-center justify-center space-y-2"
-          >
-            <LocationPinIcon />
-            <h2 className="text-center text-4xl text-[#88a9c3] md:text-5xl">
-              {firstLine}
-            </h2>
-            <h2 className="text-center text-4xl text-[#88a9c3] md:text-5xl">
-              {secondLine}
-            </h2>
-          </motion.div>
+          {showTitle && (
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-col items-center justify-center space-y-2"
+            >
+              <LocationPinIcon />
+              <h2 className="text-center text-4xl text-[#88a9c3] md:text-5xl">
+                {firstLine || defaultFirstLine}
+              </h2>
+              <h2 className="text-center text-4xl text-[#88a9c3] md:text-5xl">
+                {secondLine || defaultSecondLine}
+              </h2>
+            </motion.div>
+          )}
 
           <motion.div
             variants={itemVariants}
