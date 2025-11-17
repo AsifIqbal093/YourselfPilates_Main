@@ -81,10 +81,11 @@ const PackagesListing = ({ title, subtitle, packages = defaultPackages }) => {
                   </Button>
 
                   <Button
+                    asChild
                     variant="outline"
                     className="w-auto rounded-full border-2 border-sky-900 px-6 py-2 text-base font-medium text-sky-900 normal-case"
                   >
-                    Saber Mais
+                    <Link href="/agendar-espaco">Saber Mais</Link>
                   </Button>
                 </div>
               </CardContent>

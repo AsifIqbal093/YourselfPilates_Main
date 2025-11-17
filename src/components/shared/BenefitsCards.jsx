@@ -90,7 +90,7 @@ const BenefitsCards = () => {
         </h1>
 
         <Link
-          href="/sobre"
+          href="/contactos"
           className="group mb-16 inline-block text-lg font-normal text-[#88a9c3] underline decoration-2 underline-offset-4 transition-all duration-200"
         >
           Saber mais sobre a YourSelf

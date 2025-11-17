@@ -28,12 +28,10 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative bg-gradient-to-r from-[#d9e4ee] to-[#c9d7e4] pt-24 pb-12 min-h-[400px]">
+    <footer className="relative min-h-[400px] bg-gradient-to-r from-[#d9e4ee] to-[#c9d7e4] pt-24 pb-12">
       <div className="mx-auto max-w-[1600px] px-0">
-        
-        <div className="mb-24 flex flex-col md:flex-row justify-between items-start gap-10 px-4 md:px-6 lg:px-8">
-          
-          <div className="space-y-6 flex-shrink-0 flex-grow-0">
+        <div className="mb-24 flex flex-col items-start justify-between gap-10 px-4 md:flex-row md:px-6 lg:px-8">
+          <div className="flex-shrink-0 flex-grow-0 space-y-6">
             <Link href="/" className="inline-block">
               <Image
                 src="/images/Logo.png"
@@ -56,45 +54,42 @@ const Footer = () => {
             </nav>
           </div>
 
-          <div className="flex justify-end text-[#15467d] gap-16 md:gap-24 md:ml-auto flex-shrink-0">
-            
-            <div className="flex flex-col space-y-4 pt-10 text-right flex-shrink-0">
+          <div className="flex flex-shrink-0 justify-end gap-16 text-[#15467d] md:ml-auto md:gap-24">
+            <div className="flex flex-shrink-0 flex-col space-y-4 pt-10 text-right">
               <h3 className="text-base font-semibold">Atendimento</h3>
-              <h3 className="text-base leading-snug font-semibold mt-8 md:mt-10">
+              <h3 className="mt-8 text-base leading-snug font-semibold md:mt-10">
                 Horário e <br /> Localização
               </h3>
             </div>
 
-            <div className="flex flex-col space-y-4 pt-10 text-left items-start flex-shrink-0">
-              
+            <div className="flex flex-shrink-0 flex-col items-start space-y-4 pt-10 text-left">
               <div className="flex flex-col items-start justify-start space-y-1">
                 <div className="flex items-center space-x-2">
-                    <PhoneCall className="h-4 w-4 shrink-0 text-[#15467d]" />
-                    <span className="text-base font-semibold tracking-wide">
-                        927&nbsp;078&nbsp;842
-                    </span>
+                  <PhoneCall className="h-4 w-4 shrink-0 text-[#15467d]" />
+                  <span className="text-base font-semibold tracking-wide">
+                    927&nbsp;078&nbsp;842
+                  </span>
                 </div>
-                <span className="text-xs ml-6">
-                    (Chamada para a rede móvel nacional)
+                <span className="ml-6 text-xs">
+                  (Chamada para a rede móvel nacional)
                 </span>
               </div>
 
-              <div className="space-y-4 text-sm mt-8 md:mt-10">
+              <div className="mt-8 space-y-4 text-sm md:mt-10">
                 <div className="leading-snug">
-                    <p >Segunda a Sábado</p>
-                    <p>das 8h às 20h</p>
+                  <p>Segunda a Sábado</p>
+                  <p>das 8h às 20h</p>
                 </div>
                 <div className="leading-snug">
-                    <p>Rua Diário de Notícias nº 09, 2500-107</p>
-                    <p>Caldas da Rainha</p>
+                  <p>Rua Diário de Notícias nº 09, 2500-107</p>
+                  <p>Caldas da Rainha</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="mt-8 pt-6 flex flex-col items-center justify-between gap-4 md:flex-row md:items-end px-4 md:px-6 lg:px-8">
-          
+        <div className="mt-8 flex flex-col items-center justify-between gap-4 px-4 pt-6 md:flex-row md:items-end md:px-6 lg:px-8">
           <div className="flex items-center space-x-2">
             <span className="text-sm font-normal text-[#15467d]">
               Redes Sociais
@@ -110,10 +105,9 @@ const Footer = () => {
             </a>
           </div>
 
-          <div className="flex flex-col items-center md:items-end gap-2 text-right">
-            
+          <div className="flex flex-col items-center gap-2 text-right md:items-end">
             {/* Legal Links */}
-            <div className="flex flex-wrap justify-center md:justify-end gap-x-3 gap-y-1 text-center md:text-right">
+            <div className="flex flex-wrap justify-center gap-x-3 gap-y-1 text-center md:justify-end md:text-right">
               {legalLinks.map((link, index) => (
                 <React.Fragment key={link.href}>
                   {link.external ? (
@@ -121,14 +115,14 @@ const Footer = () => {
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-xs text-[#15467d] transition hover:opacity-80 whitespace-nowrap"
+                      className="text-xs whitespace-nowrap text-[#15467d] transition hover:opacity-80"
                     >
                       {link.name}
                     </a>
                   ) : (
                     <Link
                       href={link.href}
-                      className="text-xs text-[#15467d] transition hover:opacity-80 whitespace-nowrap"
+                      className="text-xs whitespace-nowrap text-[#15467d] transition hover:opacity-80"
                     >
                       {link.name}
                     </Link>

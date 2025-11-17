@@ -37,9 +37,11 @@ const Availibility = () => {
           </p>
 
           <a
-            href="https://www.google.com/maps"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
             className="mt-3 inline-block text-[18px] font-normal text-[#8faac1] underline md:mt-7 md:mb-20"
           >
             Ver mapa

@@ -46,7 +46,7 @@ const BrandIntroduction = () => {
             </p>
 
             <Link
-              href="/sobre"
+              href="/contactos"
               className="hover:text-primary hover:decoration-primary group inline-block text-lg font-normal text-[#88a9c3] underline decoration-2 underline-offset-4 transition-all duration-200"
             >
               Saber mais sobre a YourSelf

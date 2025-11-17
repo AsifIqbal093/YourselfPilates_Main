@@ -51,7 +51,7 @@ const FinalCTA = ({ showCTA = true }) => {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="flex w-full justify-center md:w-auto"
               >
-                <Link href="/contact">
+                <Link href="/contactos">
                   <Button
                     size="lg"
                     className="h-12 w-40 rounded-full bg-gradient-to-l from-[#94b0c9] via-white to-white px-8 py-4 text-base font-semibold text-[#15467d] shadow-md transition-all duration-300 ease-in-out hover:border hover:border-white hover:text-white hover:opacity-80 hover:shadow-lg sm:w-48 sm:px-10 sm:text-lg"
