@@ -16,8 +16,7 @@ const MobileMenu = () => {
   ];
 
   return (
-    <div className="relative w-full">
-      {/* Menu Button */}
+    <div className="relative inline-block">
       <button
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Toggle menu"
@@ -26,26 +25,20 @@ const MobileMenu = () => {
         {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
       </button>
 
-      {/* Dropdown Menu */}
       {isOpen && (
-        <nav className="fixed top-[200px] right-4 left-0 z-50 flex w-full flex-col bg-white shadow-md">
-          {navItems.map((item) => {
-            const isActive = pathname === item.href;
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setIsOpen(false)} // close menu on link click
-                className={`px-4 py-3 text-sm font-medium transition-colors duration-200 ${
-                  isActive
-                    ? "font-heading text-[20px] text-[#b2c7d8]"
-                    : "font-heading text-[20px] text-[#23498d]"
-                }`}
-              >
-                {item.name}
-              </Link>
-            );
-          })}
+        <nav className="fixed top-[210px] right-0 left-0 z-50 flex w-full flex-col bg-white shadow-md">
+          {navItems.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              onClick={() => setIsOpen(false)}
+              className={`font-heading px-6 py-4 text-[20px] transition-colors duration-200 ${
+                pathname === item.href ? "text-[#b2c7d8]" : "text-[#23498d]"
+              }`}
+            >
+              {item.name}
+            </Link>
+          ))}
         </nav>
       )}
     </div>
