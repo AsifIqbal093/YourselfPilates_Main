@@ -143,9 +143,9 @@ const PackageBookingForm = ({ packageData }) => {
               className="w-170 bg-transparent p-0"
               classNames={{
                 months: "flex flex-col gap-1",
-                month: "flex flex-col gap-5 font-heading text-[#15467d]",
+                month: "flex flex-col gap-5 -mt-8 font-heading text-[#15467d]",
                 nav: "flex justify-between items-center p-0 text-[#88a9c3]",
-                month_caption: "text-sm font-medium text-center p-0",
+                month_caption: "text-[17px] font-light text-center p-0",
                 weekdays:
                   "flex justify-between text-[0.65rem] text-muted-foreground font-sans",
                 weekday:
