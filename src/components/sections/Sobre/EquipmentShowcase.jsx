@@ -42,7 +42,7 @@ const EquipmentShowcase = () => {
           className="mb-12 text-center md:mb-16"
         >
           <h2 className="font-accent text-3xl font-normal text-[#88a9c3] md:text-4xl lg:text-5xl">
-            Conheça os nossos equipamentos{" "}
+            Conheça os nossos equipamentos
           </h2>
         </motion.div>
 
@@ -51,7 +51,7 @@ const EquipmentShowcase = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="mx-auto grid max-w-7xl grid-cols-1 gap-8 md:grid-cols-2 md:gap-10 lg:gap-12"
+          className="mx-auto grid max-w-7xl grid-cols-1 gap-8 md:grid-cols-2 md:gap-10 lg:grid-cols-3 lg:gap-12 xl:grid-cols-4"
         >
           {ABOUT_EQUIPMENT.equipment.map((item) => (
             <motion.div
@@ -59,18 +59,20 @@ const EquipmentShowcase = () => {
               variants={itemVariants}
               className="group flex flex-col"
             >
-              <div className="relative mx-auto mb-6 aspect-square w-88 overflow-hidden rounded-lg bg-white sm:w-56 md:w-64 lg:w-110">
+              {/* Image Container */}
+              <div className="relative mx-auto mb-6 aspect-square w-full max-w-[300px] overflow-hidden rounded-lg bg-white sm:max-w-[220px] md:max-w-[256px] lg:max-w-[280px]">
                 <Image
                   src={item.image}
                   alt={item.name}
                   fill
                   className="object-contain p-4"
-                  sizes="(max-width: 768px) 100vw, 50vw"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
               </div>
 
+              {/* Text Content */}
               <div className="flex flex-col items-center space-y-3 text-center">
-                <div className="relative mb-10 h-6 w-6 md:h-9 md:w-9">
+                <div className="relative mb-4 h-6 w-6 sm:h-8 sm:w-8 md:h-9 md:w-9">
                   <Image
                     src="/images/Ylogo.png"
                     alt="Logo"
@@ -79,11 +81,11 @@ const EquipmentShowcase = () => {
                   />
                 </div>
 
-                <h3 className="font-accent text-2xl font-normal text-[#88a9c3] md:text-4xl">
+                <h3 className="font-accent text-xl font-normal text-[#88a9c3] sm:text-2xl md:text-3xl lg:text-4xl">
                   {item.name}
                 </h3>
 
-                <p className="mt-4 max-w-[450px] text-sm text-[#5a7a94] md:text-base">
+                <p className="mt-4 max-w-[90%] text-sm text-[#5a7a94] sm:max-w-[400px] sm:text-base md:max-w-[450px]">
                   {item.description}
                 </p>
               </div>
