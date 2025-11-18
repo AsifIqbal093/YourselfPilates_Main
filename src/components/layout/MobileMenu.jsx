@@ -28,7 +28,7 @@ const MobileMenu = () => {
 
       {/* Dropdown Menu */}
       {isOpen && (
-        <nav className="fixed top-[200px] right-0 left-0 z-50 flex w-full flex-col bg-white shadow-md">
+        <nav className="fixed top-[200px] right-4 left-0 z-50 flex w-full flex-col bg-white shadow-md">
           {navItems.map((item) => {
             const isActive = pathname === item.href;
             return (
@@ -38,7 +38,7 @@ const MobileMenu = () => {
                 onClick={() => setIsOpen(false)} // close menu on link click
                 className={`px-4 py-3 text-sm font-medium transition-colors duration-200 ${
                   isActive
-                    ? "bg-primary text-white"
+                    ? "font-heading text-[20px] text-[#b2c7d8]"
                     : "font-heading text-[20px] text-[#23498d]"
                 }`}
               >
