@@ -33,13 +33,13 @@ const FinalCTA = ({ showCTA = true }) => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.6 }}
-                className="w-full space-y-2 text-center md:-ml-40 md:w-auto md:text-left"
+                className="w-full max-w-xl space-y-2 text-center md:text-left"
               >
-                <h2 className="font-accent text-2xl leading-snug font-medium text-white sm:text-3xl md:text-5xl">
+                <h2 className="font-accent text-2xl leading-snug font-medium text-white sm:text-3xl md:text-4xl lg:text-5xl">
                   I would like to get in touch.
                 </h2>
 
-                <p className="font-accent text-xl leading-snug text-white sm:text-2xl md:text-[25px]">
+                <p className="font-accent text-lg leading-snug text-white sm:text-xl md:text-[20px] lg:text-[25px]">
                   Or schedule a visit.
                 </p>
               </motion.div>
