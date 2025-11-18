@@ -102,12 +102,12 @@ const BenefitsCards = () => {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="mx-auto grid max-w-[1200px] grid-cols-1 justify-items-center gap-x-4 gap-y-10 md:grid-cols-2"
+          className="mx-auto grid max-w-[1200px] grid-cols-1 justify-items-center gap-6 md:grid-cols-2"
         >
           {benefits.map((benefit, index) => (
-            <motion.div key={index} variants={itemVariants}>
+            <motion.div key={index} variants={itemVariants} className="w-full">
               <FeatureCard
-                className="w-full md:w-[550px]"
+                className="w-full"
                 title={benefit.title}
                 description={benefit.description}
                 icon={
