@@ -43,9 +43,9 @@ const HeroSection = () => {
           >
             <motion.div
               variants={itemVariants}
-              className="flex justify-center md:block" // center on mobile, normal on desktop
+              className="flex justify-center px-4 sm:justify-center md:justify-start md:px-0 lg:justify-start xl:justify-start"
             >
-              <div className="-ml-0 flex items-center space-x-3 md:-ml-6 lg:-ml-28">
+              <div className="flex items-center space-x-3">
                 <LocationDotIcon className="h-5 w-5" />
                 <span className="font-display text-lg font-[100] text-[#88a9c3]">
                   LOCALIZADO NAS CALDAS DA RAINHA
@@ -55,15 +55,7 @@ const HeroSection = () => {
 
             <motion.h1
               variants={itemVariants}
-              className="font-accent mx-auto -ml-0 text-center md:mx-0 md:-ml-6 md:text-left lg:-ml-28"
-              style={{
-                fontSize: "40px",
-                fontWeight: "400",
-                color: "#104c88ff",
-                maxWidth: "500px",
-                display: "-webkit-box",
-                overflow: "hidden",
-              }}
+              className="font-accent mx-auto max-w-full text-center text-[32px] leading-snug font-[400] break-words text-[#104c88ff] md:mx-0 md:max-w-lg md:text-left md:text-[40px] lg:max-w-xl lg:text-[48px] xl:text-[56px]"
             >
               Cowork de Pilates <br />
               exclusivo para profissionais <br />
@@ -72,12 +64,12 @@ const HeroSection = () => {
 
             <motion.div
               variants={itemVariants}
-              className="flex justify-center md:block"
+              className="flex justify-center md:justify-start"
             >
               <Button
                 asChild
                 size="lg"
-                className="rounded-[29px] border-2 border-[#ffffff] bg-[#f6f9fb] text-[#ffffff] transition-colors duration-300 hover:bg-[#104c88] hover:text-white md:-ml-6 lg:-ml-28"
+                className="rounded-[29px] border-2 border-[#ffffff] bg-[#f6f9fb] text-[#ffffff] transition-colors duration-300 hover:bg-[#104c88] hover:text-white"
               >
                 <Link
                   href="/agendar-espaco"
@@ -91,7 +83,8 @@ const HeroSection = () => {
 
             <motion.div
               variants={itemVariants}
-              className="mt-60 -ml-4 flex w-full items-center space-x-4 md:-ml-6 lg:-ml-58"
+              className="absolute left-0 flex items-center space-x-4"
+              style={{ marginLeft: 0, paddingLeft: 0 }}
             >
               <div className="flex items-center space-x-2">
                 <div className="h-[1px] w-[68px] bg-[#88a9c3]" />
