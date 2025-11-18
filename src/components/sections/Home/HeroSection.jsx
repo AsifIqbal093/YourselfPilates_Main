@@ -43,17 +43,19 @@ const HeroSection = () => {
           >
             <motion.div
               variants={itemVariants}
-              className="-ml-4 flex items-center space-x-3 md:-ml-6 lg:-ml-28"
+              className="flex justify-center md:block" // center on mobile, normal on desktop
             >
-              <LocationDotIcon className="h-5 w-5" />
-              <span className="font-display text-lg font-[100] text-[#88a9c3]">
-                LOCALIZADO NAS CALDAS DA RAINHA
-              </span>
+              <div className="-ml-0 flex items-center space-x-3 md:-ml-6 lg:-ml-28">
+                <LocationDotIcon className="h-5 w-5" />
+                <span className="font-display text-lg font-[100] text-[#88a9c3]">
+                  LOCALIZADO NAS CALDAS DA RAINHA
+                </span>
+              </div>
             </motion.div>
 
             <motion.h1
-              className="font-accent -ml-4 flex w-full md:-ml-6 lg:-ml-28"
               variants={itemVariants}
+              className="font-accent mx-auto -ml-0 text-center md:mx-0 md:-ml-6 md:text-left lg:-ml-28"
               style={{
                 fontSize: "40px",
                 fontWeight: "400",
@@ -61,7 +63,6 @@ const HeroSection = () => {
                 maxWidth: "500px",
                 display: "-webkit-box",
                 overflow: "hidden",
-                textAlign: "left",
               }}
             >
               Cowork de Pilates <br />
@@ -69,11 +70,14 @@ const HeroSection = () => {
               em equipamentos
             </motion.h1>
 
-            <motion.div variants={itemVariants}>
+            <motion.div
+              variants={itemVariants}
+              className="flex justify-center md:block"
+            >
               <Button
                 asChild
                 size="lg"
-                className="-ml-4 rounded-[29px] border-2 border-[#ffffff] bg-[#f6f9fb] text-[#ffffff] transition-colors duration-300 hover:bg-[#104c88] hover:text-white md:-ml-6 lg:-ml-28"
+                className="rounded-[29px] border-2 border-[#ffffff] bg-[#f6f9fb] text-[#ffffff] transition-colors duration-300 hover:bg-[#104c88] hover:text-white md:-ml-6 lg:-ml-28"
               >
                 <Link
                   href="/agendar-espaco"
