@@ -58,7 +58,7 @@ const DeliveryTermsPage = () => {
   };
 
   return (
-    <main className="min-h-screen bg-white pt-32 pb-20">
+    <main className="min-h-screen bg-white pt-16 pb-20 md:pt-32">
       <div className="container mx-auto max-w-6xl px-4 md:px-6">
         <h1 className="font-accent mb-6 text-4xl font-light text-[#88a9c3] md:text-5xl">
           {DELIVERY_TERMS.title}
