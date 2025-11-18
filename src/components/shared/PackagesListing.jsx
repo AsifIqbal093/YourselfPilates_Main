@@ -49,7 +49,7 @@ const PackagesListing = ({ title, subtitle, packages = defaultPackages }) => {
           {packages.map((pkg, index) => (
             <Card
               key={index}
-              className="w-[340px] overflow-hidden rounded-3xl border-none bg-gradient-to-b from-sky-900/30 via-[#f1f5f8] to-white p-0 shadow-none md:w-[350px]"
+              className="w-full overflow-hidden rounded-3xl border-none bg-gradient-to-b from-sky-900/30 via-[#f1f5f8] to-white p-0 shadow-none md:w-[350px]"
             >
               <div className="relative h-[300px] w-full overflow-hidden">
                 <Image
