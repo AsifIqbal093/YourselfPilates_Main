@@ -41,7 +41,7 @@ const ImageCarousel = () => {
 
   return (
     <section className="bg-white py-0">
-      <div className="relative w-470">
+      <div className="relative w-full overflow-hidden rounded-tr-[20px] rounded-br-[20px]">
         <Swiper
           modules={[Navigation, Pagination, Autoplay, EffectFade]}
           effect="fade"
@@ -66,7 +66,7 @@ const ImageCarousel = () => {
         >
           {slides.map((slide, index) => (
             <SwiperSlide key={index}>
-              <div className="relative h-[700px] w-full md:h-[500px] lg:h-[950px]">
+              <div className="relative h-[200px] w-full sm:h-[500px] md:h-[600px] lg:h-[950px]">
                 <Image
                   src={slide.src}
                   alt={slide.alt}
