@@ -1,11 +1,7 @@
 "use client";
 
 import * as React from "react";
-import {
-  ChevronDownIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-} from "lucide-react";
+import { ChevronDownIcon, ArrowLeft, ArrowRight } from "lucide-react";
 import { DayPicker, getDefaultClassNames } from "react-day-picker";
 
 import { cn } from "@/lib/utils";
@@ -62,11 +58,17 @@ function Calendar({
           "flex gap-4 flex-col md:flex-row relative",
           defaultClassNames.months
         ),
-        month: cn("flex flex-col w-full gap-4", defaultClassNames.month),
+
+        month: cn(
+          "relative flex flex-col w-full gap-4 pt-12",
+          defaultClassNames.month
+        ),
+
         nav: cn(
-          "flex items-center gap-1 w-full absolute top-0 inset-x-0 justify-between",
+          "absolute top-0 left-0 right-0 flex items-center justify-between px-2 h-10",
           defaultClassNames.nav
         ),
+
         button_previous: cn(
           buttonVariants({ variant: buttonVariant }),
           "size-(--cell-size) aria-disabled:opacity-50 p-0 select-none",
@@ -77,14 +79,29 @@ function Calendar({
           "size-(--cell-size) aria-disabled:opacity-50 p-0 select-none",
           defaultClassNames.button_next
         ),
+
         month_caption: cn(
-          "flex items-center justify-center h-(--cell-size) w-full px-(--cell-size)",
+          "absolute top-0 left-0 right-0 h-10 flex items-center justify-center pointer-events-none",
           defaultClassNames.month_caption
         ),
+
         dropdowns: cn(
           "w-full flex items-center text-sm font-medium justify-center h-(--cell-size) gap-1.5",
           defaultClassNames.dropdowns
         ),
+
+        caption_label: cn(
+          "select-none font-semibold text-sm uppercase tracking-wide pointer-events-none",
+          defaultClassNames.caption_label
+        ),
+
+        table: "w-full border-collapse",
+        weekdays: cn("flex", defaultClassNames.weekdays),
+        weekday: cn(
+          "text-muted-foreground rounded-md flex-1 font-normal text-[0.8rem] select-none",
+          defaultClassNames.weekday
+        ),
+        week: cn("flex w-full mt-2", defaultClassNames.week),
         dropdown_root: cn(
           "relative has-focus:border-ring border border-input shadow-xs has-focus:ring-ring/50 has-focus:ring-[3px] rounded-md",
           defaultClassNames.dropdown_root
@@ -93,20 +110,6 @@ function Calendar({
           "absolute bg-popover inset-0 opacity-0",
           defaultClassNames.dropdown
         ),
-        caption_label: cn(
-          "select-none font-medium",
-          captionLayout === "label"
-            ? "text-sm"
-            : "rounded-md pl-2 pr-1 flex items-center gap-1 text-sm h-8 [&>svg]:text-muted-foreground [&>svg]:size-3.5",
-          defaultClassNames.caption_label
-        ),
-        table: "w-full border-collapse",
-        weekdays: cn("flex", defaultClassNames.weekdays),
-        weekday: cn(
-          "text-muted-foreground rounded-md flex-1 font-normal text-[0.8rem] select-none",
-          defaultClassNames.weekday
-        ),
-        week: cn("flex w-full mt-2", defaultClassNames.week),
         week_number_header: cn(
           "select-none w-(--cell-size)",
           defaultClassNames.week_number_header
@@ -156,17 +159,12 @@ function Calendar({
         },
         Chevron: ({ className, orientation, ...props }) => {
           if (orientation === "left") {
-            return (
-              <ChevronLeftIcon className={cn("size-4", className)} {...props} />
-            );
+            return <ArrowLeft className={cn("size-4", className)} {...props} />;
           }
 
           if (orientation === "right") {
             return (
-              <ChevronRightIcon
-                className={cn("size-4", className)}
-                {...props}
-              />
+              <ArrowRight className={cn("size-4", className)} {...props} />
             );
           }
 
