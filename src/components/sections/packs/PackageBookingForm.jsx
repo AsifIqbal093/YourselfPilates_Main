@@ -52,7 +52,8 @@ const PackageBookingForm = ({ packageData }) => {
   };
 
   return (
-    <div className="mt-30 w-full bg-[#e6eef4] py-20">
+    <div className="w-full bg-[#e6eef4] py-20">
+      {" "}
       <div className="mx-auto min-h-screen w-full max-w-4xl px-4 pt-4 pb-16">
         {/* Form Section */}
         <div className="mt-0 pt-2 pb-8 md:pt-4 md:pb-12">
@@ -91,7 +92,7 @@ const PackageBookingForm = ({ packageData }) => {
               value={formData.nome}
               onChange={handleInputChange}
               required
-              className="w-170 bg-white text-gray-700"
+              className="w-full max-w-md bg-white text-gray-700"
             />
           </div>
 
@@ -110,7 +111,7 @@ const PackageBookingForm = ({ packageData }) => {
               value={formData.contacto}
               onChange={handleInputChange}
               required
-              className="w-170 bg-white text-gray-700"
+              className="w-full max-w-md bg-white text-gray-700"
             />
           </div>
 
@@ -129,18 +130,18 @@ const PackageBookingForm = ({ packageData }) => {
               value={formData.email}
               onChange={handleInputChange}
               required
-              className="w-170 bg-white text-gray-700"
+              className="w-full max-w-md bg-white text-gray-700"
             />
           </div>
 
           {/* Calendar */}
-          <div className="flex justify-center">
+          <div className="flex w-full justify-center">
             <Calendar
               mode="multiple"
               selected={selectedDates}
               onSelect={handleDateSelect}
               locale={pt}
-              className="w-170 bg-transparent p-0"
+              className="w-full max-w-md bg-transparent p-0"
               classNames={{
                 months: "flex flex-col gap-1",
                 month: "flex flex-col gap-5 -mt-8 font-heading text-[#15467d]",
@@ -151,7 +152,7 @@ const PackageBookingForm = ({ packageData }) => {
                 weekday:
                   "text-[#88a9c3] text-[17px] font-heading font-medium p-0",
                 week: "flex justify-between gap-0 mt-1",
-                day: "aspect-square text-[0.7rem] text-[#88a9c3]  p-0 m-0 flex items-center justify-center",
+                day: "aspect-square text-[0.7rem] text-[#88a9c3] p-0 m-0 flex items-center justify-center",
                 today: "bg-transparent text-muted-foreground",
                 selected: "bg-sky-900 text-white rounded-sm",
                 outside: "text-muted-foreground opacity-50",
@@ -173,23 +174,22 @@ const PackageBookingForm = ({ packageData }) => {
           <div className="flex justify-center">
             <Button
               type="submit"
-              className="rounded-full border-1 border-[#15467d] bg-transparent px-5 py-6 text-base font-semibold text-[#15467d]"
+              className="rounded-full border border-[#15467d] bg-transparent px-5 py-6 text-base font-semibold text-[#15467d]"
             >
               Agendar o Espaço
             </Button>
           </div>
         </form>
       </div>
-
       {/* Access Conditions */}
-      <div className="mt-0">
+      <div className="mt-10">
         <h3 className="font-heading mb-6 text-center text-3xl font-bold text-[#15467d]">
           Condições de acesso
         </h3>
 
-        <div className="mx-auto w-[600px] justify-center text-[13px] leading-relaxed font-normal text-[#15467d]">
+        <div className="mx-auto w-full max-w-lg px-4 text-justify text-[13px] leading-relaxed font-normal text-[#15467d] sm:px-6">
           {ACCESS_CONDITIONS.map((condition) => (
-            <p key={condition.id}>
+            <p key={condition.id} className="mb-2">
               <span className="font-bold text-[#15467d]">{condition.id}.</span>{" "}
               {condition.highlight ? (
                 <>
