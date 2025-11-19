@@ -82,25 +82,26 @@ const HeroSection = () => {
 
           <motion.div
             variants={itemVariants}
-            className="absolute left-0 flex items-center space-x-4"
-            style={{ marginLeft: 0, paddingLeft: 0 }}
+            className="mt-8 flex flex-col px-4 sm:flex-row sm:items-center sm:space-x-4 md:px-0"
           >
-            <div className="flex items-center space-x-2">
+            {/* Left part: line + text */}
+            <div className="mb-2 flex items-center space-x-2 sm:mb-0">
               <div className="h-[1px] w-[68px] bg-[#88a9c3]" />
               <span className="font-mono text-sm font-normal whitespace-nowrap text-[#15467d]">
                 Ou ligue para o
               </span>
             </div>
 
+            {/* Phone */}
             <a
               href="tel:927078842"
-              className="group inline-flex items-center transition-all duration-200 hover:scale-[1.02]"
+              className="group inline-flex items-center transition-all duration-200"
             >
               <div className="mr-3 flex flex-shrink-0 items-center justify-center text-[#15467d]">
                 <PhoneCall className="h-6 w-6" />
               </div>
               <div className="flex flex-col">
-                <span className="ml-9 text-xl leading-tight font-normal text-[#104c88] duration-200">
+                <span className="text-xl leading-tight font-normal text-[#104c88]">
                   927 078 842
                 </span>
                 <span className="mt-1 font-mono text-xs font-normal text-[#104c88]">
