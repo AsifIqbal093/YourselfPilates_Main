@@ -23,7 +23,7 @@ const BenefitsCards = () => {
       description:
         "Processo simples e rápido. Agende online em poucos cliques e comece a utilizar o espaço imediatamente, sem papelada desnecessária.",
       logo: "/icons/DarkLogo.png",
-      image: "/images/WhyYourself/2.jpg",
+      image: "/images/WhyYourself/2.png",
       accent: false,
       overlayColor: "white",
       textColor: "#15467d",
@@ -102,12 +102,12 @@ const BenefitsCards = () => {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="mx-auto grid max-w-[1200px] grid-cols-1 justify-items-center gap-x-4 gap-y-10 md:grid-cols-2"
+          className="mx-auto grid max-w-[1200px] grid-cols-1 justify-items-center gap-6 md:grid-cols-2"
         >
           {benefits.map((benefit, index) => (
-            <motion.div key={index} variants={itemVariants}>
+            <motion.div key={index} variants={itemVariants} className="w-full">
               <FeatureCard
-                className="w-full md:w-[550px]"
+                className="w-full"
                 title={benefit.title}
                 description={benefit.description}
                 icon={

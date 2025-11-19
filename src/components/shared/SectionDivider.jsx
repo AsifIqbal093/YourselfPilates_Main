@@ -30,24 +30,25 @@ const SectionDivider = ({ title, subtitle }) => {
           transition={{ duration: 0.6 }}
           className="flex flex-col items-center space-y-6 text-center"
         >
-          <div className="text-accent" style={{ color: "var(--color-accent)" }}>
+          <div className="text-accent h-20 w-20 md:h-24 md:w-24">
             <Image
               src="/images/Ylogo.png"
               alt="Y logo"
-              width={72}
-              height={72}
+              width={1000}
+              height={1000}
+              className="h-full w-full object-contain"
             />
           </div>
 
           <h1
-            className={`${kodchasan.className} text-5xl font-light`}
+            className={`${kodchasan.className} text-4xl font-light md:text-5xl`}
             style={{ color: "#88a9c3" }}
           >
             {title}
           </h1>
 
           {subtitle && (
-            <p className="text-muted max-w-xl text-base md:text-lg">
+            <p className="text-muted max-w-xs text-center text-base sm:max-w-md sm:text-lg md:max-w-xl">
               {subtitle}
             </p>
           )}

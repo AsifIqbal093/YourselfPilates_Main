@@ -82,34 +82,38 @@ const ContactHero = () => {
   };
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-gradient-to-br from-[#e8f1fa] via-[#f0f5fb] to-[#ffffff] py-12 md:py-16 lg:py-24">
-      <div className="absolute top-0 left-0 hidden h-full w-1/2 lg:block">
-        <Image
-          src="/images/Contact.png"
-          alt="Contact - YourSelf Pilates"
-          fill
-          className="object-cover object-left"
-          priority
-        />
-      </div>
-
-      <div className="relative z-10 container mx-auto px-4 md:px-6 lg:px-8">
-        <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-12">
-          <div className="hidden lg:block"></div>
-
-          {/* Right Column */}
+    <section className="relative w-full overflow-hidden bg-gradient-to-br from-[#e8f1fa] via-[#f0f5fb] to-[#ffffff] py-12 md:py-16 lg:py-24">
+      <div className="container mx-auto px-4 md:px-6 lg:px-8">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12">
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="order-1 flex h-full w-full flex-col justify-start pt-24 lg:order-2"
+            className="order-1 w-full lg:order-1"
+          >
+            <Image
+              src="/images/Contact.png"
+              alt="Contact - YourSelf Pilates"
+              width={1200}
+              height={800}
+              className="mb-6 w-full rounded-lg object-cover lg:mb-0"
+              priority
+            />
+          </motion.div>
+
+          {/* Right Column / Form */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="order-2 flex w-full flex-col justify-start"
           >
             {/* Heading */}
             <motion.div variants={itemVariants} className="mb-6 lg:mb-8">
               <p className="mb-2 text-lg font-normal text-[#88a9c3] md:text-xl">
                 Schedule a visit or get in touch.
               </p>
-              <h1 className="font-accent text-6xl leading-tight text-[#15467d] md:text-7xl lg:text-8xl">
+              <h1 className="font-accent text-4xl leading-snug text-[#15467d] sm:text-5xl md:text-6xl lg:text-7xl">
                 Contact
               </h1>
             </motion.div>
@@ -118,47 +122,39 @@ const ContactHero = () => {
             <motion.div variants={itemVariants}>
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Nome */}
-                <div>
-                  <Input
-                    type="text"
-                    name="nome"
-                    id="nome"
-                    placeholder={CONTACT_FORM_CONFIG.fields.nome.placeholder}
-                    value={formData.nome}
-                    onChange={handleChange}
-                    required
-                    className="h-12 w-[60%] rounded-none border-0 border-b-2 border-[#c8d4e0] px-0 pt-2 pb-3 text-base text-[#3b3d42] placeholder:text-[#8b9daf] focus:border-transparent focus:ring-0"
-                  />
-                </div>
+                <Input
+                  type="text"
+                  name="nome"
+                  id="nome"
+                  placeholder={CONTACT_FORM_CONFIG.fields.nome.placeholder}
+                  value={formData.nome}
+                  onChange={handleChange}
+                  required
+                  className="h-12 w-full rounded-none border-0 border-b-2 border-[#c8d4e0] px-0 pt-2 pb-3 text-base text-[#3b3d42] placeholder:text-[#8b9daf] focus:border-transparent focus:ring-0"
+                />
 
                 {/* Email */}
-                <div>
-                  <Input
-                    type="email"
-                    name="email"
-                    id="email"
-                    placeholder={CONTACT_FORM_CONFIG.fields.email.placeholder}
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="h-12 w-[60%] rounded-none border-0 border-b-2 border-[#c8d4e0] px-0 pt-2 pb-3 text-base text-[#3b3d42] placeholder:text-[#8b9daf] focus:border-transparent focus:ring-0"
-                  />
-                </div>
+                <Input
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder={CONTACT_FORM_CONFIG.fields.email.placeholder}
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  className="h-12 w-full rounded-none border-0 border-b-2 border-[#c8d4e0] px-0 pt-2 pb-3 text-base text-[#3b3d42] placeholder:text-[#8b9daf] focus:border-transparent focus:ring-0"
+                />
 
                 {/* Mensagem */}
-                <div>
-                  <textarea
-                    name="mensagem"
-                    id="mensagem"
-                    placeholder={
-                      CONTACT_FORM_CONFIG.fields.mensagem.placeholder
-                    }
-                    value={formData.mensagem}
-                    onChange={handleChange}
-                    rows={4}
-                    className="w-[60%] resize-none rounded-none border-0 border-b-2 border-[#c8d4e0] px-0 pt-2 pb-3 text-base text-[#3b3d42] placeholder:text-[#8b9daf] focus:border-transparent focus:ring-0"
-                  />
-                </div>
+                <textarea
+                  name="mensagem"
+                  id="mensagem"
+                  placeholder={CONTACT_FORM_CONFIG.fields.mensagem.placeholder}
+                  value={formData.mensagem}
+                  onChange={handleChange}
+                  rows={4}
+                  className="w-full resize-none rounded-none border-0 border-b-2 border-[#c8d4e0] px-0 pt-2 pb-3 text-base text-[#3b3d42] placeholder:text-[#8b9daf] focus:border-transparent focus:ring-0"
+                />
 
                 {/* Checkbox */}
                 <div className="flex items-start space-x-3 pt-2">
@@ -171,7 +167,6 @@ const ContactHero = () => {
                     required
                     className="mt-1 h-4 w-4 rounded border-[#15467d] accent-[#15467d] focus:ring-[#15467d]"
                   />
-
                   <label
                     htmlFor="consentimento"
                     className="cursor-pointer text-sm leading-relaxed text-[#88a9c3]"
@@ -200,7 +195,6 @@ const ContactHero = () => {
                   {loading ? "Sending..." : "To send"}
                 </Button>
 
-                {/* Success/Error Message */}
                 {message.text && (
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}

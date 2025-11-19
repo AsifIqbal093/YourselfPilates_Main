@@ -45,11 +45,11 @@ const PackagesListing = ({ title, subtitle, packages = defaultPackages }) => {
           </p>
         )}
 
-        <div className="mx-auto grid max-w-6xl grid-cols-1 justify-center gap-[2px] sm:grid-cols-2 md:grid-cols-3">
+        <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
           {packages.map((pkg, index) => (
             <Card
               key={index}
-              className="w-full overflow-hidden rounded-3xl border-none bg-gradient-to-b from-sky-900/30 via-[#f1f5f8] to-white p-0 shadow-none md:w-[350px]"
+              className="w-full overflow-hidden rounded-3xl border-none bg-gradient-to-b from-sky-900/30 via-[#f1f5f8] to-white p-0 shadow-none"
             >
               <div className="relative h-[300px] w-full overflow-hidden">
                 <Image
@@ -75,7 +75,7 @@ const PackagesListing = ({ title, subtitle, packages = defaultPackages }) => {
                 <div className="mt-auto flex flex-col items-start gap-3">
                   <Button
                     asChild
-                    className="w-auto rounded-full bg-sky-900 px-6 py-2 text-base font-medium text-white normal-case"
+                    className="w-full rounded-full bg-sky-900 px-6 py-2 text-base font-medium text-white normal-case sm:w-auto"
                   >
                     <Link href={pkg.link}>Agendar</Link>
                   </Button>
@@ -83,7 +83,7 @@ const PackagesListing = ({ title, subtitle, packages = defaultPackages }) => {
                   <Button
                     asChild
                     variant="outline"
-                    className="w-auto rounded-full border-2 border-sky-900 px-6 py-2 text-base font-medium text-sky-900 normal-case"
+                    className="w-full rounded-full border-2 border-sky-900 px-6 py-2 text-base font-medium text-sky-900 normal-case sm:w-auto"
                   >
                     <Link href="/agendar-espaco">Saber Mais</Link>
                   </Button>

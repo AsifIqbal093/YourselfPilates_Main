@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 
 const IconBox = ({ icon, title, description, className }) => {
   const isImage = typeof icon === "string";
+  const Icon = icon;
 
   return (
     <motion.div
@@ -28,7 +29,7 @@ const IconBox = ({ icon, title, description, className }) => {
             className="h-16 w-16 object-contain"
           />
         ) : (
-          <div className="text-4xl text-[#15467d]">{icon}</div>
+          <Icon className="h-16 w-16 text-[#15467d]" />
         )}
       </div>
 
