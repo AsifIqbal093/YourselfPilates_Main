@@ -34,58 +34,62 @@ const Footer = () => {
           <div className="flex-shrink-0 flex-grow-0 space-y-6">
             <Link href="/" className="inline-block">
               <Image
-                src="/images/Logo.png"
+                src="/images/123.png"
                 alt="YourSelf Pilates"
                 width={278}
                 height={75}
-                className="h-auto w-full max-w-[278px]"
+                className="h-auto w-full max-w-[278px] -translate-x-16 transition-transform duration-500 ease-in-out hover:translate-x-1"
               />
             </Link>
-            <nav className="flex flex-col space-y-2">
+            <nav className="flex flex-col space-y-3 text-right md:ml-4 mt-10">
               {navigationLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="hover:text-primary w-fit text-lg font-normal text-[#15467d] transition-colors duration-200"
+                  className="hover:text-primary w-fit text-2xl font-normal text-[#15467d] transition-colors duration-200"
                 >
                   {link.name}
                 </Link>
               ))}
             </nav>
+
           </div>
 
-          <div className="flex flex-shrink-0 justify-end gap-16 text-[#15467d] md:ml-auto md:gap-24">
-            <div className="flex flex-shrink-0 flex-col space-y-4 pt-10 text-right">
+          <div className="flex flex-shrink-0 justify-start gap-16 text-[#15467d] ml-160 md:gap-24">
+            <div className="flex flex-shrink-0 flex-col space-y-4 pt-10 text-left">
               <h3 className="text-base font-semibold">Atendimento</h3>
               <h3 className="mt-8 text-base leading-snug font-semibold md:mt-10">
                 Horário e <br /> Localização
               </h3>
             </div>
+          </div>
 
-            <div className="flex flex-shrink-0 flex-col items-start space-y-4 pt-10 text-left">
-              <div className="flex flex-col items-start justify-start space-y-1">
-                <div className="flex items-center space-x-2">
-                  <PhoneCall className="h-4 w-4 shrink-0 text-[#15467d]" />
-                  <span className="text-base font-semibold tracking-wide">
-                    927&nbsp;078&nbsp;842
-                  </span>
-                </div>
-                <span className="ml-6 text-xs">
-                  (Chamada para a rede móvel nacional)
+          <div className="flex flex-shrink-0 flex-col items-start space-y-4 pt-10 text-left">
+            <div className="flex flex-col items-center justify-start space-y-1">
+              <div className="flex items-center space-x-2">
+                <PhoneCall className="h-4 w-4 shrink-0 text-[#15467d]" />
+                <span className="text-lg font-normal tracking-wide" style={{ color: '#15467d' }}>
+                  927&nbsp;078&nbsp;842
                 </span>
-              </div>
 
-              <div className="mt-8 space-y-4 text-sm md:mt-10">
-                <div className="leading-snug">
-                  <p>Segunda a Sábado</p>
-                  <p>das 8h às 20h</p>
-                </div>
-                <div className="leading-snug">
-                  <p>Rua Diário de Notícias nº 09, 2500-107</p>
-                  <p>Caldas da Rainha</p>
-                </div>
+              </div>
+              <span className="ml-6 text-xs" style={{ color: '#15467d' }}>
+                (Chamada para a rede móvel nacional)
+              </span>
+
+            </div>
+
+            <div className="mt-8 space-y-4 text-base md:mt-10 text-left font-large" style={{ color: '#15467d' }}>
+              <div className="leading-snug">
+                <p>Segunda a Sábado</p>
+                <p>das 8h às 20h</p>
+              </div>
+              <div className="leading-snug">
+                <p>Rua Diário de Notícias nº 09, 2500-107</p>
+                <p>Caldas da Rainha</p>
               </div>
             </div>
+
           </div>
         </div>
 
