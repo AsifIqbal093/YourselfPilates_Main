@@ -41,7 +41,7 @@ const Footer = () => {
                 className="h-auto w-full max-w-[278px] -translate-x-16 transition-transform duration-500 ease-in-out hover:translate-x-1"
               />
             </Link>
-            <nav className="flex flex-col space-y-3 text-right md:ml-4 mt-10">
+            <nav className="mt-10 flex flex-col space-y-3 text-right md:ml-4">
               {navigationLinks.map((link) => (
                 <Link
                   key={link.href}
@@ -52,10 +52,9 @@ const Footer = () => {
                 </Link>
               ))}
             </nav>
-
           </div>
 
-          <div className="flex flex-shrink-0 justify-start gap-16 text-[#15467d] ml-160 md:gap-24">
+          <div className="ml-160 flex flex-shrink-0 justify-start gap-16 text-[#15467d] md:gap-24">
             <div className="flex flex-shrink-0 flex-col space-y-4 pt-10 text-left">
               <h3 className="text-base font-semibold">Atendimento</h3>
               <h3 className="mt-8 text-base leading-snug font-semibold md:mt-10">
@@ -68,18 +67,22 @@ const Footer = () => {
             <div className="flex flex-col items-center justify-start space-y-1">
               <div className="flex items-center space-x-2">
                 <PhoneCall className="h-4 w-4 shrink-0 text-[#15467d]" />
-                <span className="text-lg font-normal tracking-wide" style={{ color: '#15467d' }}>
+                <span
+                  className="text-lg font-normal tracking-wide"
+                  style={{ color: "#15467d" }}
+                >
                   927&nbsp;078&nbsp;842
                 </span>
-
               </div>
-              <span className="ml-6 text-xs" style={{ color: '#15467d' }}>
+              <span className="ml-6 text-xs" style={{ color: "#15467d" }}>
                 (Chamada para a rede móvel nacional)
               </span>
-
             </div>
 
-            <div className="mt-8 space-y-4 text-base md:mt-10 text-left font-large" style={{ color: '#15467d' }}>
+            <div
+              className="font-large mt-8 space-y-4 text-left text-base md:mt-10"
+              style={{ color: "#15467d" }}
+            >
               <div className="leading-snug">
                 <p>Segunda a Sábado</p>
                 <p>das 8h às 20h</p>
@@ -89,7 +92,6 @@ const Footer = () => {
                 <p>Caldas da Rainha</p>
               </div>
             </div>
-
           </div>
         </div>
 

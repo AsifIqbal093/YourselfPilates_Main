@@ -43,13 +43,14 @@ const ContactInfo = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="mx-auto grid max-w-6xl grid-cols-1 gap-8 md:grid-cols-2"
+          className="mx-auto grid max-w-6xl grid-cols-1 gap-8 lg:grid-cols-2"
         >
           {/* Phone Contact Box */}
           <motion.div
             variants={itemVariants}
             className="flex min-h-[220px] w-full items-center rounded-[17px] bg-gradient-to-br from-[#e8eff3] to-[#e9ecef] p-12"
           >
+            {" "}
             <a
               href={`tel:${CONTACT_INFO.phone.formatted}`}
               className="group mx-auto flex items-center space-x-6"
@@ -87,6 +88,7 @@ const ContactInfo = () => {
             variants={itemVariants}
             className="flex min-h-[220px] w-full items-center rounded-[17px] bg-gradient-to-br from-[#e8eff3] to-[#e9ecef] p-12"
           >
+            {" "}
             <a
               href={`mailto:${CONTACT_INFO.email.address}`}
               className="group mx-auto flex items-center space-x-6"
