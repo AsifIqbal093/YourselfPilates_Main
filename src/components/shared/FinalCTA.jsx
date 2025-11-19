@@ -36,11 +36,11 @@ const FinalCTA = ({ showCTA = true }) => {
                 className="w-full max-w-xl space-y-2 text-center md:text-left"
               >
                 <h2 className="font-accent text-2xl leading-snug font-medium text-white sm:text-3xl md:text-4xl lg:text-5xl">
-                  I would like to get in touch.
+                  Gostava de entrar em contacto
                 </h2>
 
                 <p className="font-accent text-lg leading-snug text-white sm:text-xl md:text-[20px] lg:text-[25px]">
-                  Or schedule a visit.
+                  Ou agendar uma visita
                 </p>
               </motion.div>
 
