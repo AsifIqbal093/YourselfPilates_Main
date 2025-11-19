@@ -23,7 +23,7 @@ const BenefitsCards = () => {
       description:
         "Processo simples e rápido. Agende online em poucos cliques e comece a utilizar o espaço imediatamente, sem papelada desnecessária.",
       logo: "/icons/DarkLogo.png",
-      image: "/images/WhyYourself/2.jpg",
+      image: "/images/WhyYourself/2.png",
       accent: false,
       overlayColor: "white",
       textColor: "#15467d",
