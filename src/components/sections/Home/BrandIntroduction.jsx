@@ -20,10 +20,10 @@ const BrandIntroduction = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
-            className="flex justify-center md:justify-start"
+            className="-mt-12 -ml-10 flex justify-center md:mt-0 md:ml-0 md:justify-start lg:justify-start"
           >
             <Image
-              src="/images/Logo.png"
+              src="/images/HeroSectionLogo.png"
               alt="YourSelf Pilates"
               width={303}
               height={56}
@@ -38,7 +38,7 @@ const BrandIntroduction = () => {
             transition={{ duration: 0.6 }}
             className="mx-auto max-w-[455px] space-y-6 md:mx-0"
           >
-            <p className="font-sans text-[17px] leading-relaxed font-normal text-[#104c88]">
+            <p className="font-heading text-[17px] font-medium text-[#104c88]">
               Na Yourself Pilates, acreditamos na liberdade de ensinar ao seu
               estilo, com qualidade e estrutura de excelência. Um espaço pensado
               para quem quer oferecer mais, com flexibilidade e total controle
