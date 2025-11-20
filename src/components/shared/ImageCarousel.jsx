@@ -70,8 +70,8 @@ const ImageCarousel = () => {
                 <Image
                   src={slide.src}
                   alt={slide.alt}
-                  width={1920}
-                  height={1080}
+                  width={2000}
+                  height={1000}
                   className="h-auto w-full object-contain"
                   sizes="100vw"
                   priority={index === 0}
