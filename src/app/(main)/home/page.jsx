@@ -23,7 +23,7 @@ export const metadata = {
 
 const HomePage = () => {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen pt-20">
       <HeroSection />
       <SectionDivider title="O seu studio de Pilates" />
       <FeaturesGrid />
