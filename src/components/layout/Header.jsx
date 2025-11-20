@@ -9,21 +9,34 @@ import Navigation from "./Navigation";
 import MobileMenu from "./MobileMenu";
 
 const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [showHeader, setShowHeader] = useState(true);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 10);
+    const handleScroll = () => {
+      const currentY = window.scrollY;
+
+      if (currentY > lastScrollY) {
+        setShowHeader(false);
+      } else {
+        setShowHeader(true);
+      }
+
+      setLastScrollY(currentY);
+    };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [lastScrollY]);
 
   return (
     <header
-      className={`relative top-3 z-50 w-full transition-all duration-200 ${
-        isScrolled ? "bg-white/95 shadow-sm backdrop-blur-sm" : "bg-transparent"
+      className={`fixed top-0 left-0 z-50 w-full bg-transparent ${
+        showHeader ? "translate-y-0" : "-translate-y-full"
       }`}
     >
       <div className="w-full px-6 lg:px-12">
+        {/* Mobile */}
         <div className="flex flex-col items-start space-y-4 py-4 md:hidden">
           <div className="flex w-full justify-center">
             <Link href="/home">
@@ -69,6 +82,7 @@ const Header = () => {
           </div>
         </div>
 
+        {/* Tablet */}
         <div className="hidden flex-col items-center space-y-4 py-6 md:flex lg:hidden">
           <Link href="/home">
             <motion.div
@@ -90,7 +104,6 @@ const Header = () => {
             </motion.div>
           </Link>
 
-          {/* Navigation + Phone */}
           <div className="flex flex-col items-center space-y-4 md:flex-row md:space-y-0 md:space-x-8">
             <Navigation />
             <a
@@ -110,8 +123,9 @@ const Header = () => {
           </div>
         </div>
 
+        {/* Desktop */}
         <div className="hidden items-center justify-between py-4 lg:flex">
-          <Link href="/home" className="cursor-pointer">
+          <Link href="/home">
             <motion.div
               style={{
                 display: "inline-block",
@@ -133,7 +147,6 @@ const Header = () => {
 
           <div className="flex items-center space-x-8">
             <Navigation />
-
             <a
               href="tel:927078842"
               className="flex items-center justify-center space-x-2 rounded-2xl bg-[rgba(232,233,239,0.5)] px-4 py-4.5 transition-all duration-200 hover:scale-110"
