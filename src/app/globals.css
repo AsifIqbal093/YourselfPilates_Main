@@ -255,6 +255,72 @@
     }
   }
 
+  /* 4K Screens */
+  @media (min-width: 2560px) {
+    .about-hero-left1 {
+      width: 1600px;
+      height: 400px;
+      transform: translateX(500px);
+    }
+
+    .about-hero-right1 {
+      width: 1500px !important;
+      height: 400px;
+      transform: translateX(-100px);
+    }
+
+    .about-hero-left2 {
+      width: 1600px;
+      height: 400px;
+      transform: translateX(450px);
+    }
+
+    .about-hero-right2 {
+      width: 3000px !important;
+      height: 400px;
+      transform: translateX(-150px);
+    }
+
+    .about-hero-left3 {
+      width: 1000px !important;
+      height: 400px;
+      transform: translateX(380px);
+    }
+  }
+
+  /*1880*/
+  @media (min-width: 1880) {
+    .about-hero-left1 {
+      width: 1200px !important;
+      height: 350px;
+      transform: translateX(170px);
+    }
+
+    .about-hero-right1 {
+      width: 1000px !important;
+      height: 350px;
+      transform: translateX(-100px);
+    }
+
+    .about-hero-left2 {
+      width: 1000px !important;
+      height: 400px;
+      transform: translateX(170px);
+    }
+
+    .about-hero-right2 {
+      width: 3000px !important;
+      height: 400px;
+      transform: translateX(-150px);
+    }
+
+    .about-hero-left3 {
+      width: 1000px !important;
+      height: 400px;
+      transform: translateX(380px);
+    }
+  }
+
   /* Button Typography */
   button,
   [role="button"],
