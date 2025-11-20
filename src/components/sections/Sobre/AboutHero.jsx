@@ -155,7 +155,7 @@ const AboutHero = () => {
           </OvalWrapper>
         </ScrollAnimatedImage>
 
-        <div div className="flex max-w-lg items-center md:pl-10">
+        <div className="flex max-w-lg items-center md:pl-10">
           <p className="text-center text-[17px] font-normal text-[#15467d] sm:text-[18px] md:text-left md:text-[19px]">
             {ABOUT_INTRO.description}
           </p>
