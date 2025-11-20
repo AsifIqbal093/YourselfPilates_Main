@@ -33,7 +33,7 @@ export const metadata = {
 
 const Contactos = () => {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen pt-40 md:pt-40 lg:pt-40">
       {/* Hero Section with Contact Form */}
       <ContactHero />
 
