@@ -38,7 +38,7 @@ const SquareClockIcon = () => (
 
 const Availibility = () => {
   return (
-    <div className="mt-20 mb-20 flex flex-col gap-16 px-4 md:flex-row md:justify-center md:gap-40 lg:gap-60">
+    <div className="mt-20 mb-30 flex flex-col gap-16 px-4 md:flex-row md:justify-center md:gap-40 lg:gap-60">
       {/* Horário */}
       <div className="flex flex-col items-center gap-2 text-center md:-translate-y-6 md:flex-row md:items-start md:gap-x-6 md:text-left lg:-translate-y-10">
         <SquareClockIcon className="h-6 w-6" />
