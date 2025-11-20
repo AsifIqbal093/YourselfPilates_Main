@@ -2,13 +2,12 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Star } from "lucide-react";
 import IconBox from "@/components/shared/IconBox";
 
 const FeaturesGrid = () => {
   const features = [
     {
-      icon: Star,
+      icon: "/icons/Quality.png",
       title: "Equipamentos de Qualidade Premium",
       description: "que garantem uma melhor experiência",
     },
