@@ -17,7 +17,7 @@ export const metadata = {
 
 export default function AgendarEspacoPage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen pt-30 md:pt-2 lg:pt-0">
       <BookingHero />
       <FeaturesGrid />
       <PackagesListing
