@@ -10,6 +10,7 @@ import {
   ChevronRightIcon,
   PhoneIcon,
 } from "@/components/icons/CustomIcons";
+import "./style.css";
 
 const HeroSection = () => {
   const containerVariants = {
@@ -34,19 +35,19 @@ const HeroSection = () => {
   return (
     <section className="bg-gradient-primary relative overflow-hidden py-16 md:py-20 lg:py-3">
       {/* Container */}
-      <div className="container mx-auto px-4 md:px-6 lg:px-8">
-        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
+      <div className="container px-4 md:px-6 lg:px-8">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20">
           {/* Left Column */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="space-y-8 lg:pr-8"
+            className="space-y-8"
           >
             {/* Location Badge */}
             <motion.div
               variants={itemVariants}
-              className="mb-1 -ml-4 flex items-center space-x-3 md:-ml-6 lg:-ml-28"
+              className="mb-1 ml-20 flex items-center space-x-3 lg:ml-14"
             >
               <LocationDotIcon className="h-5 w-5" />
               <span className="text-lg font-medium text-[#88a9c3]">
@@ -56,33 +57,18 @@ const HeroSection = () => {
 
             {/* Heading */}
             <motion.h1
-              className="font-accent -ml-4 flex w-full md:-ml-6 lg:-ml-28"
+              className="hero-heading font-accent ml-20 flex w-full lg:ml-14"
               variants={itemVariants}
-              style={{
-                fontSize: "clamp(34px, 5vw, 40px)",
-                fontWeight: "500",
-                lineHeight: "var(--e-global-typography-primary-line-height)",
-                color: "#104c88ff",
-                maxWidth: "600px",
-                display: "-webkit-box",
-                WebkitLineClamp: 3,
-                WebkitBoxOrient: "vertical",
-                overflow: "hidden",
-                marginBottom: "20px",
-                textAlign: "left",
-              }}
             >
-              Cowork de Pilates <br />
-              exclusivo para profissionais <br />
-              equipamentos
+              Cowork de Pilates exclusivo para profissionais em equipamentos
             </motion.h1>
-
+            <br />
             {/* Primary Button below heading */}
             <motion.div variants={itemVariants}>
               <Button
                 asChild
                 size="lg"
-                className="-ml-4 rounded-[29px] border-2 border-[#ffffff] bg-[#f6f9fb] text-[#ffffff] transition-colors duration-300 hover:bg-[#104c88] hover:text-white md:-ml-6 lg:-ml-28"
+                className="ml-20 rounded-[29px] border-2 border-[#ffffff] bg-[#f6f9fb] text-[#ffffff] transition-colors duration-300 hover:bg-[#104c88] hover:text-white lg:ml-14"
               >
                 <Link
                   href="/agendar-espaco"
@@ -97,7 +83,7 @@ const HeroSection = () => {
             {/* Divider + Phone */}
             <motion.div
               variants={itemVariants}
-              className="mt-90 -ml-4 flex w-full items-center space-x-0 md:-ml-6 lg:-ml-58"
+              className="mt-90 -ml-8 flex w-full items-center space-x-0"
             >
               {/* Divider on left */}
               <div className="flex items-center space-x-2">
