@@ -60,7 +60,7 @@ const ContactLocation = ({ showTitle = true, firstLine, secondLine }) => {
 
           <motion.div
             variants={itemVariants}
-            className="h-[400px] w-full overflow-hidden rounded-[26px] shadow-lg md:h-[500px]"
+            className="map-container h-[300px] w-full overflow-hidden rounded-[26px] shadow-lg sm:h-[200px] md:h-[400px]"
           >
             <iframe
               src={CONTACT_INFO.maps.embedUrl}
