@@ -329,6 +329,14 @@
       grid-template-rows: repeat(2, auto) !important;
       gap: 1rem !important;
     }
+    .map-container {
+      height: 290px !important;
+    }
+  }
+  @media (min-width: 1024px) {
+    .map-container {
+      height: 290px !important;
+    }
   }
 
   /* Button Typography */
