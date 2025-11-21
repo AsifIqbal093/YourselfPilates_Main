@@ -9,9 +9,9 @@ import FeatureCard from "@/components/shared/FeatureCard";
 const BenefitsCards = () => {
   const benefits = [
     {
-      title: "Low Initial Cost",
+      title: "Baixo Custo Inicial",
       description:
-        "Aluguer flexível por hora, sem compromissos mensais fixos. Pague apenas pelo tempo que utiliza e maximize o seu investimento.",
+        "Na Yourself Pilates, pagas apenas pelo tempo de uso. Mais flexibilidade, sem despesas fixas!",
       logo: "/icons/LightLogo.png",
       image: "/images/WhyYourself/1.jpg",
       accent: true,
@@ -19,9 +19,9 @@ const BenefitsCards = () => {
       textColor: "white",
     },
     {
-      title: "Total focus on the student.",
+      title: "Foco total no aluno",
       description:
-        "Processo simples e rápido. Agende online em poucos cliques e comece a utilizar o espaço imediatamente, sem papelada desnecessária.",
+        "Concentre-se no que importa, a prática e o progresso dos seus alunos, sem preocupações administrativas.",
       logo: "/icons/DarkLogo.png",
       image: "/images/WhyYourself/2.png",
       accent: false,
@@ -29,9 +29,9 @@ const BenefitsCards = () => {
       textColor: "#15467d",
     },
     {
-      title: "Total Professional Environment",
+      title: "Ambiente Profissional",
       description:
-        "Use o espaço sempre que precisar. Horários totalmente flexíveis e adaptados à sua rotina.",
+        "Um espaço que transmite profissionalismo e conforto, ideal para fortalecer a sua imagem e fidelizar os seus alunos.",
       logo: "/icons/DarkLogo.png",
       image: "/images/WhyYourself/3.jpg",
       accent: true,
@@ -41,7 +41,7 @@ const BenefitsCards = () => {
     {
       title: "Networking",
       description:
-        "Estrutura moderna, limpa e equipada para oferecer a melhor experiência aos seus clientes.",
+        "Construa uma rede de contatos valiosa, troque experiências e cresça junto com a comunidade do Pilates.",
       logo: "/icons/LightLogo.png",
       image: "/images/WhyYourself/1.jpg",
       accent: false,
@@ -49,9 +49,9 @@ const BenefitsCards = () => {
       textColor: "white",
     },
     {
-      title: "Flexible Hours",
+      title: "Horários Flexíveis",
       description:
-        "Equipe pronta para ajudar você em tudo que precisar, garantindo uma experiência sem preocupações.",
+        "Agende as suas aulas de acordo com a sua agenda e a dos seus alunos. Maior controlo e liberdade para si!",
       logo: "/icons/LightLogo.png",
       image: "/images/WhyYourself/5.jpg",
       accent: true,
@@ -59,9 +59,9 @@ const BenefitsCards = () => {
       textColor: "white",
     },
     {
-      title: "Finances under control",
+      title: "Financeiro controlado",
       description:
-        "Espaços em áreas estratégicas, fáceis de acessar e próximas aos principais pontos da cidade.",
+        "Em momentos de baixa procura, paga apenas pelo que utiliza. Simples e sem surpresas.",
       logo: "/icons/DarkLogo.png",
       image: "/images/WhyYourself/6.png",
       accent: false,
