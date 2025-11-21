@@ -36,7 +36,7 @@ const HeroSection = () => {
     <section className="bg-gradient-primary relative overflow-hidden py-16 md:py-20 lg:py-3">
       {/* Container */}
       <div className="container px-4 md:px-6 lg:px-8">
-        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20">
+        <div className="hero-grid grid grid-cols-1 items-start gap-12 md:grid-cols-2 md:items-center lg:gap-20">
           {/* Left Column */}
           <motion.div
             variants={containerVariants}
@@ -47,7 +47,7 @@ const HeroSection = () => {
             {/* Location Badge */}
             <motion.div
               variants={itemVariants}
-              className="mb-1 ml-20 flex items-center space-x-3 lg:ml-14"
+              className="location-badge mb-1 ml-20 flex items-center space-x-3 lg:ml-14"
             >
               <LocationDotIcon className="h-5 w-5" />
               <span className="text-lg font-medium text-[#88a9c3]">
@@ -64,11 +64,14 @@ const HeroSection = () => {
             </motion.h1>
             <br />
             {/* Primary Button below heading */}
-            <motion.div variants={itemVariants}>
+            <motion.div
+              variants={itemVariants}
+              className="hero-button flex justify-center lg:justify-start"
+            >
               <Button
                 asChild
                 size="lg"
-                className="ml-20 rounded-[29px] border-2 border-[#ffffff] bg-[#f6f9fb] text-[#ffffff] transition-colors duration-300 hover:bg-[#104c88] hover:text-white lg:ml-14"
+                className="rounded-[29px] border-2 border-[#ffffff] bg-[#f6f9fb] text-[#ffffff] transition-colors duration-300 hover:bg-[#104c88] hover:text-white"
               >
                 <Link
                   href="/agendar-espaco"
@@ -83,7 +86,7 @@ const HeroSection = () => {
             {/* Divider + Phone */}
             <motion.div
               variants={itemVariants}
-              className="mt-90 -ml-8 flex w-full items-center space-x-0"
+              className="call-to-action mt-90 -ml-8 flex w-full items-center space-x-0"
             >
               {/* Divider on left */}
               <div className="flex items-center space-x-2">
@@ -118,28 +121,28 @@ const HeroSection = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="relative flex flex-col items-start gap-6 pt-12 sm:flex-row"
+            className="hero-images flex w-full flex-col gap-6 md:flex-row"
           >
             {/* Left Image */}
-            <div className="w-full flex-shrink-0 sm:w-1/2">
+            <div className="hero-image-left relative h-[500px] w-full md:h-[800px] md:w-1/2">
               <Image
                 src="/images/15.jpg"
                 alt="Yourself Pilates Studio Interior"
-                width={400}
-                height={500}
-                className="rounded-[170px] shadow-xl"
+                fill
+                style={{ objectFit: "cover" }}
+                className="rounded-[170px]"
                 priority
               />
             </div>
 
             {/* Right Image */}
-            <div className="w-full flex-shrink-0 sm:w-auto">
+            <div className="hero-image-right relative h-[500px] w-full md:h-[800px] md:w-1/2">
               <Image
                 src="/images/16.jpg"
-                alt="Yourself Pilates Equipment"
-                width={700}
-                height={850}
-                className="rounded-[100px] shadow-2xl"
+                alt="Hero Image"
+                fill
+                style={{ objectFit: "cover" }}
+                className="rounded-l-[100px]"
                 priority
               />
             </div>
@@ -152,8 +155,9 @@ const HeroSection = () => {
         <div className="bg-primary/5 absolute top-20 right-20 h-64 w-64 rounded-full blur-3xl" />
         <div className="bg-accent/5 absolute bottom-20 left-20 h-96 w-96 rounded-full blur-3xl" />
       </div>
-
-      <BrandIntroduction />
+      <div className="content">
+        <BrandIntroduction />
+      </div>
     </section>
   );
 };

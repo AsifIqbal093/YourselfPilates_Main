@@ -22,12 +22,10 @@ const BrandIntroduction = () => {
             transition={{ duration: 0.6 }}
             className="-mt-12 -ml-10 flex justify-center md:mt-0 md:ml-0 md:justify-start lg:justify-start"
           >
-            <Image
+            <img
               src="/images/HeroSectionLogo.png"
-              alt="YourSelf Pilates"
-              width={303}
-              height={56}
-              className="h-auto w-auto max-w-[250px] md:max-w-[303px]"
+              alt="Logo"
+              className="h-auto w-48"
             />
           </motion.div>
 

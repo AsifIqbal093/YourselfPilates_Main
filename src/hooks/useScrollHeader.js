@@ -14,7 +14,7 @@ export function useScrollHeader() {
   useEffect(() => {
     const handleScroll = () => {
       const currentY = window.scrollY;
-      
+
       // Only show header when at the top of the page
       if (currentY === 0) {
         setShowHeader(true);
@@ -33,4 +33,3 @@ export function useScrollHeader() {
 
   return showHeader;
 }
-
