@@ -63,7 +63,6 @@ const HeroSection = () => {
               Cowork de Pilates exclusivo para profissionais em equipamentos
             </motion.h1>
             <br />
-            {/* Primary Button below heading */}
             <motion.div
               variants={itemVariants}
               className="hero-button flex justify-center lg:justify-start"
