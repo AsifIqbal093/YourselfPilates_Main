@@ -85,20 +85,20 @@ const HeroSection = () => {
             {/* Divider + Phone */}
             <motion.div
               variants={itemVariants}
-              className="call-to-action mt-90 -ml-8 flex w-full items-center space-x-0"
+              className="call-to-action cta-wrapper mt-90 -ml-8 flex w-full items-center space-x-0"
             >
-              {/* Divider on left */}
-              <div className="flex items-center space-x-2">
-                <div className="h-[1px] w-[68px] bg-[#88a9c3]" />
+              {/* Left text + divider */}
+              <div className="cta-left flex items-center space-x-2">
+                <div className="divider h-[1px] w-[68px] bg-[#88a9c3]" />
                 <span className="font-heading text-lg whitespace-nowrap text-[#15467d]">
                   Ou ligue para o
                 </span>
               </div>
 
-              {/* Phone Button on right */}
+              {/* Phone button */}
               <a
                 href="tel:927078842"
-                className="group inline-flex items-center"
+                className="group cta-phone inline-flex items-center"
               >
                 <div className="flex h-12 w-12 items-center justify-center text-[#15467d]">
                   <PhoneIcon className="h-6 w-6" />

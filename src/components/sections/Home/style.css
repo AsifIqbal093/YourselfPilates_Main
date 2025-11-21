@@ -276,4 +276,18 @@
     display: flex !important;
     justify-content: center !important;
   }
+  .cta-wrapper {
+    flex-direction: column !important;
+    align-items: center !important;
+    margin-left: -50px !important;
+    text-align: center !important;
+  }
+
+  .cta-left .divider {
+    width: 120px;
+  }
+  .cta-phone {
+    margin-top: 10px !important;
+    justify-content: center !important;
+  }
 }
