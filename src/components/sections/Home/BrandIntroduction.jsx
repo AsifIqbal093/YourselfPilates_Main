@@ -4,6 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import "./style.css";
 
 /**
  * Brand Introduction Section
@@ -14,7 +15,6 @@ const BrandIntroduction = () => {
     <section className="py-20">
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2 lg:gap-16">
-          {/* Left Column - Logo */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -22,12 +22,10 @@ const BrandIntroduction = () => {
             transition={{ duration: 0.6 }}
             className="-mt-12 -ml-10 flex justify-center md:mt-0 md:ml-0 md:justify-start lg:justify-start"
           >
-            <Image
+            <img
               src="/images/HeroSectionLogo.png"
-              alt="YourSelf Pilates"
-              width={303}
-              height={56}
-              className="h-auto w-auto max-w-[250px] md:max-w-[303px]"
+              alt="Logo"
+              className="brand-logo h-auto w-48"
             />
           </motion.div>
 

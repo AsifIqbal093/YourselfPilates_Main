@@ -28,4 +28,3 @@ export const logoMotionVariants = {
   whileHover: { transform: "skewX(-12deg)" },
   transition: { duration: 1.0, ease: "easeOut" },
 };
-

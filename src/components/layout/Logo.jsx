@@ -29,4 +29,3 @@ const Logo = ({ variant = "mobile", className = "" }) => {
 };
 
 export default Logo;
-
