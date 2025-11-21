@@ -56,7 +56,7 @@ const FeaturesGrid = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 gap-10 sm:grid-cols-6 lg:grid-cols-6 xl:grid-cols-6"
+          className="custom-grid grid grid-cols-1 gap-10 sm:grid-cols-6 lg:grid-cols-6 xl:grid-cols-6"
         >
           {features.map((feature, index) => (
             <IconBox
