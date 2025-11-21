@@ -83,20 +83,14 @@ const ContactHero = () => {
 
   return (
     <section className="relative w-full overflow-hidden bg-gradient-to-br from-[#e8f1fa] via-[#f0f5fb] to-[#ffffff] py-12 md:py-16 lg:py-24">
-      <div className="container mx-auto px-4 md:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12">
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            className="order-1 w-full lg:order-1"
-          >
+      <div className="container">
+        <div className="mt-[200px] grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12 xl:gap-160">
+          <motion.div className="contact-hero-image relative h-[500px] w-full">
             <Image
               src="/images/Contact.png"
               alt="Contact - YourSelf Pilates"
-              width={1200}
-              height={800}
-              className="mb-6 w-full rounded-lg object-cover lg:mb-0"
+              fill
+              className="rounded-lg object-cover"
               priority
             />
           </motion.div>
@@ -106,15 +100,15 @@ const ContactHero = () => {
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="order-2 flex w-full flex-col justify-start"
+            className="contact-hero-form order-2 mt-[50px] flex w-full flex-col justify-start"
           >
             {/* Heading */}
             <motion.div variants={itemVariants} className="mb-6 lg:mb-8">
               <p className="mb-2 text-lg font-normal text-[#88a9c3] md:text-xl">
-                Schedule a visit or get in touch.
+                Agende uma visita ou entre em
               </p>
               <h1 className="font-accent text-4xl leading-snug text-[#15467d] sm:text-5xl md:text-6xl lg:text-7xl">
-                Contact
+                Contacto
               </h1>
             </motion.div>
 
@@ -171,16 +165,16 @@ const ContactHero = () => {
                     htmlFor="consentimento"
                     className="cursor-pointer text-sm leading-relaxed text-[#88a9c3]"
                   >
-                    I accept the{" "}
+                    Aceito os{" "}
                     <Link href="/termos-e-condicoes" className="text-[#88a9c3]">
-                      terms and conditions
+                      termos e condições
                     </Link>{" "}
-                    and the{" "}
+                    e a{" "}
                     <Link
                       href="/politica-de-privacidade"
                       className="text-[#88a9c3]"
                     >
-                      privacy policy
+                      política de privacidade
                     </Link>
                     .
                   </label>
@@ -192,7 +186,7 @@ const ContactHero = () => {
                   className="h-12 w-40 rounded-[29px] bg-[#15467d] text-base text-white transition-none hover:bg-[#15467d] focus:bg-[#15467d] active:bg-[#15467d]"
                   size="lg"
                 >
-                  {loading ? "Sending..." : "To send"}
+                  {loading ? "Sending..." : "Enviar"}
                 </Button>
 
                 {message.text && (
