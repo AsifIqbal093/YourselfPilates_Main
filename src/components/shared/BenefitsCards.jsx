@@ -15,7 +15,6 @@ const BenefitsCards = () => {
       logo: "/icons/LightLogo.png",
       image: "/images/WhyYourself/1.jpg",
       accent: true,
-      overlayColor: "#5d8fb6ff",
       textColor: "white",
     },
     {
@@ -23,9 +22,8 @@ const BenefitsCards = () => {
       description:
         "Concentre-se no que importa, a prática e o progresso dos seus alunos, sem preocupações administrativas.",
       logo: "/icons/DarkLogo.png",
-      image: "/images/WhyYourself/2.png",
+      image: "/images/WhyYourself/2.jpg",
       accent: false,
-      overlayColor: "white",
       textColor: "#15467d",
     },
     {
@@ -35,7 +33,6 @@ const BenefitsCards = () => {
       logo: "/icons/DarkLogo.png",
       image: "/images/WhyYourself/3.jpg",
       accent: true,
-      overlayColor: "white",
       textColor: "#15467d",
     },
     {
@@ -45,7 +42,6 @@ const BenefitsCards = () => {
       logo: "/icons/LightLogo.png",
       image: "/images/WhyYourself/1.jpg",
       accent: false,
-      overlayColor: "#5d8fb6ff",
       textColor: "white",
     },
     {
@@ -55,7 +51,6 @@ const BenefitsCards = () => {
       logo: "/icons/LightLogo.png",
       image: "/images/WhyYourself/5.jpg",
       accent: true,
-      overlayColor: "#5d8fb6ff",
       textColor: "white",
     },
     {
@@ -63,9 +58,8 @@ const BenefitsCards = () => {
       description:
         "Em momentos de baixa procura, paga apenas pelo que utiliza. Simples e sem surpresas.",
       logo: "/icons/DarkLogo.png",
-      image: "/images/WhyYourself/6.png",
+      image: "/images/WhyYourself/6.jpg",
       accent: false,
-      overlayColor: "white",
       textColor: "#15467d",
     },
   ];
@@ -121,7 +115,6 @@ const BenefitsCards = () => {
                 }
                 image={benefit.image}
                 accent={benefit.accent}
-                overlayColor={benefit.overlayColor}
                 textColor={benefit.textColor}
               />
             </motion.div>
