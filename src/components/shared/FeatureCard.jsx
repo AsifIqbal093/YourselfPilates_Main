@@ -11,7 +11,6 @@ const FeatureCard = ({
   icon,
   image,
   accent = false,
-  overlayColor,
   textColor = "#15467d",
   className,
 }) => {
@@ -28,7 +27,7 @@ const FeatureCard = ({
         className
       )}
     >
-      {/* Background Image with Overlay */}
+      {/* Background Image WITHOUT overlay */}
       {image && (
         <div className="absolute inset-0 z-0">
           <Image
@@ -37,14 +36,7 @@ const FeatureCard = ({
             fill
             className="object-cover"
             sizes="(max-width: 768px) 100vw, 50vw"
-            style={{ opacity: 0.3 }}
-          />
-          <div
-            className={cn("absolute inset-0")}
-            style={{
-              backgroundColor: overlayColor ? overlayColor : "#5d8fb6ff",
-              opacity: 0.35,
-            }}
+            style={{ opacity: 1 }} // full strength image
           />
         </div>
       )}
