@@ -1,19 +1,29 @@
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "https://backend.yourselfpilates.pt";
+import api from "./axios";
 
-export async function fetchPacks() {
-  try {
-    const response = await fetch(`${API_BASE_URL}/api/subscriptions/packs/`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
+export const authApi = {
+  login: async (email, password) => {
+    const { data } = await api.post("/api/user/login/", { email, password });
+    return data;
+  },
+
+  refreshToken: async (refreshToken) => {
+    const { data } = await api.post("/api/user/token/refresh/", {
+      refresh: refreshToken,
     });
+    return data;
+  },
+};
 
-    if (!response.ok) {
-      throw new Error(`Failed to fetch packs: ${response.statusText}`);
-    }
+export const userApi = {
+  getMe: async () => {
+    const { data } = await api.get("/api/user/me/");
+    return data;
+  },
+};
 
-    const data = await response.json();
+export const subscriptionsApi = {
+  getPacks: async () => {
+    const { data } = await api.get("/api/subscriptions/packs/");
 
     return data.results.map((pack) => ({
       id: pack.id,
@@ -23,8 +33,15 @@ export async function fetchPacks() {
       price: `Preço: ${parseFloat(pack.price).toFixed(2)}€`,
       link: "/agendar-espaco",
     }));
-  } catch (error) {
-    console.error("Error fetching packs:", error);
-    throw error;
-  }
-}
+  },
+
+  subscribe: async (packId) => {
+    const { data } = await api.post(
+      `/api/subscriptions/packs/${packId}/subscribe/`
+    );
+    return data;
+  },
+};
+
+export const loginUser = authApi.login;
+export const fetchPacks = subscriptionsApi.getPacks;

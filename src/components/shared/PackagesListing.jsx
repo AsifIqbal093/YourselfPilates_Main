@@ -9,15 +9,29 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import { CheckCircle2 } from "lucide-react";
-import { fetchPacks } from "@/lib/api";
+import { fetchPacks, subscriptionsApi } from "@/lib/api";
+import { isAuthenticated, onAuthChange } from "@/lib/auth";
+import LoginModal from "./LoginModal";
 
 const PackagesListing = ({ title, subtitle } = {}) => {
   const [packages, setPackages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [authenticated, setAuthenticated] = useState(false);
+  const [loginModalOpen, setLoginModalOpen] = useState(false);
+  const [successModalOpen, setSuccessModalOpen] = useState(false);
+  const [selectedPackage, setSelectedPackage] = useState(null);
+  const [subscribing, setSubscribing] = useState(false);
+
+  useEffect(() => {
+    setAuthenticated(isAuthenticated());
+    const unsubscribe = onAuthChange((isAuth) => {
+      setAuthenticated(isAuth);
+    });
+    return unsubscribe;
+  }, []);
 
   useEffect(() => {
     const loadPacks = async () => {
@@ -37,6 +51,36 @@ const PackagesListing = ({ title, subtitle } = {}) => {
 
     loadPacks();
   }, []);
+
+  const handleSubscribe = async (pkg) => {
+    setSubscribing(true);
+    setError(null);
+    try {
+      await subscriptionsApi.subscribe(pkg.id);
+      setSuccessModalOpen(true);
+    } catch (err) {
+      setError(err.message || "Erro ao processar subscrição. Por favor, tente novamente.");
+    } finally {
+      setSubscribing(false);
+    }
+  };
+
+  const handleAgendarClick = (pkg) => {
+    setSelectedPackage(pkg);
+    if (authenticated) {
+      handleSubscribe(pkg);
+    } else {
+      setLoginModalOpen(true);
+    }
+  };
+
+  const handleLoginSuccess = () => {
+    setLoginModalOpen(false);
+    if (selectedPackage) {
+      handleSubscribe(selectedPackage);
+    }
+  };
+
   return (
     <section className="pt-0 pb-20">
       <div className="container mx-auto px-4 text-center md:px-6 lg:px-8">
@@ -107,36 +151,13 @@ const PackagesListing = ({ title, subtitle } = {}) => {
                   </p>
 
                   <div className="mt-auto flex flex-col items-start gap-3">
-                    <Dialog>
-                      <DialogTrigger asChild>
-                        <Button className="w-full rounded-full bg-sky-900 px-6 py-2 text-base font-medium text-white normal-case sm:w-auto">
-                          Agendar
-                        </Button>
-                      </DialogTrigger>
-                      <DialogContent className="sm:max-w-md">
-                        <div className="flex flex-col items-center justify-center py-6">
-                          <div className="mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-green-100">
-                            <CheckCircle2 className="h-12 w-12 text-green-600" />
-                          </div>
-                          <DialogHeader className="text-center">
-                            <DialogTitle className="mb-2 text-2xl font-semibold text-sky-900">
-                              Subscrição Realizada!
-                            </DialogTitle>
-                            <p className="text-base font-normal text-sky-700">
-                              A sua subscrição foi processada com sucesso. Obrigado!
-                            </p>
-                          </DialogHeader>
-                        </div>
-                      </DialogContent>
-                    </Dialog>
-
-                    {/* <Button
-                    asChild
-                    variant="outline"
-                    className="w-full rounded-full border-2 border-sky-900 px-6 py-2 text-base font-medium text-sky-900 normal-case sm:w-auto"
-                  >
-                    <Link href="/agendar-espaco">Saber Mais</Link>
-                  </Button> */}
+                    <Button
+                      onClick={() => handleAgendarClick(pkg)}
+                      disabled={subscribing}
+                      className="w-full rounded-full bg-sky-900 px-6 py-2 text-base font-medium text-white normal-case disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
+                    >
+                      {subscribing && selectedPackage?.id === pkg.id ? "A processar..." : "Agendar"}
+                    </Button>
                   </div>
                 </CardContent>
               </Card>
@@ -144,6 +165,30 @@ const PackagesListing = ({ title, subtitle } = {}) => {
           </div>
         )}
       </div>
+
+      <LoginModal
+        open={loginModalOpen}
+        onOpenChange={setLoginModalOpen}
+        onLogin={handleLoginSuccess}
+      />
+
+      <Dialog open={successModalOpen} onOpenChange={setSuccessModalOpen}>
+        <DialogContent className="sm:max-w-md">
+          <div className="flex flex-col items-center justify-center py-6">
+            <div className="mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-green-100">
+              <CheckCircle2 className="h-12 w-12 text-green-600" />
+            </div>
+            <DialogHeader className="text-center">
+              <DialogTitle className="mb-2 text-2xl font-semibold text-sky-900">
+                Subscrição Realizada!
+              </DialogTitle>
+              <p className="text-base font-normal text-sky-700">
+                A sua subscrição foi processada com sucesso. Obrigado!
+              </p>
+            </DialogHeader>
+          </div>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };
