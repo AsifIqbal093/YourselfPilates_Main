@@ -10,10 +10,32 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { CheckCircle2 } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { CheckCircle2, CreditCard, Smartphone, Building2 } from "lucide-react";
 import { fetchPacks, subscriptionsApi } from "@/lib/api";
 import { isAuthenticated, onAuthChange } from "@/lib/auth";
 import LoginModal from "./LoginModal";
+
+const PAYMENT_METHODS = [
+  {
+    id: "multibanco",
+    name: "MultiBanco",
+    icon: Building2,
+    requiresPhone: false,
+  },
+  {
+    id: "mbway",
+    name: "MB WAY",
+    icon: Smartphone,
+    requiresPhone: true,
+  },
+  {
+    id: "creditcard",
+    name: "Cartão de Crédito",
+    icon: CreditCard,
+    requiresPhone: false,
+  },
+];
 
 const PackagesListing = ({ title, subtitle } = {}) => {
   const [packages, setPackages] = useState([]);
@@ -22,8 +44,12 @@ const PackagesListing = ({ title, subtitle } = {}) => {
   const [authenticated, setAuthenticated] = useState(false);
   const [loginModalOpen, setLoginModalOpen] = useState(false);
   const [successModalOpen, setSuccessModalOpen] = useState(false);
+  const [paymentModalOpen, setPaymentModalOpen] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState(null);
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null);
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [subscribing, setSubscribing] = useState(false);
+  const [successType, setSuccessType] = useState(null); // 'email' or 'redirect'
 
   useEffect(() => {
     setAuthenticated(isAuthenticated());
@@ -52,12 +78,36 @@ const PackagesListing = ({ title, subtitle } = {}) => {
     loadPacks();
   }, []);
 
-  const handleSubscribe = async (pkg) => {
+  const handleSubscribe = async () => {
+    if (!selectedPackage || !selectedPaymentMethod) return;
+
+    // Validate phone number for MBWAY
+    if (selectedPaymentMethod === "mbway" && !phoneNumber.trim()) {
+      setError("Por favor, insira o número de telefone para MB WAY.");
+      return;
+    }
+
     setSubscribing(true);
     setError(null);
     try {
-      await subscriptionsApi.subscribe(pkg.id);
+      let paymentData = { payment_method: selectedPaymentMethod };
+
+      if (selectedPaymentMethod === "mbway") {
+        const cleanPhone = phoneNumber.replace(/\D/g, "");
+        paymentData.phone_number = `351#${cleanPhone}`;
+      }
+
+      const response = await subscriptionsApi.subscribe(selectedPackage.id, paymentData);
+      setPaymentModalOpen(false);
+
+      if (selectedPaymentMethod === "creditcard" && response.payment_details?.payment_url) {
+        window.location.href = response.payment_details.payment_url;
+        return;
+      }
+
+      setSuccessType("email");
       setSuccessModalOpen(true);
+      resetPaymentState();
     } catch (err) {
       setError(err.message || "Erro ao processar subscrição. Por favor, tente novamente.");
     } finally {
@@ -65,10 +115,16 @@ const PackagesListing = ({ title, subtitle } = {}) => {
     }
   };
 
+  const resetPaymentState = () => {
+    setSelectedPaymentMethod(null);
+    setPhoneNumber("");
+  };
+
   const handleAgendarClick = (pkg) => {
     setSelectedPackage(pkg);
+    setError(null);
     if (authenticated) {
-      handleSubscribe(pkg);
+      setPaymentModalOpen(true);
     } else {
       setLoginModalOpen(true);
     }
@@ -77,7 +133,15 @@ const PackagesListing = ({ title, subtitle } = {}) => {
   const handleLoginSuccess = () => {
     setLoginModalOpen(false);
     if (selectedPackage) {
-      handleSubscribe(selectedPackage);
+      setPaymentModalOpen(true);
+    }
+  };
+
+  const handlePaymentMethodSelect = (methodId) => {
+    setSelectedPaymentMethod(methodId);
+    setError(null);
+    if (methodId !== "mbway") {
+      setPhoneNumber("");
     }
   };
 
@@ -153,10 +217,9 @@ const PackagesListing = ({ title, subtitle } = {}) => {
                   <div className="mt-auto flex flex-col items-start gap-3">
                     <Button
                       onClick={() => handleAgendarClick(pkg)}
-                      disabled={subscribing}
-                      className="w-full rounded-full bg-sky-900 px-6 py-2 text-base font-medium text-white normal-case disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
+                      className="w-full rounded-full bg-sky-900 px-6 py-2 text-base font-medium text-white normal-case sm:w-auto"
                     >
-                      {subscribing && selectedPackage?.id === pkg.id ? "A processar..." : "Agendar"}
+                      Agendar
                     </Button>
                   </div>
                 </CardContent>
@@ -172,18 +235,118 @@ const PackagesListing = ({ title, subtitle } = {}) => {
         onLogin={handleLoginSuccess}
       />
 
-      <Dialog open={successModalOpen} onOpenChange={setSuccessModalOpen}>
+      <Dialog
+        open={paymentModalOpen}
+        onOpenChange={(open) => {
+          setPaymentModalOpen(open);
+          if (!open) resetPaymentState();
+        }}
+      >
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle className="text-xl font-semibold text-sky-900">
+              Selecione o Método de Pagamento
+            </DialogTitle>
+          </DialogHeader>
+
+          <div className="mt-4 space-y-3">
+            {PAYMENT_METHODS.map((method) => {
+              const Icon = method.icon;
+              const isSelected = selectedPaymentMethod === method.id;
+
+              return (
+                <div key={method.id}>
+                  <button
+                    type="button"
+                    onClick={() => handlePaymentMethodSelect(method.id)}
+                    className={`flex w-full items-center gap-4 rounded-xl border-2 p-4 transition-all ${isSelected
+                      ? "border-sky-900 bg-sky-50"
+                      : "border-gray-200 hover:border-sky-300 hover:bg-gray-50"
+                      }`}
+                  >
+                    <div className={`flex h-12 w-12 items-center justify-center rounded-full ${isSelected ? "bg-sky-900 text-white" : "bg-gray-100 text-sky-900"
+                      }`}>
+                      <Icon className="h-6 w-6" />
+                    </div>
+                    <span className={`text-lg font-medium ${isSelected ? "text-sky-900" : "text-gray-700"
+                      }`}>
+                      {method.name}
+                    </span>
+                    {isSelected && (
+                      <CheckCircle2 className="ml-auto h-6 w-6 text-sky-900" />
+                    )}
+                  </button>
+
+                  {method.id === "mbway" && isSelected && (
+                    <div className="mt-3 pl-4">
+                      <label className="mb-2 block text-sm font-medium text-gray-700">
+                        Número de Telefone
+                      </label>
+                      <div className="flex items-center gap-2">
+                        <span className="text-sm font-medium text-gray-500">+351</span>
+                        <Input
+                          type="tel"
+                          placeholder="912 345 678"
+                          value={phoneNumber}
+                          onChange={(e) => setPhoneNumber(e.target.value)}
+                          className="flex-1"
+                          maxLength={9}
+                        />
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+
+          {error && (
+            <div className="mt-4 rounded-lg bg-red-50 p-3 text-sm text-red-800">
+              {error}
+            </div>
+          )}
+
+          <div className="mt-6 flex gap-3">
+            <Button
+              variant="outline"
+              onClick={() => {
+                setPaymentModalOpen(false);
+                resetPaymentState();
+              }}
+              className="flex-1 rounded-full"
+            >
+              Cancelar
+            </Button>
+            <Button
+              onClick={handleSubscribe}
+              disabled={!selectedPaymentMethod || subscribing || (selectedPaymentMethod === "mbway" && !phoneNumber.trim())}
+              className="flex-1 rounded-full bg-sky-900 text-white hover:bg-sky-800 disabled:opacity-50"
+            >
+              {subscribing ? "A processar..." : "Confirmar"}
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={successModalOpen} onOpenChange={(open) => {
+        setSuccessModalOpen(open);
+        if (!open) setSuccessType(null);
+      }}>
         <DialogContent className="sm:max-w-md">
           <div className="flex flex-col items-center justify-center py-6">
-            <div className="mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-green-100">
-              <CheckCircle2 className="h-12 w-12 text-green-600" />
+            <div className={`mb-4 flex h-20 w-20 items-center justify-center rounded-full ${successType === "email" ? "bg-amber-100" : "bg-green-100"
+              }`}>
+              <CheckCircle2 className={`h-12 w-12 ${successType === "email" ? "text-amber-600" : "text-green-600"
+                }`} />
             </div>
-            <DialogHeader className="text-center">
-              <DialogTitle className="mb-2 text-2xl font-semibold text-sky-900">
-                Subscrição Realizada!
+            <DialogHeader className="flex flex-col items-center text-center">
+              <DialogTitle className="mb-2 text-center text-2xl font-semibold text-sky-900">
+                {successType === "email" ? "Pagamento Pendente" : "Subscrição Realizada!"}
               </DialogTitle>
-              <p className="text-base font-normal text-sky-700">
-                A sua subscrição foi processada com sucesso. Obrigado!
+              <p className="text-center text-base font-normal text-sky-700">
+                {successType === "email"
+                  ? "Verifique o seu email para os detalhes de pagamento."
+                  : "A sua subscrição foi processada com sucesso. Obrigado!"}
               </p>
             </DialogHeader>
           </div>
