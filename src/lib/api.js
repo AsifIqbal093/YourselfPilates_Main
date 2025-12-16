@@ -35,9 +35,10 @@ export const subscriptionsApi = {
     }));
   },
 
-  subscribe: async (packId) => {
+  subscribe: async (packId, paymentData) => {
     const { data } = await api.post(
-      `/api/subscriptions/packs/${packId}/subscribe/`
+      `/api/subscriptions/packs/${packId}/subscribe/`,
+      paymentData
     );
     return data;
   },

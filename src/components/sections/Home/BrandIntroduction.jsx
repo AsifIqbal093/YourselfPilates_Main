@@ -22,9 +22,11 @@ const BrandIntroduction = () => {
             transition={{ duration: 0.6 }}
             className="-mt-12 -ml-10 flex justify-center md:mt-0 md:ml-0 md:justify-start lg:justify-start"
           >
-            <img
+            <Image
               src="/images/HeroSectionLogo.png"
               alt="Logo"
+              width={192}
+              height={192}
               className="brand-logo h-auto w-48"
             />
           </motion.div>
