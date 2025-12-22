@@ -78,11 +78,11 @@ const PackagesListing = ({ title, subtitle } = {}) => {
     loadPacks();
   }, []);
 
-  const handleSubscribe = async () => {
-    if (!selectedPackage || !selectedPaymentMethod) return;
+  const handleSubscribe = async (pkgInput = selectedPackage, methodInput = "creditcard") => {
+    if (!pkgInput || !methodInput) return;
 
     // Validate phone number for MBWAY
-    if (selectedPaymentMethod === "mbway" && !phoneNumber.trim()) {
+    if (methodInput === "mbway" && !phoneNumber.trim()) {
       setError("Por favor, insira o número de telefone para MB WAY.");
       return;
     }
@@ -90,20 +90,20 @@ const PackagesListing = ({ title, subtitle } = {}) => {
     setSubscribing(true);
     setError(null);
     try {
-      let paymentData = { payment_method: selectedPaymentMethod };
+      let paymentData = { payment_method: methodInput };
 
-      if (selectedPaymentMethod === "mbway") {
+      if (methodInput === "mbway") {
         const cleanPhone = phoneNumber.replace(/\D/g, "");
         paymentData.phone_number = `351#${cleanPhone}`;
       }
 
-      const response = await subscriptionsApi.subscribe(selectedPackage.id, paymentData);
+      const response = await subscriptionsApi.subscribe(pkgInput.id, paymentData);
       setPaymentModalOpen(false);
 
-      if (selectedPaymentMethod === "creditcard" && response.payment_details?.payment_url) {
-        window.location.href = response.payment_details.payment_url;
-        return;
-      }
+      // if (methodInput === "creditcard" && response.payment_details?.payment_url) {
+      //   window.location.href = response.payment_details.payment_url;
+      //   return;
+      // }
 
       setSuccessType("email");
       setSuccessModalOpen(true);
@@ -124,7 +124,8 @@ const PackagesListing = ({ title, subtitle } = {}) => {
     setSelectedPackage(pkg);
     setError(null);
     if (authenticated) {
-      setPaymentModalOpen(true);
+      // Directly subscribe with credit card
+      handleSubscribe(pkg, "creditcard");
     } else {
       setLoginModalOpen(true);
     }
@@ -133,7 +134,8 @@ const PackagesListing = ({ title, subtitle } = {}) => {
   const handleLoginSuccess = () => {
     setLoginModalOpen(false);
     if (selectedPackage) {
-      setPaymentModalOpen(true);
+      // Directly subscribe with credit card after login
+      handleSubscribe(selectedPackage, "creditcard");
     }
   };
 
@@ -235,98 +237,7 @@ const PackagesListing = ({ title, subtitle } = {}) => {
         onLogin={handleLoginSuccess}
       />
 
-      <Dialog
-        open={paymentModalOpen}
-        onOpenChange={(open) => {
-          setPaymentModalOpen(open);
-          if (!open) resetPaymentState();
-        }}
-      >
-        <DialogContent className="sm:max-w-md">
-          <DialogHeader>
-            <DialogTitle className="text-xl font-semibold text-sky-900">
-              Selecione o Método de Pagamento
-            </DialogTitle>
-          </DialogHeader>
 
-          <div className="mt-4 space-y-3">
-            {PAYMENT_METHODS.map((method) => {
-              const Icon = method.icon;
-              const isSelected = selectedPaymentMethod === method.id;
-
-              return (
-                <div key={method.id}>
-                  <button
-                    type="button"
-                    onClick={() => handlePaymentMethodSelect(method.id)}
-                    className={`flex w-full items-center gap-4 rounded-xl border-2 p-4 transition-all ${isSelected
-                      ? "border-sky-900 bg-sky-50"
-                      : "border-gray-200 hover:border-sky-300 hover:bg-gray-50"
-                      }`}
-                  >
-                    <div className={`flex h-12 w-12 items-center justify-center rounded-full ${isSelected ? "bg-sky-900 text-white" : "bg-gray-100 text-sky-900"
-                      }`}>
-                      <Icon className="h-6 w-6" />
-                    </div>
-                    <span className={`text-lg font-medium ${isSelected ? "text-sky-900" : "text-gray-700"
-                      }`}>
-                      {method.name}
-                    </span>
-                    {isSelected && (
-                      <CheckCircle2 className="ml-auto h-6 w-6 text-sky-900" />
-                    )}
-                  </button>
-
-                  {method.id === "mbway" && isSelected && (
-                    <div className="mt-3 pl-4">
-                      <label className="mb-2 block text-sm font-medium text-gray-700">
-                        Número de Telefone
-                      </label>
-                      <div className="flex items-center gap-2">
-                        <span className="text-sm font-medium text-gray-500">+351</span>
-                        <Input
-                          type="tel"
-                          placeholder="912 345 678"
-                          value={phoneNumber}
-                          onChange={(e) => setPhoneNumber(e.target.value)}
-                          className="flex-1"
-                          maxLength={9}
-                        />
-                      </div>
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-
-          {error && (
-            <div className="mt-4 rounded-lg bg-red-50 p-3 text-sm text-red-800">
-              {error}
-            </div>
-          )}
-
-          <div className="mt-6 flex gap-3">
-            <Button
-              variant="outline"
-              onClick={() => {
-                setPaymentModalOpen(false);
-                resetPaymentState();
-              }}
-              className="flex-1 rounded-full"
-            >
-              Cancelar
-            </Button>
-            <Button
-              onClick={handleSubscribe}
-              disabled={!selectedPaymentMethod || subscribing || (selectedPaymentMethod === "mbway" && !phoneNumber.trim())}
-              className="flex-1 rounded-full bg-sky-900 text-white hover:bg-sky-800 disabled:opacity-50"
-            >
-              {subscribing ? "A processar..." : "Confirmar"}
-            </Button>
-          </div>
-        </DialogContent>
-      </Dialog>
 
       <Dialog open={successModalOpen} onOpenChange={(open) => {
         setSuccessModalOpen(open);

@@ -42,7 +42,33 @@ export const subscriptionsApi = {
     );
     return data;
   },
+
+  getOrders: async () => {
+    const { data } = await api.get("/api/subscriptions/orders/");
+    return data;
+  },
+
+  payOrder: async (orderId, paymentData) => {
+    const { data } = await api.post(
+      `/api/subscriptions/orders/${orderId}/pay/`,
+      paymentData
+    );
+    return data;
+  },
+
+  deleteOrder: async (orderId) => {
+    const { data } = await api.delete(`/api/subscriptions/orders/${orderId}/`);
+    return data;
+  },
+
+  updateOrder: async (orderId, payload) => {
+    const { data } = await api.patch(`/api/subscriptions/orders/${orderId}/`, payload);
+    return data;
+  },
 };
 
 export const loginUser = authApi.login;
 export const fetchPacks = subscriptionsApi.getPacks;
+export const fetchOrders = subscriptionsApi.getOrders;
+export const deleteSubscriptionOrder = subscriptionsApi.deleteOrder;
+export const updateSubscriptionOrder = subscriptionsApi.updateOrder;
