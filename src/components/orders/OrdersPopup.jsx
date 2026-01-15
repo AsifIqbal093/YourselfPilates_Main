@@ -140,7 +140,7 @@ export function OrdersPopup({ children }) {
 
             if (selectedPaymentMethod === "mbway") {
                 const cleanPhone = phoneNumber.replace(/\D/g, "");
-                paymentData.phone_number = `351#${cleanPhone}`;
+                paymentData.mbway_phone = `351#${cleanPhone}`;
             }
 
             // Use PATCH to update order payment method
@@ -233,14 +233,16 @@ export function OrdersPopup({ children }) {
                                                     <td className="px-6 py-4">
                                                         <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${order.payment_status === "Pendente"
                                                             ? "bg-amber-100 text-amber-800"
-                                                            : "bg-green-100 text-green-800"
+                                                            : order.payment_status === "Cancelado"
+                                                                ? "bg-red-100 text-red-800"
+                                                                : "bg-green-100 text-green-800"
                                                             }`}>
                                                             {order.payment_status}
                                                         </span>
                                                     </td>
                                                     <td className="px-6 py-4">
                                                         <div className="flex items-center gap-2">
-                                                            {order.payment_status === "Pendente" && (
+                                                            {["Pendente", "Cancelado"].includes(order.payment_status) && (
                                                                 <>
                                                                     <Button
                                                                         size="sm"

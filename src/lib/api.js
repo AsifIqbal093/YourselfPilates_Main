@@ -14,10 +14,19 @@ export const authApi = {
   },
 };
 
+let mePromise = null;
 export const userApi = {
   getMe: async () => {
-    const { data } = await api.get("/api/user/me/");
-    return data;
+    if (mePromise) return mePromise;
+
+    mePromise = api
+      .get("/api/user/me/")
+      .then((res) => res.data)
+      .finally(() => {
+        mePromise = null;
+      });
+
+    return mePromise;
   },
 };
 

@@ -18,10 +18,14 @@ const BUTTON_VARIANTS = {
 
 const LoginButton = ({ variant = "desktop", className = "" }) => {
     const [modalOpen, setModalOpen] = useState(false);
-    const [authenticated, setAuthenticated] = useState(() => isAuthenticated());
-    const [user, setUser] = useState(() => getUserInfo());
+    const [authenticated, setAuthenticated] = useState(false);
+    const [user, setUser] = useState(null);
 
     useEffect(() => {
+        // Update state on mount
+        setAuthenticated(isAuthenticated());
+        setUser(getUserInfo());
+
         const unsubscribe = onAuthChange((isAuth, userInfo) => {
             setAuthenticated(isAuth);
             setUser(userInfo);

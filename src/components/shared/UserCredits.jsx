@@ -18,7 +18,10 @@ const UserCredits = ({ variant = "desktop" }) => {
             const data = await userApi.getMe();
             setRemainingHours(data.remaining_hours);
         } catch (err) {
-            console.error("Failed to fetch user data:", err);
+            // Only log if it's not a handled auth error
+            if (err.message && !err.message.includes("Given token not valid")) {
+                console.error("Failed to fetch user data:", err);
+            }
             setRemainingHours(null);
         } finally {
             setLoading(false);
@@ -26,6 +29,7 @@ const UserCredits = ({ variant = "desktop" }) => {
     };
 
     useEffect(() => {
+        // Initial check on mount to ensure client matches state exactly
         const isAuth = isAuthenticated();
         setAuthenticated(isAuth);
 
@@ -33,9 +37,9 @@ const UserCredits = ({ variant = "desktop" }) => {
             fetchUserData();
         }
 
-        const unsubscribe = onAuthChange((isAuth) => {
-            setAuthenticated(isAuth);
-            if (isAuth) {
+        const unsubscribe = onAuthChange((status) => {
+            setAuthenticated(status);
+            if (status) {
                 fetchUserData();
             } else {
                 setRemainingHours(null);

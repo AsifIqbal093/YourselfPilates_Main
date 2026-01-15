@@ -50,6 +50,21 @@ export function storeAuthData(authData) {
   dispatchAuthChange();
 }
 
+export function updateTokens(newData) {
+  const currentData = safeStorage.get(AUTH_STORAGE_KEY);
+  if (!currentData) return;
+
+  const updatedData = {
+    ...currentData,
+    access: newData.access || currentData.access,
+    refresh: newData.refresh || currentData.refresh,
+    timestamp: Date.now(),
+  };
+
+  safeStorage.set(AUTH_STORAGE_KEY, updatedData);
+  dispatchAuthChange();
+}
+
 export function getAuthData() {
   return safeStorage.get(AUTH_STORAGE_KEY);
 }

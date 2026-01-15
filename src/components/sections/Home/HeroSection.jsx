@@ -70,7 +70,7 @@ const HeroSection = () => {
               <Button
                 asChild
                 size="lg"
-                className="rounded-[29px] border-2 border-[#ffffff] bg-[#f6f9fb] text-[#ffffff] transition-colors duration-300 hover:bg-[#104c88] hover:text-white"
+                className="rounded-[29px] border-2 border-[#88a9c3] bg-white ml-14 text-[#88a9c3] transition-colors duration-300 hover:bg-[#104c88] hover:text-white"
               >
                 <Link
                   href="/agendar-espaco"

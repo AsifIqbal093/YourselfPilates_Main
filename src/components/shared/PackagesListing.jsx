@@ -60,16 +60,22 @@ const PackagesListing = ({ title, subtitle } = {}) => {
   }, []);
 
   useEffect(() => {
-    const loadPacks = async () => {
+    const loadPacks = async (retries = 1) => {
       try {
         setLoading(true);
         setError(null);
         const fetchedPacks = await fetchPacks();
         setPackages(fetchedPacks);
       } catch (err) {
-        console.error("Failed to load packs:", err);
+        if (err.message && !err.message.includes("Given token not valid")) {
+          console.error("Failed to load packs:", err);
+        }
+        if (retries > 0) {
+          // Small delay before retry
+          await new Promise(resolve => setTimeout(resolve, 500));
+          return loadPacks(retries - 1);
+        }
         setError("Erro ao carregar os packs. Por favor, tente novamente.");
-        setPackages([]);
       } finally {
         setLoading(false);
       }
@@ -78,7 +84,7 @@ const PackagesListing = ({ title, subtitle } = {}) => {
     loadPacks();
   }, []);
 
-  const handleSubscribe = async (pkgInput = selectedPackage, methodInput = "creditcard") => {
+  const handleSubscribe = async (pkgInput = selectedPackage, methodInput = selectedPaymentMethod) => {
     if (!pkgInput || !methodInput) return;
 
     // Validate phone number for MBWAY
@@ -94,16 +100,17 @@ const PackagesListing = ({ title, subtitle } = {}) => {
 
       if (methodInput === "mbway") {
         const cleanPhone = phoneNumber.replace(/\D/g, "");
-        paymentData.phone_number = `351#${cleanPhone}`;
+        paymentData.mbway_phone = `351#${cleanPhone}`;
       }
 
       const response = await subscriptionsApi.subscribe(pkgInput.id, paymentData);
       setPaymentModalOpen(false);
 
-      // if (methodInput === "creditcard" && response.payment_details?.payment_url) {
-      //   window.location.href = response.payment_details.payment_url;
-      //   return;
-      // }
+      const paymentUrl = response.payment_url || response.payment_details?.payment_url;
+      if (methodInput === "creditcard" && paymentUrl) {
+        window.location.href = paymentUrl;
+        return;
+      }
 
       setSuccessType("email");
       setSuccessModalOpen(true);
@@ -123,9 +130,9 @@ const PackagesListing = ({ title, subtitle } = {}) => {
   const handleAgendarClick = (pkg) => {
     setSelectedPackage(pkg);
     setError(null);
+    resetPaymentState();
     if (authenticated) {
-      // Directly subscribe with credit card
-      handleSubscribe(pkg, "creditcard");
+      setPaymentModalOpen(true);
     } else {
       setLoginModalOpen(true);
     }
@@ -134,8 +141,7 @@ const PackagesListing = ({ title, subtitle } = {}) => {
   const handleLoginSuccess = () => {
     setLoginModalOpen(false);
     if (selectedPackage) {
-      // Directly subscribe with credit card after login
-      handleSubscribe(selectedPackage, "creditcard");
+      setPaymentModalOpen(true);
     }
   };
 
@@ -162,8 +168,16 @@ const PackagesListing = ({ title, subtitle } = {}) => {
         )}
 
         {error && (
-          <div className="mx-auto mb-8 max-w-2xl rounded-lg bg-red-50 p-4 text-red-800">
+          <div className="mx-auto mb-8 max-w-2xl rounded-lg bg-red-50 p-4 text-red-800 flex items-center justify-between">
             <p className="text-sm">{error}</p>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => window.location.reload()}
+              className="text-red-800 hover:bg-red-100 h-8"
+            >
+              Recarregar
+            </Button>
           </div>
         )}
 
@@ -171,7 +185,7 @@ const PackagesListing = ({ title, subtitle } = {}) => {
           <div className="mx-auto max-w-6xl">
             <p className="text-center text-sky-900">A carregar packs...</p>
           </div>
-        ) : packages.length === 0 ? (
+        ) : packages.length === 0 && !error ? (
           <div className="mx-auto max-w-6xl">
             <p className="text-center text-sky-900">
               Nenhum pack disponível no momento.
@@ -182,7 +196,7 @@ const PackagesListing = ({ title, subtitle } = {}) => {
             {packages.map((pkg) => (
               <Card
                 key={pkg.id || pkg.name}
-                className="flex h-full w-full flex-col overflow-hidden rounded-3xl border-none bg-gradient-to-b from-sky-900/30 via-[#f1f5f8] to-white p-0 shadow-none"
+                className="flex h-full w-full flex-col overflow-hidden rounded-3xl border-none bg-gradient-to-b from-sky-900/30 via-[#f1f5f8] to-white p-0 shadow-none hover:shadow-lg transition-shadow duration-300"
               >
                 <div className="relative h-[300px] w-full shrink-0 overflow-hidden bg-gray-200">
                   {pkg.image ? (
@@ -235,9 +249,77 @@ const PackagesListing = ({ title, subtitle } = {}) => {
         open={loginModalOpen}
         onOpenChange={setLoginModalOpen}
         onLogin={handleLoginSuccess}
-      />
+      />      <Dialog open={paymentModalOpen} onOpenChange={setPaymentModalOpen}>
+        <DialogContent className="sm:max-w-[450px] rounded-3xl p-6 border-none shadow-2xl">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-bold text-sky-900 text-center mb-4">
+              Método de Pagamento
+            </DialogTitle>
+          </DialogHeader>
+          <div className="grid gap-4">
+            {PAYMENT_METHODS.map((method) => {
+              const Icon = method.icon;
+              const isSelected = selectedPaymentMethod === method.id;
+              return (
+                <button
+                  key={method.id}
+                  onClick={() => handlePaymentMethodSelect(method.id)}
+                  className={`flex items-center gap-4 rounded-2xl border-2 p-4 transition-all duration-200 ${isSelected
+                    ? "border-sky-900 bg-sky-50 shadow-md transform scale-[1.02]"
+                    : "border-gray-100 hover:border-sky-200 hover:bg-gray-50"
+                    }`}
+                >
+                  <div className={`rounded-xl p-3 ${isSelected ? "bg-sky-900 text-white" : "bg-sky-100 text-sky-900"
+                    }`}>
+                    <Icon className="h-6 w-6" />
+                  </div>
+                  <div className="flex flex-col text-left">
+                    <span className="text-lg font-bold text-sky-900">{method.name}</span>
+                    <span className="text-xs text-sky-700 font-medium">
+                      {method.id === 'mbway' ? 'Pagamento imediato via telemóvel' :
+                        method.id === 'multibanco' ? 'Referência enviada por e-mail' :
+                          'Pagamento seguro com cartão'}
+                    </span>
+                  </div>
+                  {isSelected && (
+                    <div className="ml-auto">
+                      <CheckCircle2 className="h-6 w-6 text-sky-900" />
+                    </div>
+                  )}
+                </button>
+              );
+            })}
 
+            {selectedPaymentMethod === "mbway" && (
+              <div className="mt-4 space-y-2 animate-in fade-in slide-in-from-top-2">
+                <label className="text-sm font-bold text-sky-900 ml-1">Número de Telemóvel</label>
+                <Input
+                  type="tel"
+                  placeholder="912 345 678"
+                  value={phoneNumber}
+                  onChange={(e) => setPhoneNumber(e.target.value)}
+                  className="rounded-xl border-sky-100 bg-sky-50/50 py-6 focus-visible:ring-sky-900"
+                />
+              </div>
+            )}
 
+            <Button
+              disabled={!selectedPaymentMethod || subscribing}
+              onClick={() => handleSubscribe()}
+              className="mt-6 w-full rounded-2xl bg-sky-900 py-7 text-lg font-bold text-white transition-all hover:bg-sky-800 hover:shadow-lg disabled:opacity-50"
+            >
+              {subscribing ? (
+                <div className="flex items-center gap-2">
+                  <div className="h-5 w-5 animate-spin rounded-full border-2 border-white border-t-transparent" />
+                  <span>A processar...</span>
+                </div>
+              ) : (
+                "Confirmar Subscrição"
+              )}
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
 
       <Dialog open={successModalOpen} onOpenChange={(open) => {
         setSuccessModalOpen(open);
