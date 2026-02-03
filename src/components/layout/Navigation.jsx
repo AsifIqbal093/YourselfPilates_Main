@@ -21,13 +21,11 @@ const Navigation = () => {
   }, []);
 
   const navItems = [
+    { name: "Comprar Packs", href: "home#packages-listing" },
     { name: "Agendar Espaço", href: "/agendar-espaco" },
     { name: "Sobre", href: "/sobre" },
     { name: "Contactos", href: "/contactos" },
   ];
-
-
-
 
   return (
     <nav className="flex items-center space-x-9 text-[19px] font-normal transition-colors duration-200">
