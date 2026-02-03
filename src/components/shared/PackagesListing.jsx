@@ -154,7 +154,7 @@ const PackagesListing = ({ title, subtitle } = {}) => {
   };
 
   return (
-    <section className="pt-0 pb-20">
+    <section className="pt-0 pb-20" id="packages-listing">
       <div className="container mx-auto px-4 text-center md:px-6 lg:px-8">
         {title && (
           <h2 className="font-accent mt-20 mb-10 text-5xl font-normal text-[#88a9c3]">

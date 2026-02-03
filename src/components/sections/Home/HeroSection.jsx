@@ -65,12 +65,12 @@ const HeroSection = () => {
             <br />
             <motion.div
               variants={itemVariants}
-              className="hero-button flex justify-center lg:justify-start"
+              className="hero-button ml-14 flex flex-col  items-center gap-4 lg:items-start"
             >
               <Button
                 asChild
                 size="lg"
-                className="rounded-[29px] border-2 border-[#88a9c3] bg-white ml-14 text-[#88a9c3] transition-colors duration-300 hover:bg-[#104c88] hover:text-white"
+                className="rounded-29px border-2 border-[#88a9c3] bg-white ml-7 text-[#88a9c3] transition-colors duration-300 hover:bg-[#104c88] hover:text-white"
               >
                 <Link
                   href="/agendar-espaco"
@@ -80,6 +80,37 @@ const HeroSection = () => {
                   <ChevronRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
               </Button>
+
+              <div className="flex items-center gap-4">
+                <a aria-label="Download on App Store"
+                  href="https://apps.apple.com/us/app/yourself-pilates/id6752496161"
+                  className="transition-transform duration-300 ease-out hover:scale-105"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <Image
+                    src="logos/app-store-badge.png"
+                    alt="App Store Badge"
+                    width={135}
+                    height={40}
+                  ></Image>
+                </a>
+                <a aria-label="Get it on Google Play"
+                  href="https://play.google.com/store/apps/details?id=com.yourselfpilate.app"
+                  className="transition-transform duration-300 ease-out hover:scale-105"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <Image
+                    src="logos/google-play-badge.png"
+                    alt="Google Play Badge"
+                    width={135}
+                    height={40}
+                  ></Image>
+                </a>
+              </div>
+
+
             </motion.div>
 
             {/* Divider + Phone */}
@@ -89,7 +120,7 @@ const HeroSection = () => {
             >
               {/* Left text + divider */}
               <div className="cta-left flex items-center space-x-2">
-                <div className="divider h-[1px] w-[68px] bg-[#88a9c3]" />
+                <div className="divider h-1px w-[68px] bg-[#88a9c3]" />
                 <span className="font-heading text-lg whitespace-nowrap text-[#15467d]">
                   Ou ligue para o
                 </span>
