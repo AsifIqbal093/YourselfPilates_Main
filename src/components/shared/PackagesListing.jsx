@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -42,6 +42,7 @@ const PackagesListing = ({ title, subtitle } = {}) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [authenticated, setAuthenticated] = useState(false);
+  const [packsRefreshSeq, setPacksRefreshSeq] = useState(0);
   const [loginModalOpen, setLoginModalOpen] = useState(false);
   const [successModalOpen, setSuccessModalOpen] = useState(false);
   const [paymentModalOpen, setPaymentModalOpen] = useState(false);
@@ -49,40 +50,53 @@ const PackagesListing = ({ title, subtitle } = {}) => {
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null);
   const [phoneNumber, setPhoneNumber] = useState("");
   const [subscribing, setSubscribing] = useState(false);
-  const [successType, setSuccessType] = useState(null); // 'email' or 'redirect'
+  const [successType, setSuccessType] = useState(null); // 'pending' | null
+  const [successPaymentMethod, setSuccessPaymentMethod] = useState(null); // 'multibanco' | 'mbway' | null
+  const [successPaymentDetails, setSuccessPaymentDetails] = useState(null); // response.payment_details
+
+  const loadPacks = useCallback(async (retries = 1) => {
+    try {
+      setLoading(true);
+      setError(null);
+      const fetchedPacks = await fetchPacks();
+      setPackages(fetchedPacks);
+    } catch (err) {
+      if (err?.message && !err.message.includes("Given token not valid")) {
+        console.error("Failed to load packs:", err);
+      }
+      if (retries > 0) {
+        await new Promise((resolve) => setTimeout(resolve, 500));
+        return loadPacks(retries - 1);
+      }
+      setError("Erro ao carregar os packs. Por favor, tente novamente.");
+    } finally {
+      setLoading(false);
+    }
+  }, []);
 
   useEffect(() => {
     setAuthenticated(isAuthenticated());
     const unsubscribe = onAuthChange((isAuth) => {
       setAuthenticated(isAuth);
+      // New session (login/logout) should start clean and refetch packs.
+      setError(null);
+      setSuccessModalOpen(false);
+      setSuccessType(null);
+      setSuccessPaymentMethod(null);
+      setSuccessPaymentDetails(null);
+      setPaymentModalOpen(false);
+      setLoginModalOpen(false);
+      setSelectedPackage(null);
+      setSelectedPaymentMethod(null);
+      setPhoneNumber("");
+      setPacksRefreshSeq((v) => v + 1);
     });
     return unsubscribe;
   }, []);
 
   useEffect(() => {
-    const loadPacks = async (retries = 1) => {
-      try {
-        setLoading(true);
-        setError(null);
-        const fetchedPacks = await fetchPacks();
-        setPackages(fetchedPacks);
-      } catch (err) {
-        if (err.message && !err.message.includes("Given token not valid")) {
-          console.error("Failed to load packs:", err);
-        }
-        if (retries > 0) {
-          // Small delay before retry
-          await new Promise(resolve => setTimeout(resolve, 500));
-          return loadPacks(retries - 1);
-        }
-        setError("Erro ao carregar os packs. Por favor, tente novamente.");
-      } finally {
-        setLoading(false);
-      }
-    };
-
     loadPacks();
-  }, []);
+  }, [loadPacks, packsRefreshSeq]);
 
   const handleSubscribe = async (pkgInput = selectedPackage, methodInput = selectedPaymentMethod) => {
     if (!pkgInput || !methodInput) return;
@@ -112,11 +126,20 @@ const PackagesListing = ({ title, subtitle } = {}) => {
         return;
       }
 
-      setSuccessType("email");
+      setSuccessPaymentMethod(response?.payment_method || null);
+      setSuccessPaymentDetails(response?.payment_details || null);
+      setSuccessType("pending");
       setSuccessModalOpen(true);
       resetPaymentState();
     } catch (err) {
-      setError(err.message || "Erro ao processar subscrição. Por favor, tente novamente.");
+      const apiError =
+        err?.response?.data?.error ||
+        err?.response?.data?.message ||
+        err?.response?.data?.detail ||
+        err?.message ||
+        "Erro ao processar subscrição. Por favor, tente novamente.";
+
+      setError(typeof apiError === "string" ? apiError : JSON.stringify(apiError));
     } finally {
       setSubscribing(false);
     }
@@ -126,6 +149,25 @@ const PackagesListing = ({ title, subtitle } = {}) => {
     setSelectedPaymentMethod(null);
     setPhoneNumber("");
   };
+
+  // If user logs out, clear any previous user UI state (errors/success modal),
+  // so the next login starts clean.
+  useEffect(() => {
+    if (!authenticated) {
+      setError(null);
+      setLoginModalOpen(false);
+      setPaymentModalOpen(false);
+
+      setSuccessModalOpen(false);
+      setSuccessType(null);
+      setSuccessPaymentMethod(null);
+      setSuccessPaymentDetails(null);
+
+      setSelectedPackage(null);
+      setSelectedPaymentMethod(null);
+      setPhoneNumber("");
+    }
+  }, [authenticated]);
 
   const handleAgendarClick = (pkg) => {
     setSelectedPackage(pkg);
@@ -140,6 +182,11 @@ const PackagesListing = ({ title, subtitle } = {}) => {
 
   const handleLoginSuccess = () => {
     setLoginModalOpen(false);
+    setError(null);
+    setSuccessModalOpen(false);
+    setSuccessType(null);
+    setSuccessPaymentMethod(null);
+    setSuccessPaymentDetails(null);
     if (selectedPackage) {
       setPaymentModalOpen(true);
     }
@@ -173,7 +220,7 @@ const PackagesListing = ({ title, subtitle } = {}) => {
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => window.location.reload()}
+              onClick={() => loadPacks()}
               className="text-red-800 hover:bg-red-100 h-8"
             >
               Recarregar
@@ -257,6 +304,11 @@ const PackagesListing = ({ title, subtitle } = {}) => {
             </DialogTitle>
           </DialogHeader>
           <div className="grid gap-4">
+            {error && (
+              <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">
+                {error}
+              </div>
+            )}
             {PAYMENT_METHODS.map((method) => {
               const Icon = method.icon;
               const isSelected = selectedPaymentMethod === method.id;
@@ -323,25 +375,88 @@ const PackagesListing = ({ title, subtitle } = {}) => {
 
       <Dialog open={successModalOpen} onOpenChange={(open) => {
         setSuccessModalOpen(open);
-        if (!open) setSuccessType(null);
+        if (!open) {
+          setSuccessType(null);
+          setSuccessPaymentMethod(null);
+          setSuccessPaymentDetails(null);
+        }
       }}>
         <DialogContent className="sm:max-w-md">
           <div className="flex flex-col items-center justify-center py-6">
-            <div className={`mb-4 flex h-20 w-20 items-center justify-center rounded-full ${successType === "email" ? "bg-amber-100" : "bg-green-100"
-              }`}>
-              <CheckCircle2 className={`h-12 w-12 ${successType === "email" ? "text-amber-600" : "text-green-600"
-                }`} />
+            <div
+              className={`mb-4 flex h-20 w-20 items-center justify-center rounded-full ${successType === "pending" ? "bg-amber-100" : "bg-green-100"
+                }`}
+            >
+              <CheckCircle2
+                className={`h-12 w-12 ${successType === "pending" ? "text-amber-600" : "text-green-600"
+                  }`}
+              />
             </div>
+
             <DialogHeader className="flex flex-col items-center text-center">
               <DialogTitle className="mb-2 text-center text-2xl font-semibold text-sky-900">
-                {successType === "email" ? "Pagamento Pendente" : "Subscrição Realizada!"}
+                {successType === "pending" ? "Pagamento Pendente" : "Subscrição Realizada!"}
               </DialogTitle>
               <p className="text-center text-base font-normal text-sky-700">
-                {successType === "email"
-                  ? "Verifique o seu email para os detalhes de pagamento."
+                {successType === "pending"
+                  ? successPaymentMethod === "multibanco"
+                    ? "Use os detalhes abaixo para concluir o pagamento."
+                    : successPaymentMethod === "mbway"
+                      ? "A sua aprovação deve ser feita no seu telemóvel no prazo indicado."
+                      : "Verifique os detalhes de pagamento."
                   : "A sua subscrição foi processada com sucesso. Obrigado!"}
               </p>
             </DialogHeader>
+
+            {successType === "pending" && successPaymentMethod === "multibanco" && (
+              <div className="mt-5 w-full max-w-[380px] rounded-2xl border border-sky-100 bg-sky-50 p-4 text-left">
+                <div className="space-y-2 text-sm">
+                  <div className="flex items-center justify-between gap-4">
+                    <span className="font-medium text-sky-700">Montante</span>
+                    <span className="font-mono text-sky-900">
+                      {successPaymentDetails?.amount || "—"}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between gap-4">
+                    <span className="font-medium text-sky-700">Entidade</span>
+                    <span className="font-mono text-sky-900">
+                      {successPaymentDetails?.entity || "—"}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between gap-4">
+                    <span className="font-medium text-sky-700">Referência</span>
+                    <span className="font-mono text-sky-900">
+                      {successPaymentDetails?.reference || "—"}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {successType === "pending" && successPaymentMethod === "mbway" && (
+              <div className="mt-5 w-full max-w-[380px] rounded-2xl border border-sky-100 bg-sky-50 p-4 text-left">
+                <div className="space-y-2 text-sm">
+                  <div className="flex items-center justify-between gap-4">
+                    <span className="font-medium text-sky-700">Montante</span>
+                    <span className="font-mono text-sky-900">
+                      {successPaymentDetails?.amount || "—"}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between gap-4">
+                    <span className="font-medium text-sky-700">Telemóvel</span>
+                    <span className="font-mono text-sky-900">
+                      {successPaymentDetails?.phone_number || "—"}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between gap-4">
+                    <span className="font-medium text-sky-700">Prazo</span>
+                    <span className="font-mono text-sky-900">
+                      {successPaymentDetails?.timeout || "—"}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </DialogContent>
       </Dialog>
