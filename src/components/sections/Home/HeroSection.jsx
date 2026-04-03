@@ -32,6 +32,10 @@ const HeroSection = () => {
     },
   };
 
+  const countryCode = Intl.DateTimeFormat().resolvedOptions().locale.split('-')[1]?.toLowerCase() || 'us';
+
+const appStoreUrl = `https://apps.apple.com/${countryCode}/app/yourself-pilates/id6752496161`;
+
   return (
     <section className="bg-gradient-primary relative overflow-hidden py-16 md:py-20 lg:py-3">
       {/* Container */}
@@ -83,7 +87,7 @@ const HeroSection = () => {
 
               <div className="flex items-center gap-4">
                 <a aria-label="Download on App Store"
-                  href="https://apps.apple.com/us/app/yourself-pilates/id6752496161"
+                  href={appStoreUrl}
                   className="transition-transform duration-300 ease-out hover:scale-105"
                   rel="noopener noreferrer"
                   target="_blank"
