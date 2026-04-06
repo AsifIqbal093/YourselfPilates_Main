@@ -6,9 +6,24 @@ export const authApi = {
     return data;
   },
 
-  refreshToken: async (refreshToken) => {
-    const { data } = await api.post("/api/user/token/refresh/", {
-      refresh: refreshToken,
+  requestResetOtp: async (email) => {
+    const { data } = await api.post("/api/user/request-reset-otp/", { email });
+    return data;
+  },
+
+  confirmResetOtp: async (email, otp) => {
+    const { data } = await api.post("/api/user/confirm-reset-otp/", {
+      email,
+      otp,
+    });
+    return data;
+  },
+
+  resetPasswordWithOtp: async (email, otp, new_password) => {
+    const { data } = await api.post("/api/user/reset-password-with-otp/", {
+      email,
+      otp,
+      new_password,
     });
     return data;
   },
@@ -71,7 +86,10 @@ export const subscriptionsApi = {
   },
 
   updateOrder: async (orderId, payload) => {
-    const { data } = await api.patch(`/api/subscriptions/orders/${orderId}/`, payload);
+    const { data } = await api.patch(
+      `/api/subscriptions/orders/${orderId}/`,
+      payload
+    );
     return data;
   },
 };

@@ -37,8 +37,7 @@ const safeStorage = {
 
 export function storeAuthData(authData) {
   const dataToStore = {
-    access: authData.access,
-    refresh: authData.refresh,
+    token: authData.token,
     email: authData.email,
     fullName: authData.full_name,
     role: authData.role,
@@ -50,31 +49,12 @@ export function storeAuthData(authData) {
   dispatchAuthChange();
 }
 
-export function updateTokens(newData) {
-  const currentData = safeStorage.get(AUTH_STORAGE_KEY);
-  if (!currentData) return;
-
-  const updatedData = {
-    ...currentData,
-    access: newData.access || currentData.access,
-    refresh: newData.refresh || currentData.refresh,
-    timestamp: Date.now(),
-  };
-
-  safeStorage.set(AUTH_STORAGE_KEY, updatedData);
-  dispatchAuthChange();
-}
-
 export function getAuthData() {
   return safeStorage.get(AUTH_STORAGE_KEY);
 }
 
 export function getAccessToken() {
-  return getAuthData()?.access || null;
-}
-
-export function getRefreshToken() {
-  return getAuthData()?.refresh || null;
+  return getAuthData()?.token || null;
 }
 
 export function isAuthenticated() {

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getAccessToken, clearAuthData, getRefreshToken, updateTokens } from "./auth";
+import { getAccessToken, clearAuthData } from "./auth";
 
 const API_BASE_URL =
   process.env.NEXT_PUBLIC_API_BASE_URL || "https://backend.yourselfpilates.pt";
@@ -12,25 +12,11 @@ const api = axios.create({
   },
 });
 
-let isRefreshing = false;
-let failedQueue = [];
-
-const processQueue = (error, token = null) => {
-  failedQueue.forEach((prom) => {
-    if (error) {
-      prom.reject(error);
-    } else {
-      prom.resolve(token);
-    }
-  });
-  failedQueue = [];
-};
-
 api.interceptors.request.use(
   (config) => {
     const token = getAccessToken();
     if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
+      config.headers.Authorization = `Token ${token}`;
     }
     return config;
   },
@@ -44,50 +30,11 @@ api.interceptors.response.use(
 
     // Handle 401 Unauthorized errors
     if (error.response?.status === 401 && !originalRequest._retry) {
-      if (isRefreshing) {
-        return new Promise((resolve, reject) => {
-          failedQueue.push({ resolve, reject });
-        })
-          .then((token) => {
-            originalRequest.headers.Authorization = `Bearer ${token}`;
-            return api(originalRequest);
-          })
-          .catch((err) => Promise.reject(err));
-      }
-
       originalRequest._retry = true;
-      isRefreshing = true;
-
-      const refreshToken = getRefreshToken();
-      if (refreshToken) {
-        try {
-          const { data } = await axios.post(`${API_BASE_URL}/api/user/token/refresh/`, {
-            refresh: refreshToken,
-          });
-
-          updateTokens(data); // MERGE new tokens, don't overwrite user info
-          const newToken = data.access;
-          
-          processQueue(null, newToken);
-          originalRequest.headers.Authorization = `Bearer ${newToken}`;
-          return api(originalRequest);
-        } catch (refreshError) {
-          processQueue(refreshError, null);
-          clearAuthData();
-          // Fallback: If refresh fails, try once more WITHOUT the invalid token
-          // This allows public endpoints (like fetchPacks) to still work
-          delete originalRequest.headers.Authorization;
-          return api(originalRequest);
-        } finally {
-          isRefreshing = false;
-        }
-      } else {
-        clearAuthData();
-        isRefreshing = false;
-        // Fallback: Try without token
-        delete originalRequest.headers.Authorization;
-        return api(originalRequest);
-      }
+      clearAuthData();
+      // Fallback: Try without token, allows public endpoints to work
+      delete originalRequest.headers.Authorization;
+      return api(originalRequest);
     }
 
     const message =
